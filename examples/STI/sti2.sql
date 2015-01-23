@@ -1,0 +1,424 @@
+DROP TABLE area;
+CREATE TABLE area (
+  ID_AREA integer NOT NULL,
+  AREA varchar(100) NOT NULL,
+  PRIMARY KEY (ID_AREA)
+);
+
+DROP TABLE atributo;
+CREATE TABLE atributo (
+  ID_ATRIBUTO integer NOT NULL,
+  NOME varchar(100) NOT NULL,
+  NOMEPLURAL varchar(100) NOT NULL,
+  GENERO integer NOT NULL,
+  CARDINALIDADE integer NOT NULL,
+  ID_ATRIBUTOSINONIMO integer DEFAULT NULL,
+  DATA date NOT NULL,
+  ID_USUARIO integer NOT NULL,
+  PRIMARY KEY (ID_ATRIBUTO)
+);
+
+DROP TABLE atributo_pergunta;
+CREATE TABLE atributo_pergunta (
+  ID integer NOT NULL ,
+  ID_PERGUNTA integer NOT NULL,
+  ID_ATRIBUTO integer NOT NULL,
+  ID_OBJETO integer DEFAULT NULL,
+  DATA date NOT NULL,
+  ID_USUARIO integer NOT NULL,
+  PRIMARY KEY (ID)
+);
+
+DROP TABLE aviso;
+CREATE TABLE aviso (
+  ID_AVISO integer NOT NULL ,
+  AVISO varchar(255) NOT NULL,
+  HASHTAGS varchar(32) DEFAULT NULL,
+  DATA_ENVIO datetime NOT NULL,
+  ENVIADO integer NOT NULL,
+  ID_DISCIPLINA integer NOT NULL,
+  PRIMARY KEY (ID_AVISO)
+);
+
+DROP TABLE conversa;
+CREATE TABLE conversa (
+  ID integer NOT NULL ,
+  DATA datetime DEFAULT NULL,
+  MENSAGEM varchar(255),
+  ID_USUARIO integer DEFAULT NULL,
+  ID_DISCIPLINA integer DEFAULT NULL,
+  INTERLOCUTOR integer DEFAULT NULL,
+  ID_CONVERSA integer DEFAULT NULL,
+  PRIMARY KEY (ID)
+);
+
+DROP TABLE desconhecido;
+CREATE TABLE desconhecido (
+  ID_DESC integer NOT NULL ,
+  ID_USUARIO integer NOT NULL,
+  ID_DISCIPLINA integer NOT NULL,
+  ID_CONVERSA integer DEFAULT NULL,
+  MENSAGEM varchar(1024) DEFAULT NULL,
+  RESPOSTA varchar(1024) DEFAULT NULL,
+  COMPLEMENTO varchar(512) DEFAULT NULL,
+  DATA datetime DEFAULT NULL,
+  PRIMARY KEY (ID_DESC)
+);
+
+DROP TABLE disciplina;
+CREATE TABLE disciplina (
+  ID_DISCIPLINA integer NOT NULL,
+  DISCIPLINA varchar(100) NOT NULL,
+  SIGLA varchar(15) DEFAULT NULL,
+  HABILITADA integer NOT NULL,
+  ITEM integer NOT NULL,
+  PRIMARY KEY (ID_DISCIPLINA)
+);
+
+DROP TABLE disciplina_usuario;
+CREATE TABLE disciplina_usuario (
+  ID integer NOT NULL ,
+  ID_DISCIPLINA integer NOT NULL,
+  ID_USUARIO integer NOT NULL,
+  PRIMARY KEY (ID)
+);
+
+DROP TABLE evento;
+CREATE TABLE evento (
+  ID_EVENTO integer NOT NULL,
+  EVENTO varchar(64) DEFAULT NULL,
+  TIPO integer DEFAULT NULL,
+  DESCRICAO varchar(255),
+  DATA_CRIACAO datetime DEFAULT NULL,
+  DATA_EVENTO datetime DEFAULT NULL,
+  PRIORIDADE integer DEFAULT NULL,
+  HABILITADO integer DEFAULT NULL,
+  AGENDADO integer DEFAULT NULL,
+  ID_DISCIPLINA integer DEFAULT NULL,
+  PRIMARY KEY (ID_EVENTO)
+);
+
+DROP TABLE evento_prioridade;
+CREATE TABLE evento_prioridade (
+  ID_PRIORIDADE integer NOT NULL ,
+  PRIORIDADE integer DEFAULT NULL,
+  DIAS float DEFAULT NULL,
+  PRIMARY KEY (ID_PRIORIDADE)
+);
+
+DROP TABLE evento_tipo;
+CREATE TABLE evento_tipo (
+  ID_TIPOEVENTO integer NOT NULL,
+  TIPOEVENTO varchar(32) DEFAULT NULL,
+  MENSAGEM varchar(255),
+  PRIMARY KEY (ID_TIPOEVENTO)
+);
+
+DROP TABLE ex_alternativa;
+CREATE TABLE ex_alternativa (
+  ID_ALTERNATIVA integer NOT NULL,
+  FRASE varchar(255) NOT NULL,
+  CORRETA integer NOT NULL DEFAULT '0',
+  FEEDBACK varchar(255) NOT NULL,
+  ID_QUESTAO integer NOT NULL,
+  PRIMARY KEY (ID_ALTERNATIVA)
+);
+
+DROP TABLE ex_desempenho;
+CREATE TABLE ex_desempenho (
+  ID integer NOT NULL ,
+  ID_USUARIO integer NOT NULL,
+  ID_DISCIPLINA integer NOT NULL,
+  ID_OBJETO integer DEFAULT NULL,
+  ACERTOS integer NOT NULL,
+  TOTAL integer NOT NULL,
+  PERCENTUAL float NOT NULL,
+  PRIMARY KEY (ID)
+);
+
+DROP TABLE ex_objeto_questao;
+CREATE TABLE ex_objeto_questao (
+  ID integer NOT NULL ,
+  ID_QUESTAO integer NOT NULL,
+  ID_OBJETO integer NOT NULL,
+  RELEVANCIA float DEFAULT NULL,
+  PRIMARY KEY (ID)
+);
+
+DROP TABLE ex_questao;
+CREATE TABLE ex_questao (
+  ID_QUESTAO integer NOT NULL ,
+  ENUNCIADO varchar(2048) NOT NULL,
+  DIFICULDADE integer NOT NULL,
+  DATA datetime DEFAULT NULL,
+  ID_USUARIO integer NOT NULL,
+  PRIMARY KEY (ID_QUESTAO)
+);
+
+DROP TABLE ex_questionario;
+CREATE TABLE ex_questionario (
+  ID_QUESTIONARIO integer NOT NULL ,
+  ID_DISCIPLINA integer NOT NULL,
+  ID_USUARIO integer NOT NULL,
+  NOTA float DEFAULT NULL,
+  PRIMARY KEY (ID_QUESTIONARIO)
+);
+
+DROP TABLE ex_questionario_temp;
+CREATE TABLE ex_questionario_temp (
+  ID_QUESTIONARIO integer DEFAULT NULL,
+  ID_DISCIPLINA integer DEFAULT NULL,
+  ID_USUARIO integer DEFAULT NULL,
+  ID_QUESTAO integer DEFAULT NULL,
+  ENUNCIADO varchar(2048),
+  ID_ALTERNATIVA integer DEFAULT NULL,
+  FRASE varchar(255),
+  CORRETA integer DEFAULT NULL,
+  FEEDBACK varchar(512)
+);
+
+DROP TABLE ex_resposta;
+CREATE TABLE ex_resposta (
+  ID_RESPOSTA integer NOT NULL ,
+  ID_QUESTIONARIO integer NOT NULL,
+  ID_USUARIO integer NOT NULL,
+  ID_DISCIPLINA integer NOT NULL,
+  ID_QUESTAO integer NOT NULL,
+  ID_ALTERNATIVA integer NOT NULL,
+  CORRETA integer NOT NULL,
+  DATA datetime NOT NULL,
+  PRIMARY KEY (ID_RESPOSTA)
+);
+
+DROP TABLE hierarquia;
+CREATE TABLE hierarquia (
+  ID integer NOT NULL ,
+  ID_SUPEROBJETO integer NOT NULL,
+  ID_SUBOBJETO integer NOT NULL,
+  ORDEM integer NOT NULL,
+  NIVEL integer NOT NULL,
+  PRIMARY KEY (ID)
+);
+
+DROP TABLE listas;
+CREATE TABLE listas (
+  ID_LISTA integer NOT NULL ,
+  ID_ORAV_HEAD integer NOT NULL,
+  ID_ORAV_TAIL integer NOT NULL,
+  PROBABILITY float DEFAULT NULL,
+  PRIMARY KEY (ID_LISTA)
+);
+
+DROP TABLE log;
+CREATE TABLE log (
+  ID_LOG integer NOT NULL ,
+  ID_USUARIO integer DEFAULT NULL,
+  ID_DISCIPLINA integer DEFAULT NULL,
+  MENSAGEM varchar(1024) DEFAULT NULL,
+  RESPOSTA varchar(1024) DEFAULT NULL,
+  ID_PERGUNTA integer DEFAULT NULL,
+  ID_ORAV integer DEFAULT NULL,
+  ID_OBJETO integer DEFAULT NULL,
+  ID_ATRIBUTO integer DEFAULT NULL,
+  DATA datetime NOT NULL,
+  TEMPO decimal(15,0) NOT NULL,
+  PRIMARY KEY (ID_LOG)
+);
+
+DROP TABLE oav;
+CREATE TABLE oav (
+  ID_OAV integer NOT NULL,
+  ID_OBJETO integer NOT NULL,
+  ID_ATRIBUTO integer NOT NULL,
+  ID_METAOBJETO_O integer NOT NULL,
+  ID_METAOBJETO_V integer NOT NULL,
+  ID_VALOR integer NOT NULL,
+  ID_PRIOR_OAV integer NOT NULL,
+  ID_NEXT_OAV integer NOT NULL,
+  DATA date NOT NULL,
+  PRIMARY KEY (ID_OAV)
+);
+
+DROP TABLE objeto;
+CREATE TABLE objeto (
+  ID_OBJETO integer NOT NULL,
+  NOME varchar(100) NOT NULL,
+  NOMEPLURAL varchar(100) NOT NULL,
+  DATA date NOT NULL,
+  ID_USUARIO integer NOT NULL,
+  TIPO integer DEFAULT NULL,
+  ITEM varchar(20) DEFAULT NULL,
+  DATA_ATUAL datetime DEFAULT NULL,
+  ITEM_FLOAT bigint DEFAULT NULL,
+  HABILITADO integer NOT NULL DEFAULT 0,
+  PRIMARY KEY (ID_OBJETO)
+);
+
+DROP TABLE objeto_disciplina;
+CREATE TABLE objeto_disciplina (
+  ID integer NOT NULL,
+  ID_OBJETO integer NOT NULL,
+  ID_DISCIPLINA integer NOT NULL,
+  PRIMARY KEY (ID)
+);
+
+DROP TABLE objeto_subarea;
+CREATE TABLE objeto_subarea (
+  ID_OBJETO integer NOT NULL,
+  ID_SUBAREA integer NOT NULL
+);
+
+DROP TABLE orav;
+CREATE TABLE orav (
+  ID_ORAV integer NOT NULL,
+  ID_OBJETO integer NOT NULL,
+  ID_RELACAO integer NOT NULL,
+  ID_ATRIBUTO integer NOT NULL,
+  ID_VALOR integer NOT NULL,
+  ID_PROXIMO integer DEFAULT NULL,
+  PROBABILIDADE float DEFAULT NULL,
+  TEMPO integer DEFAULT NULL,
+  DATA date NOT NULL,
+  PRIMARY KEY (ID_ORAV)
+);
+
+DROP TABLE pergunta;
+CREATE TABLE pergunta (
+  ID_PERGUNTA integer NOT NULL,
+  TEXTO varchar(100) NOT NULL,
+  DATA date NOT NULL,
+  ID_USUARIO integer NOT NULL,
+  ID_STATUS integer NOT NULL,
+  PRIMARY KEY (ID_PERGUNTA)
+);
+
+DROP TABLE preatributo;
+CREATE TABLE preatributo (
+  ID_PREATRIBUTO integer NOT NULL,
+  PREATRIBUTO varchar(100) NOT NULL,
+  ID_ATRIBUTO integer NOT NULL,
+  DATA date NOT NULL,
+  ID_USUARIO integer NOT NULL,
+  PRIMARY KEY (ID_PREATRIBUTO)
+);
+
+DROP TABLE preobjeto;
+CREATE TABLE preobjeto (
+  ID_PREOBJETO integer NOT NULL,
+  PREOBJETO varchar(100) NOT NULL,
+  ID_OBJETO integer NOT NULL,
+  DATA date NOT NULL,
+  ID_USUARIO integer NOT NULL,
+  PRIMARY KEY (ID_PREOBJETO)
+);
+
+DROP TABLE propriedade;
+CREATE TABLE propriedade (
+  ID_PROPRIEDADE integer NOT NULL,
+  PROPRIEDADE varchar(127) DEFAULT NULL,
+  GENERO integer DEFAULT NULL,
+  DATA datetime DEFAULT NULL,
+  ID_USUARIO integer DEFAULT NULL,
+  PRIMARY KEY (ID_PROPRIEDADE)
+);
+
+DROP TABLE qualificador;
+CREATE TABLE qualificador (
+  ID_QUALIFICADOR integer NOT NULL,
+  QUALIFICADOR varchar(100) NOT NULL,
+  DATA date NOT NULL,
+  ID_USUARIO integer NOT NULL,
+  PRIMARY KEY (ID_QUALIFICADOR)
+);
+
+DROP TABLE relacao;
+CREATE TABLE relacao (
+  ID integer NOT NULL,
+  ID_RELACAO integer NOT NULL,
+  ID_OBJETO integer NOT NULL,
+  PRIMARY KEY (ID)
+);
+
+DROP TABLE resposta;
+CREATE TABLE resposta (
+  ID_RESPOSTA integer NOT NULL,
+  PREFIXO varchar(100) NOT NULL,
+  TEXTO varchar(100) NOT NULL,
+  ID_ATRIBUTO integer NOT NULL,
+  DATA date NOT NULL,
+  ID_USUARIO integer NOT NULL,
+  PRIMARY KEY (ID_RESPOSTA)
+);
+
+DROP TABLE subarea;
+CREATE TABLE subarea (
+  ID_SUBAREA integer NOT NULL,
+  COD_CNPQ varchar(12) NOT NULL,
+  SUBAREA char(100) NOT NULL,
+  ID_AREA integer NOT NULL,
+  PRIMARY KEY (ID_SUBAREA)
+);
+
+DROP TABLE teste;
+CREATE TABLE teste (
+  ID_TESTE integer NOT NULL,
+  NOMETESTE varchar(128) DEFAULT NULL
+);
+
+DROP TABLE tipo_status;
+CREATE TABLE tipo_status (
+  ID_STATUS integer NOT NULL,
+  STATUS varchar(20) NOT NULL,
+  DATA date NOT NULL,
+  ID_USUARIO integer NOT NULL,
+  PRIMARY KEY (ID_STATUS)
+);
+
+DROP TABLE usuario;
+CREATE TABLE usuario (
+  ID_USUARIO integer NOT NULL,
+  NOME varchar(100) NOT NULL,
+  PRIMEIRO_NOME varchar(30) DEFAULT NULL,
+  NOVO_USUARIO integer NOT NULL,
+  USUARIO varchar(20) NOT NULL,
+  SENHA varchar(64) NOT NULL,
+  EMAIL varchar(128) DEFAULT NULL,
+  CELULAR varchar(20) DEFAULT NULL,
+  SMS integer NOT NULL,
+  TWITTER varchar(64) DEFAULT NULL,
+  ID_CONVERSA integer DEFAULT NULL,
+  PRIMARY KEY (ID_USUARIO)
+);
+
+DROP TABLE valor;
+CREATE TABLE valor (
+  ID_VALOR integer NOT NULL,
+  NOME varchar(512) DEFAULT NULL,
+  NOME_FONEMA varchar(255),
+  AUTOR varchar(255) DEFAULT NULL,
+  AUTOR_FONEMA varchar(255) DEFAULT NULL,
+  COMPLEMENTO varchar(512) DEFAULT NULL,
+  ANO integer DEFAULT NULL,
+  DATA_EVENTO date DEFAULT NULL,
+  ID_OBJETO integer DEFAULT NULL,
+  DATA date NOT NULL,
+  ID_USUARIO integer NOT NULL,
+  IMAGEM integer NULL,
+  DATA_NASC date DEFAULT NULL,
+  DATA_OBIT date DEFAULT NULL,
+  PRIMARY KEY (ID_VALOR)
+);
+
+DROP TABLE valor_propriedade;
+CREATE TABLE valor_propriedade (
+  ID_VALOR integer NOT NULL,
+  ID_PROPRIEDADE integer NOT NULL,
+  PRIMARY KEY (ID_VALOR,ID_PROPRIEDADE)
+);
+
+DROP TABLE valor_qualificador;
+CREATE TABLE valor_qualificador (
+  ID_VALOR integer NOT NULL,
+  ID_QUALIFICADOR integer NOT NULL,
+  PRIMARY KEY (ID_VALOR,ID_QUALIFICADOR)
+);

@@ -1,0 +1,269 @@
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix p0: <http://localhost/client/ontologies/2014/4/untitled-ontology-31> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://localhost/client/ontologies/2014/4/untitled-ontology-31> .
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31> rdf:type :Ontology .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#parteDe
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#parteDe> rdf:type :ObjectProperty .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#parteDeCadeira
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#parteDeCadeira> rdf:type :ObjectProperty ;
+                                                                                
+                                                                                rdfs:domain <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Assento_de_Cadeira> ;
+                                                                                
+                                                                                rdfs:range <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Cadeira> ;
+                                                                                
+                                                                                rdfs:domain <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Encosto> ;
+                                                                                
+                                                                                rdfs:subPropertyOf <http://localhost/client/ontologies/2014/4/untitled-ontology-31#parteDe> .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#parteDeSalaDeJantar
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#parteDeSalaDeJantar> rdf:type :ObjectProperty ;
+                                                                                     
+                                                                                     rdfs:domain <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Cadeira> ,
+                                                                                                 <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Mesa> ;
+                                                                                     
+                                                                                     rdfs:range <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Sala_de_Jantar> ;
+                                                                                     
+                                                                                     rdfs:subPropertyOf <http://localhost/client/ontologies/2014/4/untitled-ontology-31#parteDe> .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#temPropCadeira
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#temPropCadeira> rdf:type :ObjectProperty ;
+                                                                                
+                                                                                rdfs:domain <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Cadeira> ;
+                                                                                
+                                                                                rdfs:range <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Objetivo> ,
+                                                                                           <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Substância> ;
+                                                                                
+                                                                                rdfs:subPropertyOf <http://localhost/client/ontologies/2014/4/untitled-ontology-31#temPropriedade> .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#temPropriedade
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#temPropriedade> rdf:type :ObjectProperty .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#temAltura
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#temAltura> rdf:type :DatatypeProperty ;
+                                                                           
+                                                                           rdfs:domain <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Cadeira> ;
+                                                                           
+                                                                           rdfs:range xsd:float .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#temComprimento
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#temComprimento> rdf:type :DatatypeProperty ;
+                                                                                
+                                                                                rdfs:domain <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Cadeira> ;
+                                                                                
+                                                                                rdfs:range xsd:float .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#temLargura
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#temLargura> rdf:type :DatatypeProperty ;
+                                                                            
+                                                                            rdfs:domain <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Cadeira> ;
+                                                                            
+                                                                            rdfs:range xsd:float .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#Assento
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#Assento> rdf:type :Class .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#Assento_de_Cadeira
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#Assento_de_Cadeira> rdf:type :Class .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#Cadeira
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#Cadeira> rdf:type :Class ;
+                                                                         
+                                                                         rdfs:subClassOf <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Assento> ;
+                                                                         
+                                                                         :disjointWith <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Sofá> .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#Cadeira_Giratória
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#Cadeira_Giratória> rdf:type :Class ;
+                                                                                   
+                                                                                   rdfs:subClassOf <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Cadeira> ;
+                                                                                   
+                                                                                   :disjointWith <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Cadeira_Tradicional> .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#Cadeira_Tradicional
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#Cadeira_Tradicional> rdf:type :Class ;
+                                                                                     
+                                                                                     rdfs:subClassOf <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Cadeira> .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#Encosto
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#Encosto> rdf:type :Class .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#Mesa
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#Mesa> rdf:type :Class .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#Objetivo
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#Objetivo> rdf:type :Class .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#Pé
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#Pé> rdf:type :Class .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#Rodinha
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#Rodinha> rdf:type :Class .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#Sala_de_Jantar
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#Sala_de_Jantar> rdf:type :Class .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#Sofá
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#Sofá> rdf:type :Class ;
+                                                                      
+                                                                      rdfs:subClassOf <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Assento> .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#Substância
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#Substância> rdf:type :Class .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#Cadeira1
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#Cadeira1> rdf:type <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Cadeira_Tradicional> ,
+                                                                                   :NamedIndividual ;
+                                                                          
+                                                                          <http://localhost/client/ontologies/2014/4/untitled-ontology-31#temLargura> "0,70"^^xsd:float ;
+                                                                          
+                                                                          <http://localhost/client/ontologies/2014/4/untitled-ontology-31#temComprimento> "0,80"^^xsd:float ;
+                                                                          
+                                                                          <http://localhost/client/ontologies/2014/4/untitled-ontology-31#temAltura> "1,10"^^xsd:float ;
+                                                                          
+                                                                          <http://localhost/client/ontologies/2014/4/untitled-ontology-31#temPropCadeira> <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Madeira> ,
+                                                                                                                                                          <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Refeição> ;
+                                                                          
+                                                                          <http://localhost/client/ontologies/2014/4/untitled-ontology-31#parteDeSalaDeJantar> <http://localhost/client/ontologies/2014/4/untitled-ontology-31#SalaDeJantar1> .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#Madeira
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#Madeira> rdf:type <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Substância> ,
+                                                                                  :NamedIndividual .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#Mesa1
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#Mesa1> rdf:type <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Mesa> ,
+                                                                                :NamedIndividual ;
+                                                                       
+                                                                       <http://localhost/client/ontologies/2014/4/untitled-ontology-31#parteDeSalaDeJantar> <http://localhost/client/ontologies/2014/4/untitled-ontology-31#SalaDeJantar1> .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#Refeição
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#Refeição> rdf:type <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Objetivo> ,
+                                                                                   :NamedIndividual .
+
+
+
+###  http://localhost/client/ontologies/2014/4/untitled-ontology-31#SalaDeJantar1
+
+<http://localhost/client/ontologies/2014/4/untitled-ontology-31#SalaDeJantar1> rdf:type <http://localhost/client/ontologies/2014/4/untitled-ontology-31#Sala_de_Jantar> ,
+                                                                                        :NamedIndividual .
+
+
+
+
+###  Generated by the OWL API (version 3.4.5-SNAPSHOT) http://owlapi.sourceforge.net
+

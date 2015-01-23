@@ -1,0 +1,24 @@
+Felipe, Higor e Renato
+
+sistema de escola de dança
+
+entradas
+
+ nro de disciplinas
+ valor pago por disciplina
+ sexo
+ cep
+ enquete
+ idade
+
+
+saidas
+
+classe A (Ótimo) - Aluno com mais de 4 cursos realizados
+classe B (Bom) - Aluno com até 3 cursos realizados
+classe C (Desistente) - Aluno que só realizou o cadastro mas não se matriculou/realizou nenhum curso
+
+utilizar segmentação ---- perceptron
+
+Campos Utilizados
+ID_ALUNO - ID_MATRICULA
