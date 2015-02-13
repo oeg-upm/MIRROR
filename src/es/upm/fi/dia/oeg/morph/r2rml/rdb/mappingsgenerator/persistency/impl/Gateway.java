@@ -733,8 +733,8 @@ public class Gateway implements IGateway {
 		try {
 			con = ConnectionManager.getConnection(database, properties);
 			String cmd = "SELECT COUNT(*) AS N "+
-					"FROM "+dbName+"."+childTable+" AS C JOIN "+
-					dbName+"."+parentTable+" AS P ON C."+childPK+"=P."+parentPK;
+					"FROM `"+dbName+"`.`"+childTable+"` AS C JOIN `"+
+					dbName+"`.`"+parentTable+"` AS P ON C.`"+childPK+"`=P.`"+parentPK+"`";
 			//System.out.println(cmd);
 			stmt = con.prepareStatement(cmd);
 			VerboseMode.verbose(stmt.toString(), VerboseMode.VERBOSE_SQL);
@@ -772,8 +772,8 @@ public class Gateway implements IGateway {
 			String cmd = "SELECT COUNT(*) AS TOTAL "+
 					"FROM ( "+
 					"SELECT COUNT(*) AS N "+
-					"FROM "+childTable+" AS C JOIN "+parentTable+" AS P ON C."+childPK+"=P."+parentPK+" "+
-					"GROUP BY C."+childPK+" HAVING N>1 "+
+					"FROM `"+childTable+"` AS C JOIN `"+parentTable+"` AS P ON C.`"+childPK+"`=P.`"+parentPK+"` "+
+					"GROUP BY C.`"+childPK+"` HAVING N>1 "+
 					") AS internal_query;";
 			//System.out.println(cmd);
 			stmt = con.createStatement();

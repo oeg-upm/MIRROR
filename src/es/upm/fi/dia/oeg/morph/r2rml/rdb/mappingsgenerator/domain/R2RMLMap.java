@@ -27,6 +27,8 @@ public class R2RMLMap {
 	public int counterMxN;    // internal counter for M-N relationships
 
 	public int indexPrefixSchema; // index for ex:
+
+	public static String enclosed_char = "\\" + "\"";
 	
 	/**
 	 * @return the filename
@@ -385,7 +387,7 @@ public class R2RMLMap {
 		cObjectMap = new R2RMLObjectMap();
 		//pred = Character.toString(tables.get(1).charAt(0)).toUpperCase()+tables.get(1).substring(1) + "BelongsTo" +
 		//	   Character.toString(tables.get(0).charAt(0)).toUpperCase()+tables.get(0).substring(1);
-		String pred = tableRange + "BelongsTo" + tableDomain;
+		String pred = tableRange + "has" + tableDomain;
 		//pred = tab1 + "BelongsTo" + tab0;
 		cObjectMap.column = "[ rr:constant <" + this.template + "/" + R2RMLProcess.encodeURIcomponent(pred) + "> ]";
 
@@ -401,7 +403,7 @@ public class R2RMLMap {
 		R2RMLTriplesMap triplesMap;
 		
 		triplesMap = new R2RMLTriplesMap(this, R2RMLTriplesMap.TM_ONTO);
-		String objectPropertyName = tableRange + "BelongsTo" + tableDomain;
+		String objectPropertyName = tableRange + "has" + tableDomain;
 
 		triplesMap.comments.add("#");
 		triplesMap.comments.add("# inverseOf: " + objectPropertyName);
@@ -506,10 +508,10 @@ public class R2RMLMap {
 			aliasParent = "t_" + String.format("%05d", r);
 
 			//sqlFields = ", "  + graph2.get(k) + "." + graph3.get(k) + sqlFields;
-			sqlFields = ", "  + aliasParent + "." + columnDomain.get(k) + sqlFields;
+			sqlFields = ", "  + aliasParent + "." + enclosed_char + columnDomain.get(k) + enclosed_char + sqlFields;
 			//if(graph2.get(k).equals(graph4.get(k))) {  // Self-relationship
-				joinParentPK.add(aliasParent + "." + columnDomain.get(k));
-				joinChildPK.add(aliasChild  + "." + columnRange.get(k));
+				joinParentPK.add(aliasParent + "." + enclosed_char + columnDomain.get(k) + enclosed_char);
+				joinChildPK.add(aliasChild  + "." + enclosed_char + columnRange.get(k) + enclosed_char);
 			//} else {
 				//joinParentPK.add(graph2.get(k) + "." + graph3.get(k));
 				//joinChildPK.add(graph4.get(k)  + "." + graph5.get(k));
@@ -518,11 +520,11 @@ public class R2RMLMap {
 		sqlFields = sqlFields.substring(2);
 		
 		// Build the join string
-		sqlJoin = tableDomain.get(0) + " AS " + aliasParent;
+		sqlJoin = enclosed_char + tableDomain.get(0) + enclosed_char + " AS " + aliasParent;
 		//if(graph2.get(0).equals(graph4.get(0))) {
 		//	sqlJoin = "(" + sqlJoin + " JOIN " + r2 + " AS " + r2 + "2 ON ("; // Self-relationship
 		//} else {
-			sqlJoin = "(" + sqlJoin + " JOIN " + tableRange + " AS " + aliasChild + " ON (";
+			sqlJoin = "(" + sqlJoin + " JOIN " + enclosed_char + tableRange + enclosed_char + " AS " + aliasChild + " ON (";
 		//}
 		for(int k=0; k < joinParentPK.size(); k++) {
 			sqlJoin = sqlJoin + "(" + joinParentPK.get(k) + "=" + joinChildPK.get(k) + ")";
@@ -567,20 +569,20 @@ public class R2RMLMap {
 
 					//sqlFields = ", "  + graph2.get(k) + "." + graph3.get(k) + sqlFields;
 					//sqlFields = ", "  + alias + "." + columnDomain.get(k) + sqlFields;
-					sqlFields = ", "  + aliasChild + "." + columnsRange.get(k).getColumnName() + " AS " + columnsRange.get(k).getColumnName() + sqlFields;
+					sqlFields = ", "  + aliasChild + "." + enclosed_char + columnsRange.get(k).getColumnName() + enclosed_char + " AS " + columnsRange.get(k).getColumnName() + sqlFields;
 
 					//joinParentPK.add(graph2.get(k) + "." + graph3.get(k));
 					//joinChildPK.add(graph4.get(k)  + "." + graph5.get(k)); 
-					joinParentPK.add(alias + "." + columnsDomain.get(k).getColumnName());
-					joinChildPK.add(aliasChild  + "." + columnsRange.get(k).getColumnName()); 
+					joinParentPK.add(alias + "." + enclosed_char + columnsDomain.get(k).getColumnName() + enclosed_char);
+					joinChildPK.add(aliasChild  + "." + enclosed_char + columnsRange.get(k).getColumnName() + enclosed_char); 
 				}
 			}
 		}
 		sqlFields = sqlFields.substring(2);
 		
 		// Build the join string
-		sqlJoin = tables.get(0) + " AS " + aliasParent.get(0);
-		sqlJoin = "(" + sqlJoin + " JOIN " + tableRange + " AS " + aliasChild + " ON (";
+		sqlJoin = enclosed_char + tables.get(0) + enclosed_char + " AS " + aliasParent.get(0);
+		sqlJoin = "(" + sqlJoin + " JOIN " + enclosed_char + tableRange + enclosed_char + " AS " + aliasChild + " ON (";
 		int k;
 		for(k=0; k < joinParentPK.size(); k++) {
 			sqlJoin = sqlJoin + "(" + joinParentPK.get(k) + "=" + joinChildPK.get(k) + ")";
@@ -595,7 +597,7 @@ public class R2RMLMap {
 		sqlJoin = sqlJoin + "))"; 
 		int m = ++k;
 		
-		sqlJoin = sqlJoin + " JOIN " + tables.get(1) + " AS " + aliasParent.get(1) + " ON (";
+		sqlJoin = sqlJoin + " JOIN " + enclosed_char + tables.get(1) + enclosed_char + " AS " + aliasParent.get(1) + " ON (";
 		for(k=m; k < joinParentPK.size(); k++) {
 			sqlJoin = sqlJoin + "(" + joinParentPK.get(k) + "=" + joinChildPK.get(k) + ")";
 			if(k < joinParentPK.size()-1) {
@@ -649,11 +651,11 @@ public class R2RMLMap {
 		for(int k=0; k < columnName.size(); k++) {
 			// Add all fields of child
 			//sqlFields = sqlFields + r2 + "." + graph8.get(k) + ", " ;
-			sqlFields = sqlFields + aliasChild + "." + columnName.get(k) + ", " ;
+			sqlFields = sqlFields + aliasChild + ".`" + columnName.get(k) + "`, " ;
 			if(columnKey.get(k).equals("MUL")) {
 				// Add field join to the list
 				//joinChildPK.add(r2 + "." + graph8.get(k)); 
-				joinChildPK.add(aliasChild+ "." + columnName.get(k)); 
+				joinChildPK.add(aliasChild+ ".`" + columnName.get(k) + "`"); 
 			}
 		}
 
@@ -667,18 +669,18 @@ public class R2RMLMap {
 		for(int k=0; k < columnName.size(); k++) {
 			if(!columnKey.get(k).equals("PRIMARY KEY")) {
 				//if(sqlFields.indexOf(r2 + "." + graph8.get(k)) > 0) {
-				if(sqlFields.indexOf(aliasChild + "." + columnName.get(k)) > 0) {
+				if(sqlFields.indexOf(aliasChild + ".`" + columnName.get(k) + "`") > 0) {
 					//sqlFields = sqlFields + graph2.get(0) + "." + graph8.get(k) + " AS " + graph2.get(0) + "_" + graph8.get(k) + ", ";
-					sqlFields = sqlFields + aliasParent + "." + columnName.get(k) + " AS " + tableParent + "_" + columnName.get(k) + ", ";
-					columnName.set(k, tableParent + "_" + columnName.get(k));
+					sqlFields = sqlFields + aliasParent + ".`" + columnName.get(k) + "` AS `" + tableParent + "_" + columnName.get(k) + "`, ";
+					columnName.set(k, "`" + tableParent + "_" + columnName.get(k) + "`");
 				} else {
 					//sqlFields = sqlFields + graph2.get(0) + "." + graph8.get(k) + ", ";
-					sqlFields = sqlFields + aliasParent + "." + columnName.get(k) + ", ";
+					sqlFields = sqlFields + aliasParent + ".`" + columnName.get(k) + "`, ";
 				}
 			} else {
 				// Add field join to the list
 				//joinParentPK.add(graph2.get(0) + "." + graph8.get(k)); 
-				joinParentPK.add(aliasParent + "." + columnName.get(k)); 
+				joinParentPK.add(aliasParent + ".`" + columnName.get(k) + "`"); 
 			}
 		}
 		sqlFields = sqlFields.substring(0, sqlFields.length()-2);
@@ -689,7 +691,7 @@ public class R2RMLMap {
 				if(columnKey.get(k).equals("PRIMARY KEY")) {
 					// Add field join to the list
 					//joinChildPK.add(r2 + "." + graph8.get(k));
-					joinChildPK.add(aliasChild + "." + columnName.get(k));
+					joinChildPK.add(aliasChild + ".`" + columnName.get(k) + "`");
 				}
 			}
 		}
@@ -702,7 +704,7 @@ public class R2RMLMap {
 			}
 		}
 		// Add tables
-		sqlJoin = tableParent + " AS " + aliasParent + " JOIN " + tableChild + " AS " + aliasChild + " ON " + sqlJoin; 
+		sqlJoin = "`" + tableParent + "` AS " + aliasParent + " JOIN `" + tableChild + "` AS " + aliasChild + " ON " + sqlJoin; 
 
 		// Build SQL Command
 		sqlQuery = "SELECT " + sqlFields + " FROM " + sqlJoin;

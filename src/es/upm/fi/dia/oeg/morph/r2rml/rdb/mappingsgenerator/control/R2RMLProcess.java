@@ -103,6 +103,9 @@ public class R2RMLProcess {
 	public boolean showViews; // option for showing views 
 	
 	R2RMLMap map = new R2RMLMap();
+
+	public static String enclosed_mysql = "`";
+	public static String enclosed_char = "\\" + "\"";
 	
 	public R2RMLProcess() {
 		//this.graph = new ArrayList<String>();
@@ -694,7 +697,7 @@ public class R2RMLProcess {
 								}
 								
 								logicalTable.tableName = map.checkSpaceInTemplate(r2);
-								logicalTable.setSqlQuery(sqlQuery);
+								logicalTable.setSqlQuery(sqlQuery, enclosed_mysql, "\\" + enclosed_char);
 								triplesMap.logicalTable = logicalTable;
 					
 						} else {
@@ -911,22 +914,25 @@ public class R2RMLProcess {
 				String tab0 = Character.toString(listParentTables.get(0).charAt(0)).toUpperCase()+listParentTables.get(0).substring(1);
 				String tab1 = Character.toString(r2.charAt(0)).toUpperCase()+r2.substring(1);
 
-				// -------------------------------------------------------
-				// 1st TM: Object Property (constant)
-				// -------------------------------------------------------
-				map.addOwlObjectProperty(tab0, tab1);
+				// Doesn't add object property if the table is the same
+				if(!tab0.equals(tab1)) {
+					// -------------------------------------------------------
+					// 1st TM: Object Property (constant)
+					// -------------------------------------------------------
+					map.addOwlObjectProperty(tab0, tab1);
+						
+					// -------------------------------------------------------
+					// 2nd TM: Object Property content (using sqlQuery to connect)
+					// -------------------------------------------------------
+					String sqlQuery = map.buildSQLQueryObjectProperty1xN(listParentTables
+							, listDataTypes, r2, listReferencedTableNames);
+					map.addOwlObjectPropertyData(tab0, listDataTypes.get(0), tab1, "", sqlQuery);
 					
-				// -------------------------------------------------------
-				// 2nd TM: Object Property content (using sqlQuery to connect)
-				// -------------------------------------------------------
-				String sqlQuery = map.buildSQLQueryObjectProperty1xN(listParentTables
-						, listDataTypes, r2, listReferencedTableNames);
-				map.addOwlObjectPropertyData(tab0, listDataTypes.get(0), tab1, "", sqlQuery);
-				
-				// -------------------------------------------------------
-				// 3rd TM: Inverse Property (constant)
-				// -------------------------------------------------------
-				map.addOwlInverseProperty(tab0, tab1);
+					// -------------------------------------------------------
+					// 3rd TM: Inverse Property (constant)
+					// -------------------------------------------------------
+					map.addOwlInverseProperty(tab0, tab1);
+				}
 		
 			} else {
 				// M x N Relationships
@@ -1274,38 +1280,41 @@ public class R2RMLProcess {
 						tables.add(st.nextToken());
 					}
 					
-					// -------------------------------------------------------
-					// 1st TM: Object Property (constant)
-					// -------------------------------------------------------
 					String tab0 = Character.toString(tables.get(0).charAt(0)).toUpperCase()+tables.get(0).substring(1);
 					String tab1 = Character.toString(tables.get(1).charAt(0)).toUpperCase()+tables.get(1).substring(1);
 
-					map.addOwlObjectProperty(tab0, tab1);
-						
-					// -------------------------------------------------------
-					// 2nd TM: Object Property content (using sqlQuery to connect)
-					// -------------------------------------------------------
-					List<SQLColumn> graph3AsSQLColumn = SQLColumn.fromStringCollection(listDataTypes);
-					List<SQLColumn> graph5AsSQLColumn = SQLColumn.fromStringCollection(listReferencedTableNames);
-					String sqlQuery = map.buildSQLQueryObjectPropertyMxN(listParentTables, graph3AsSQLColumn, r2, graph5AsSQLColumn, tables);
-					
-					int indexDomain = listParentTables.indexOf(tables.get(0));
-					int indexRange = listParentTables.indexOf(tables.get(1));
-					tab0 = Character.toString(tables.get(0).charAt(0)).toUpperCase()+tables.get(0).substring(1);
- 					tab1 = Character.toString(tables.get(1).charAt(0)).toUpperCase()+tables.get(1).substring(1);
+					// Doesn't add object property if the table is the same
+					if(!tab0.equals(tab1)) {
+						// -------------------------------------------------------
+						// 1st TM: Object Property (constant)
+						// -------------------------------------------------------
+						map.addOwlObjectProperty(tab0, tab1);
 
- 					//addOwlObjectPropertyData(String tableDomain, String columnDomain, String tableRange, String columnRange, String sqlQuery) {
- 					String tableDomain = tab0;
- 					String columnDomain = graph5AsSQLColumn.get(indexDomain).getColumnName();
- 					String tableRange = tab1;
- 					//String columnRange = graph3.get(indexRange);
- 					String columnRange = graph5AsSQLColumn.get(indexRange).getColumnName();
-					map.addOwlObjectPropertyData(tableDomain, columnDomain, tableRange, columnRange, sqlQuery);
-					
-					// -------------------------------------------------------
-					// 3rd TM: Inverse Property (constant)
-					// -------------------------------------------------------
-					map.addOwlInverseProperty(tab0, tab1);
+						// -------------------------------------------------------
+						// 2nd TM: Object Property content (using sqlQuery to connect)
+						// -------------------------------------------------------
+						List<SQLColumn> graph3AsSQLColumn = SQLColumn.fromStringCollection(listDataTypes);
+						List<SQLColumn> graph5AsSQLColumn = SQLColumn.fromStringCollection(listReferencedTableNames);
+						String sqlQuery = map.buildSQLQueryObjectPropertyMxN(listParentTables, graph3AsSQLColumn, r2, graph5AsSQLColumn, tables);
+						
+						int indexDomain = listParentTables.indexOf(tables.get(0));
+						int indexRange = listParentTables.indexOf(tables.get(1));
+						tab0 = Character.toString(tables.get(0).charAt(0)).toUpperCase()+tables.get(0).substring(1);
+	 					tab1 = Character.toString(tables.get(1).charAt(0)).toUpperCase()+tables.get(1).substring(1);
+
+	 					//addOwlObjectPropertyData(String tableDomain, String columnDomain, String tableRange, String columnRange, String sqlQuery) {
+	 					String tableDomain = tab0;
+	 					String columnDomain = graph5AsSQLColumn.get(indexDomain).getColumnName();
+	 					String tableRange = tab1;
+	 					//String columnRange = graph3.get(indexRange);
+	 					String columnRange = graph5AsSQLColumn.get(indexRange).getColumnName();
+						map.addOwlObjectPropertyData(tableDomain, columnDomain, tableRange, columnRange, sqlQuery);
+						
+						// -------------------------------------------------------
+						// 3rd TM: Inverse Property (constant)
+						// -------------------------------------------------------
+						map.addOwlInverseProperty(tab0, tab1);
+					}
 
 				}
 			}
