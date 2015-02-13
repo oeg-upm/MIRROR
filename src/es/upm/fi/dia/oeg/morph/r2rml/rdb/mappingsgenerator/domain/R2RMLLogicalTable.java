@@ -31,6 +31,10 @@ public class R2RMLLogicalTable {
 	public void setSqlQuery(String sqlQuery) {
 		this.sqlQuery = sqlQuery;
 	}
+
+	public void setSqlQuery(String sqlQuery, String enclosed_old, String enclosed_new) {
+		this.sqlQuery = sqlQuery.replaceAll(enclosed_old, enclosed_new);
+	}
 	/**
 	 * @return the sqlVersion
 	 */

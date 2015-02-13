@@ -53,7 +53,7 @@ public class R2RMLMapper {
 	}
 
 	public void run(Properties properties) {
-		System.out.println("Generating R2RML Mappings ...");
+		//System.out.println("Generating R2RML Mappings ...");
 		VerboseMode vm = new VerboseMode(); 
 		
 
@@ -162,16 +162,13 @@ public class R2RMLMapper {
 			p.showViews = false;
 		}
 
-
-
-
-
 		int len;
 
 		try {
 			if(p.verbose >= 1) {
-				System.out.println("");
-				System.out.println("AutoMapping: R2RML Default Mapping Generator - v.0.2 beta");
+				//System.out.println("");
+				System.out.println("MIRROR: MappIng from Relational to Rdf generatOR");
+				System.out.println("v.0.3 beta");
 				System.out.println("---------------------------------------------------------");
 				System.out.println("");
 			}
