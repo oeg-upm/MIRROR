@@ -158,7 +158,6 @@ public class R2RMLMapperTest {
 		this.run(propertiesFile);
 	}
 	
-	@Test
 	public void testExampleShopping() {
 		String propertiesFile = "examples/example_shopping/example_shopping.morph.properties";
 		this.run(propertiesFile);

@@ -58,6 +58,7 @@ public class ConnectionManager {
             
             Class.forName(driver);
         } catch(ClassNotFoundException exc) {
+        	exc.printStackTrace();
             StringBuffer mensagem = new StringBuffer("Não foi possível conectar com banco de dados");
             mensagem.append("\nMotivo: " + exc.getMessage());
             throw new R2RMLException(mensagem.toString());
