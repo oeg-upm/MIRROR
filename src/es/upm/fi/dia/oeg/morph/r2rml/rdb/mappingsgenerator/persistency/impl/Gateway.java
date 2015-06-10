@@ -974,6 +974,8 @@ public class Gateway implements IGateway {
 
 		try {
 			con = ConnectionManager.getConnectionDB(database, DBname, properties);
+			//con = ConnectionManager.getConnectionDB(database, DBname, properties);
+			
 			stmt = con.createStatement();
 			//stmt.executeUpdate("SET FOREIGN_KEY_CHECKS=0;");
 			rs = stmt.executeQuery(query);

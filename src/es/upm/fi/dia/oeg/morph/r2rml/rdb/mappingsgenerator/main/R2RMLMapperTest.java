@@ -105,6 +105,12 @@ public class R2RMLMapperTest {
 	}
 	
 	@Test
+	public void testDirectGraphTC0011b() {
+		String propertiesFile = "testcases/DirectGraphTC0011b.morph.properties";
+		this.run(propertiesFile);
+	}
+	
+	@Test
 	public void testDirectGraphTC0012() {
 		String propertiesFile = "testcases/DirectGraphTC0012.morph.properties";
 		this.run(propertiesFile);

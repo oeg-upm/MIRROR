@@ -354,7 +354,7 @@
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:sqlQuery "SELECT DISTINCT t_41130.\"ID_Student\" AS ID_Student, t_41130.\"ID_Sport\" AS ID_Sport FROM (\"sport\" AS t_41044 JOIN \"student_sport\" AS t_41130 ON ((t_41044.\"ID\"=t_41130.\"ID_Sport\"))) JOIN \"student\" AS t_42337 ON ((t_42337.\"ID\"=t_41130.\"ID_Student\"))" 
+		rr:sqlQuery "SELECT DISTINCT t_27770.\"ID_Student\" AS ID_Student, t_27770.\"ID_Sport\" AS ID_Sport FROM (\"sport\" AS t_30119 JOIN \"student_sport\" AS t_27770 ON ((t_30119.\"ID\"=t_27770.\"ID_Sport\"))) JOIN \"student\" AS t_97308 ON ((t_97308.\"ID\"=t_27770.\"ID_Student\"))" 
 	];
 
 	rr:subjectMap [
