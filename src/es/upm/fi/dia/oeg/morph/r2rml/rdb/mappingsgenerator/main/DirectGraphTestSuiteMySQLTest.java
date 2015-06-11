@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.exception.R2RMLException;
 
-public class R2RMLMapperTest {
+public class DirectGraphTestSuiteMySQLTest {
 	private void run(String propertiesFile) {
 		Properties properties = new Properties();
 		FileInputStream arquivoDePropriedades = null;
@@ -164,8 +164,8 @@ public class R2RMLMapperTest {
 		this.run(propertiesFile);
 	}
 	
-	public void testExampleShopping() {
-		String propertiesFile = "examples/example_shopping/example_shopping.morph.properties";
-		this.run(propertiesFile);
-	}
+//	public void testExampleShopping() {
+//		String propertiesFile = "examples/example_shopping/example_shopping.morph.properties";
+//		this.run(propertiesFile);
+//	}
 }
