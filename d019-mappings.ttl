@@ -1,12 +1,3 @@
-@prefix rr: <http://www.w3.org/ns/r2rml#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix dc: <http://purl.org/dc/elements/1.1#> .
-@prefix rev: <http://purl.org/stuff/rev#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1#> .
 @prefix ex: <http://example.com> .
 
 @base <http://mappingpedia.org/rdb2rdf/r2rml/tc/> .
@@ -21,21 +12,21 @@
 	rr:subjectMap [
 		rr:template "example.com/employee/ID={ID}.FirstName={FirstName}.LastName={LastName}";
 		rr:termType rr:BlankNode;
-		rr:class <http://example.com/Employee>;
+		rr:class <http://example.com/employee>;
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Employee#id>;
+		rr:predicate <http://example.com/employee#id>;
 		rr:objectMap [ rr:column "ID"; rr:datatype xsd:integer; ];
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Employee#firstname>;
+		rr:predicate <http://example.com/employee#firstname>;
 		rr:objectMap [ rr:column "FirstName"; rr:datatype xsd:string; ];
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Employee#lastname>;
+		rr:predicate <http://example.com/employee#lastname>;
 		rr:objectMap [ rr:column "LastName"; rr:datatype xsd:string; ];
 	].
 
@@ -47,7 +38,7 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Employee>;
+		rr:constant <http://example.com/employee>;
 		rr:termType rr:IRI;
 		rr:class owl:Class;
 	];
@@ -65,14 +56,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Employee#id>;
+		rr:constant <http://example.com/employee#id>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Employee> ];
+		rr:objectMap [ rr:constant <http://example.com/employee> ];
 	];
 
 	rr:predicateObjectMap [
@@ -88,14 +79,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Employee#firstname>;
+		rr:constant <http://example.com/employee#firstname>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Employee> ];
+		rr:objectMap [ rr:constant <http://example.com/employee> ];
 	];
 
 	rr:predicateObjectMap [
@@ -111,14 +102,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Employee#lastname>;
+		rr:constant <http://example.com/employee#lastname>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Employee> ];
+		rr:objectMap [ rr:constant <http://example.com/employee> ];
 	];
 
 	rr:predicateObjectMap [

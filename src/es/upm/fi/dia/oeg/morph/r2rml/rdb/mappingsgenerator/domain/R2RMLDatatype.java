@@ -1,6 +1,13 @@
 package es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.domain;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.main.R2RMLMapper;
+
 public class R2RMLDatatype {
+
+	private static final Logger log = Logger.getLogger(R2RMLMapper.class.getName());
 
 	public String getR2RMLDatatype(String SQLdatatype) {
 		String result = "";
@@ -14,7 +21,8 @@ public class R2RMLDatatype {
 			SQLdatatype.contains("NATIONAL CHARACTER LARGE OBJECT") ||
 			SQLdatatype.contains("VARCHAR") ||
 			SQLdatatype.contains("TEXT") ||
-			SQLdatatype.contains("CHAR")) {
+			SQLdatatype.contains("CHAR") ||
+			SQLdatatype.contains("ENUM")) {
 
 			result = "xsd:string";
 		}
@@ -58,12 +66,14 @@ public class R2RMLDatatype {
 			result = "xsd:dateTime";
 		}
 
-		if(SQLdatatype.contains("VARBINARY")) {
+		if(SQLdatatype.contains("VARBINARY") ||
+		SQLdatatype.contains("BYTEA")) {
 			result = "xsd:hexBinary";
 		}
 
 		if(result=="") {
 			result = "ex:unknownDataType";
+			log.log(Level.WARNING, "Unknown datatype found: {0}", SQLdatatype);
 		}
 		
 		return result;

@@ -1,0 +1,90 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1#> .
+@prefix dc: <http://purl.org/stuff/rev#> .
+@prefix rev: <http://purl.org/stuff/rev#> .
+@prefix bsbm: <http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/> .
+@prefix bsbm-inst: <http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/> .
+@prefix ex: <http://example.com/> .
+
+@base <http://mappingpedia.org/rdb2rdf/r2rml/tc/> .
+
+<#TriplesMap1>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "parent"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/parent/{ID_FIRST}/parent/{ID_SECOND}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/parent>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/parent#id_first>;
+		rr:objectMap [ rr:column "ID_FIRST"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/parent#id_second>;
+		rr:objectMap [ rr:column "ID_SECOND"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/parent#comments>;
+		rr:objectMap [ rr:column "COMMENTS"; rr:datatype xsd:string; ];
+	].
+
+<#TriplesMap6>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "child"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/child/{ID}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/child>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/child#id>;
+		rr:objectMap [ rr:column "ID"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/child#name>;
+		rr:objectMap [ rr:column "NAME"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/child#id_first>;
+		rr:objectMap [ rr:column "ID_FIRST"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/child#id_second>;
+		rr:objectMap [ rr:column "ID_SECOND"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/child#ref-ID_FIRST>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap1>;
+			rr:joinCondition [
+				rr:child "ID_FIRST";
+				rr:parent "ID_FIRST";
+			];
+			rr:joinCondition [
+				rr:child "ID_SECOND";
+				rr:parent "ID_SECOND";
+			];
+		];
+	].
+

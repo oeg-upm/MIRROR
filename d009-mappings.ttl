@@ -1,12 +1,3 @@
-@prefix rr: <http://www.w3.org/ns/r2rml#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix dc: <http://purl.org/dc/elements/1.1#> .
-@prefix rev: <http://purl.org/stuff/rev#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1#> .
 @prefix ex: <http://example.com> .
 
 @base <http://mappingpedia.org/rdb2rdf/r2rml/tc/> .
@@ -21,16 +12,16 @@
 	rr:subjectMap [
 		rr:template "http://example.com/sport/{ID}";
 		rr:termType rr:IRI;
-		rr:class <http://example.com/Sport>;
+		rr:class <http://example.com/sport>;
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Sport#id>;
+		rr:predicate <http://example.com/sport#id>;
 		rr:objectMap [ rr:column "ID"; rr:datatype xsd:integer; ];
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Sport#name>;
+		rr:predicate <http://example.com/sport#name>;
 		rr:objectMap [ rr:column "Name"; rr:datatype xsd:string; ];
 	].
 
@@ -42,14 +33,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Sport#id>;
+		rr:constant <http://example.com/sport#id>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Sport> ];
+		rr:objectMap [ rr:constant <http://example.com/sport> ];
 	];
 
 	rr:predicateObjectMap [
@@ -65,14 +56,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Sport#name>;
+		rr:constant <http://example.com/sport#name>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Sport> ];
+		rr:objectMap [ rr:constant <http://example.com/sport> ];
 	];
 
 	rr:predicateObjectMap [
@@ -88,7 +79,7 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Sport>;
+		rr:constant <http://example.com/sport>;
 		rr:termType rr:IRI;
 		rr:class owl:Class;
 	];
@@ -108,26 +99,26 @@
 	rr:subjectMap [
 		rr:template "http://example.com/student/{ID}";
 		rr:termType rr:IRI;
-		rr:class <http://example.com/Student>;
+		rr:class <http://example.com/student>;
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Student#id>;
+		rr:predicate <http://example.com/student#id>;
 		rr:objectMap [ rr:column "ID"; rr:datatype xsd:integer; ];
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Student#name>;
+		rr:predicate <http://example.com/student#name>;
 		rr:objectMap [ rr:column "Name"; rr:datatype xsd:string; ];
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Student#sport>;
+		rr:predicate <http://example.com/student#sport>;
 		rr:objectMap [ rr:column "Sport"; rr:datatype xsd:integer; ];
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Student#ref-Sport>;
+		rr:predicate <http://example.com/student#ref-Sport>;
 		rr:objectMap [
 			rr:parentTriplesMap <#TriplesMap1>;
 			rr:joinCondition [
@@ -145,7 +136,7 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Student>;
+		rr:constant <http://example.com/student>;
 		rr:termType rr:IRI;
 		rr:class owl:Class;
 	];
@@ -163,14 +154,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Student#id>;
+		rr:constant <http://example.com/student#id>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Student> ];
+		rr:objectMap [ rr:constant <http://example.com/student> ];
 	];
 
 	rr:predicateObjectMap [
@@ -186,14 +177,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Student#name>;
+		rr:constant <http://example.com/student#name>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Student> ];
+		rr:objectMap [ rr:constant <http://example.com/student> ];
 	];
 
 	rr:predicateObjectMap [
@@ -209,14 +200,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Student#sport>;
+		rr:constant <http://example.com/student#sport>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Student> ];
+		rr:objectMap [ rr:constant <http://example.com/student> ];
 	];
 
 	rr:predicateObjectMap [
@@ -232,41 +223,41 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/SportHasStudent>;
+		rr:constant <http://example.com/sportHasstudent>;
 		rr:termType rr:IRI;
 		rr:class owl:ObjectProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Sport> ];
+		rr:objectMap [ rr:constant <http://example.com/sport> ];
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:range;
-		rr:objectMap [ rr:constant <http://example.com/Student> ];
+		rr:objectMap [ rr:constant <http://example.com/student> ];
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate owl:inverseOf;
-		rr:objectMap [ rr:constant <http://example.com/StudenthasSport> ];
+		rr:objectMap [ rr:constant <http://example.com/studentHassport> ];
 	].
 
 <#TriplesMap11>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:sqlQuery "SELECT DISTINCT t_96268.\"ID\" FROM (\"sport\" AS t_96268 JOIN \"student\" AS t_86671 ON ((t_96268.\"ID\"=t_86671.\"Sport\")))" 
+		rr:sqlQuery "SELECT DISTINCT t_68351.\"ID\" FROM (\"sport\" AS t_68351 JOIN \"student\" AS t_41835 ON ((t_68351.\"ID\"=t_41835.\"Sport\")))" 
 	];
 
 	rr:subjectMap [
-		rr:template "http://example.com/Sport/{ID}";
+		rr:template "http://example.com/sport/{ID}";
 		rr:termType rr:IRI;
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/SportHasStudent>;
-		rr:objectMap [ rr:template "http://example.com/Student/{ID}" ];
+		rr:predicate <http://example.com/sportHasstudent>;
+		rr:objectMap [ rr:template "http://example.com/student/{ID}" ];
 	].
 
 <#TriplesMap12>
@@ -277,18 +268,18 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/StudenthasSport>;
+		rr:constant <http://example.com/studentHassport>;
 		rr:termType rr:IRI;
 		rr:class owl:ObjectProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Student> ];
+		rr:objectMap [ rr:constant <http://example.com/student> ];
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:range;
-		rr:objectMap [ rr:constant <http://example.com/Sport> ];
+		rr:objectMap [ rr:constant <http://example.com/sport> ];
 	].
 

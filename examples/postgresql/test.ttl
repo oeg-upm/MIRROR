@@ -1,0 +1,109 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1#> .
+@prefix dc: <http://purl.org/stuff/rev#> .
+@prefix rev: <http://purl.org/stuff/rev#> .
+@prefix bsbm: <http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/> .
+@prefix bsbm-inst: <http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/> .
+@prefix ex: <http://example.com/> .
+
+@base <http://mappingpedia.org/rdb2rdf/r2rml/tc/> .
+
+<#TriplesMap1>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "person"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/person/{id}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/person>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/person#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/person#name>;
+		rr:objectMap [ rr:column "name"; rr:datatype xsd:string; ];
+	].
+
+<#TriplesMap5>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT t_10443.\"id\", t_10443.\"title\", t_73640.\"name\" FROM \"person\" AS t_73640 JOIN \"professor\" AS t_10443 ON (t_73640.\"id\"=t_10443.\"id\")" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/professor/{id}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/professor>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdf:type;
+		rr:objectMap [ rr:constant <http://example.com/person> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/professor#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/professor#title>;
+		rr:objectMap [ rr:column "title"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/professor#name>;
+		rr:objectMap [ rr:column "name"; rr:datatype xsd:string; ];
+	].
+
+<#TriplesMap13>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT t_36684.\"rollno\", t_36684.\"degree\", t_36684.\"id\", t_88033.\"name\" FROM \"person\" AS t_88033 JOIN \"student\" AS t_36684 ON (t_88033.\"id\"=t_36684.\"id\")" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/student/{rollno}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/student>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdf:type;
+		rr:objectMap [ rr:constant <http://example.com/person> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/student#rollno>;
+		rr:objectMap [ rr:column "rollno"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/student#degree>;
+		rr:objectMap [ rr:column "degree"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/student#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/student#name>;
+		rr:objectMap [ rr:column "name"; rr:datatype xsd:string; ];
+	].
+

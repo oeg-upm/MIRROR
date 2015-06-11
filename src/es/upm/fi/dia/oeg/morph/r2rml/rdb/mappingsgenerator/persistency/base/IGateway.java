@@ -77,6 +77,5 @@ public interface IGateway {
 			, List<String> arq3, List<String> listReferencedColumnNames, String schema, String tablename) throws R2RMLException;
 
 	
-
 	
 }

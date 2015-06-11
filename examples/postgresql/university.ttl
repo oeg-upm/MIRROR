@@ -1,0 +1,418 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1#> .
+@prefix dc: <http://purl.org/stuff/rev#> .
+@prefix rev: <http://purl.org/stuff/rev#> .
+@prefix bsbm: <http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/> .
+@prefix bsbm-inst: <http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/> .
+@prefix ex: <http://example.com/> .
+
+@base <http://mappingpedia.org/rdb2rdf/r2rml/tc/> .
+
+<#TriplesMap1>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "dept"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/dept/{CODE}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/dept>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/dept#code>;
+		rr:objectMap [ rr:column "CODE"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/dept#name>;
+		rr:objectMap [ rr:column "NAME"; rr:datatype xsd:string; ];
+	].
+
+<#TriplesMap5>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "course"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/course/{CNO}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/course>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/course#cno>;
+		rr:objectMap [ rr:column "CNO"; rr:datatype xsd:decimal; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/course#title>;
+		rr:objectMap [ rr:column "TITLE"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/course#code>;
+		rr:objectMap [ rr:column "CODE"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/course#ref-CODE>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap1>;
+			rr:joinCondition [
+				rr:child "CODE";
+				rr:parent "CODE";
+			];
+		];
+	].
+
+<#TriplesMap13>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "offer"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/offer/{ONO}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/offer>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/offer#ono>;
+		rr:objectMap [ rr:column "ONO"; rr:datatype xsd:decimal; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/offer#cno>;
+		rr:objectMap [ rr:column "CNO"; rr:datatype xsd:decimal; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/offer#sno>;
+		rr:objectMap [ rr:column "SNO"; rr:datatype xsd:decimal; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/offer#pid>;
+		rr:objectMap [ rr:column "PID"; rr:datatype xsd:decimal; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/offer#cono>;
+		rr:objectMap [ rr:column "CONO"; rr:datatype xsd:decimal; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/offer#ref-PID>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap20>;
+			rr:joinCondition [
+				rr:child "PID";
+				rr:parent "ID";
+			];
+		];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/offer#ref-CNO>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap5>;
+			rr:joinCondition [
+				rr:child "CNO";
+				rr:parent "CNO";
+			];
+		];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/offer#ref-CONO>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap13>;
+			rr:joinCondition [
+				rr:child "CONO";
+				rr:parent "ONO";
+			];
+		];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/offer#ref-SNO>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap24>;
+			rr:joinCondition [
+				rr:child "SNO";
+				rr:parent "SNO";
+			];
+		];
+	].
+
+<#TriplesMap20>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "professor"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/professor/{ID}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/professor>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/professor#id>;
+		rr:objectMap [ rr:column "ID"; rr:datatype xsd:decimal; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/professor#title>;
+		rr:objectMap [ rr:column "TITLE"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/professor#ref-ID>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap47>;
+			rr:joinCondition [
+				rr:child "ID";
+				rr:parent "ID";
+			];
+		];
+	].
+
+<#TriplesMap24>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "semester"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/semester/{SNO}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/semester>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/semester#sno>;
+		rr:objectMap [ rr:column "SNO"; rr:datatype xsd:decimal; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/semester#year>;
+		rr:objectMap [ rr:column "YEAR"; rr:datatype xsd:date; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/semester#session>;
+		rr:objectMap [ rr:column "SESSION"; rr:datatype xsd:string; ];
+	].
+
+<#TriplesMap47>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "person"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/person/{ID}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/person>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/person#id>;
+		rr:objectMap [ rr:column "ID"; rr:datatype xsd:decimal; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/person#name>;
+		rr:objectMap [ rr:column "NAME"; rr:datatype xsd:string; ];
+	].
+
+<#TriplesMap51>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "professor"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/professor/{ID}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/professor>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/professor#id>;
+		rr:objectMap [ rr:column "ID"; rr:datatype xsd:decimal; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/professor#title>;
+		rr:objectMap [ rr:column "TITLE"; rr:datatype xsd:string; ];
+	].
+
+<#TriplesMap56>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "student"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/student/{ID}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/student>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/student#rollno>;
+		rr:objectMap [ rr:column "ROLLNO"; rr:datatype xsd:decimal; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/student#degree>;
+		rr:objectMap [ rr:column "DEGREE"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/student#ref-ID>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap47>;
+			rr:joinCondition [
+				rr:child "ID";
+				rr:parent "ID";
+			];
+		];
+	].
+
+<#TriplesMap60>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "reg"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/reg/{SID}/{SNO}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/reg>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/reg#SID>;
+		rr:objectMap [ rr:column "SID"; rr:datatype xsd:decimal; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/reg#semester>;
+		rr:objectMap [ rr:template "http://example.com/semester/{SNO}" ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/reg#ref-SID>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap56>;
+			rr:joinCondition [
+				rr:child "SID";
+				rr:parent "ID";
+			];
+		];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/reg#ref-SNO>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap24>;
+			rr:joinCondition [
+				rr:child "SNO";
+				rr:parent "SNO";
+			];
+		];
+	].
+
+<#TriplesMap68>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "student"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/student/{ROLLNO}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/student>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/student#rollno>;
+		rr:objectMap [ rr:column "ROLLNO"; rr:datatype xsd:decimal; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/student#degree>;
+		rr:objectMap [ rr:column "DEGREE"; rr:datatype xsd:string; ];
+	].
+
+<#TriplesMap73>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "study"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/study/{ONO}/{RNO}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/study>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/study#offer>;
+		rr:objectMap [ rr:template "http://example.com/offer/{ONO}" ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/study#RNO>;
+		rr:objectMap [ rr:column "RNO"; rr:datatype xsd:decimal; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/study#GRADE>;
+		rr:objectMap [ rr:column "GRADE"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/study#ref-ONO>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap13>;
+			rr:joinCondition [
+				rr:child "ONO";
+				rr:parent "ONO";
+			];
+		];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/study#ref-RNO>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap56>;
+			rr:joinCondition [
+				rr:child "RNO";
+				rr:parent "ROLLNO";
+			];
+		];
+	].
+

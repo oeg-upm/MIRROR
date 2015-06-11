@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="r2rml-mappings-generator">
+    <wb-module deploy-name="mirror">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="java-output-path" value="/r2rml-mappings-generator/build/classes"/>
-        <property name="context-root" value="r2rml-mappings-generator"/>
+        <property name="java-output-path" value="/mirror/build/classes"/>
+        <property name="context-root" value="mirror"/>
     </wb-module>
 </project-modules>

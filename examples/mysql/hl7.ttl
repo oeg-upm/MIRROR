@@ -1,0 +1,5890 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1#> .
+@prefix dc: <http://purl.org/stuff/rev#> .
+@prefix rev: <http://purl.org/stuff/rev#> .
+@prefix bsbm: <http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/> .
+@prefix bsbm-inst: <http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/> .
+@prefix ex: <http://example.com/> .
+
+@base <http://mappingpedia.org/rdb2rdf/r2rml/tc/> .
+
+<#TriplesMap1>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "observation"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/observation/{id}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/observation>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/observation#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/observation#value>;
+		rr:objectMap [ rr:column "value"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/observation#valuenegationind>;
+		rr:objectMap [ rr:column "valueNegationInd"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/observation#ref-id>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap53>;
+			rr:joinCondition [
+				rr:child "id";
+				rr:parent "id";
+			];
+		];
+	].
+
+<#TriplesMap2>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/observation#id>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/observation> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap3>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/observation#value>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/observation> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:integer ];
+	].
+
+<#TriplesMap4>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/observation#valuenegationind>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/observation> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:integer ];
+	].
+
+<#TriplesMap5>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/observation>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap6>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "procedures"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/procedures/{id}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/procedures>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/procedures#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/procedures#ref-id>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap53>;
+			rr:joinCondition [
+				rr:child "id";
+				rr:parent "id";
+			];
+		];
+	].
+
+<#TriplesMap7>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/procedures#id>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/procedures> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap8>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/procedures>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap9>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "actmethodcode"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/actmethodcode/{id}/{code}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/actmethodcode>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actmethodcode#observation>;
+		rr:objectMap [ rr:template "http://example.com/observation/{ID}" ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actmethodcode#code>;
+		rr:objectMap [ rr:column "code"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actmethodcode#title>;
+		rr:objectMap [ rr:column "title"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actmethodcode#codeVocId>;
+		rr:objectMap [ rr:column "codeVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actmethodcode#codeOrig>;
+		rr:objectMap [ rr:column "codeOrig"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actmethodcode#codeOrigVocId>;
+		rr:objectMap [ rr:column "codeOrigVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actmethodcode#ref-id>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap1>;
+			rr:joinCondition [
+				rr:child "id";
+				rr:parent "id";
+			];
+		];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actmethodcode#ref-id>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap6>;
+			rr:joinCondition [
+				rr:child "id";
+				rr:parent "id";
+			];
+		];
+	].
+
+<#TriplesMap10>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actmethodcode#id>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actmethodcode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap11>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actmethodcode#code>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actmethodcode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap12>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actmethodcode#title>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actmethodcode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap13>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actmethodcode#codevocid>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actmethodcode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap14>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actmethodcode#codeorig>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actmethodcode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap15>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actmethodcode#codeorigvocid>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actmethodcode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap16>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actmethodcode>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap17>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/observationHasprocedures>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/observation> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/procedures> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate owl:inverseOf;
+		rr:objectMap [ rr:constant <http://example.com/proceduresHasobservation> ];
+	].
+
+<#TriplesMap18>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT DISTINCT t_81383.\"id\" AS id, t_81383.\"id\" AS id FROM (\"observation\" AS t_73103 JOIN \"actmethodcode\" AS t_81383 ON ((t_73103.\"id\"=t_81383.\"id\"))) JOIN \"procedures\" AS t_93015 ON ((t_93015.\"id\"=t_81383.\"id\"))" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/observation/{id}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/observationHasprocedures>;
+		rr:objectMap [ rr:template "http://example.com/procedures/{id}" ];
+	].
+
+<#TriplesMap19>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/proceduresHasobservation>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/procedures> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/observation> ];
+	].
+
+<#TriplesMap20>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/observation>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap21>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "actobservationinterpretationcode"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/actobservationinterpretationcode/{id}/actobservationinterpretationcode/{control}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/actobservationinterpretationcode>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actobservationinterpretationcode#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actobservationinterpretationcode#control>;
+		rr:objectMap [ rr:column "control"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actobservationinterpretationcode#code>;
+		rr:objectMap [ rr:column "code"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actobservationinterpretationcode#ref-id>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap1>;
+			rr:joinCondition [
+				rr:child "id";
+				rr:parent "id";
+			];
+		];
+	].
+
+<#TriplesMap22>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actobservationinterpretationcode>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap23>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actobservationinterpretationcode#id>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actobservationinterpretationcode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap24>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actobservationinterpretationcode#control>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actobservationinterpretationcode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:integer ];
+	].
+
+<#TriplesMap25>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actobservationinterpretationcode#code>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actobservationinterpretationcode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap26>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/observationHasactobservationinterpretationcode>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/observation> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/actobservationinterpretationcode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate owl:inverseOf;
+		rr:objectMap [ rr:constant <http://example.com/actobservationinterpretationcodeHasobservation> ];
+	].
+
+<#TriplesMap27>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT DISTINCT t_02361.\"id\" FROM (\"observation\" AS t_02361 JOIN \"actobservationinterpretationcode\" AS t_58896 ON ((t_02361.\"id\"=t_58896.\"id\")))" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/observation/{id}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/observationHasactobservationinterpretationcode>;
+		rr:objectMap [ rr:template "http://example.com/actobservationinterpretationcode/{id}" ];
+	].
+
+<#TriplesMap28>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actobservationinterpretationcodeHasobservation>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actobservationinterpretationcode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/observation> ];
+	].
+
+<#TriplesMap29>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "actobservationvalues"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/actobservationvalues/{id}/actobservationvalues/{control}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/actobservationvalues>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actobservationvalues#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actobservationvalues#control>;
+		rr:objectMap [ rr:column "control"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actobservationvalues#valuest>;
+		rr:objectMap [ rr:column "valueST"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actobservationvalues#valuepq>;
+		rr:objectMap [ rr:column "valuePQ"; rr:datatype xsd:double; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actobservationvalues#units>;
+		rr:objectMap [ rr:column "units"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actobservationvalues#referencerangemin>;
+		rr:objectMap [ rr:column "referenceRangeMin"; rr:datatype xsd:double; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actobservationvalues#referencerangemax>;
+		rr:objectMap [ rr:column "referenceRangeMax"; rr:datatype xsd:double; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actobservationvalues#ref-id>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap1>;
+			rr:joinCondition [
+				rr:child "id";
+				rr:parent "id";
+			];
+		];
+	].
+
+<#TriplesMap30>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actobservationvalues>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap31>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actobservationvalues#id>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actobservationvalues> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap32>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actobservationvalues#control>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actobservationvalues> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:integer ];
+	].
+
+<#TriplesMap33>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actobservationvalues#valuest>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actobservationvalues> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap34>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actobservationvalues#valuepq>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actobservationvalues> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:double ];
+	].
+
+<#TriplesMap35>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actobservationvalues#units>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actobservationvalues> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap36>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actobservationvalues#referencerangemin>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actobservationvalues> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:double ];
+	].
+
+<#TriplesMap37>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actobservationvalues#referencerangemax>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actobservationvalues> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:double ];
+	].
+
+<#TriplesMap38>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/observationHasactobservationvalues>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/observation> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/actobservationvalues> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate owl:inverseOf;
+		rr:objectMap [ rr:constant <http://example.com/actobservationvaluesHasobservation> ];
+	].
+
+<#TriplesMap39>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT DISTINCT t_61743.\"id\" FROM (\"observation\" AS t_61743 JOIN \"actobservationvalues\" AS t_09617 ON ((t_61743.\"id\"=t_09617.\"id\")))" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/observation/{id}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/observationHasactobservationvalues>;
+		rr:objectMap [ rr:template "http://example.com/actobservationvalues/{id}" ];
+	].
+
+<#TriplesMap40>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actobservationvaluesHasobservation>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actobservationvalues> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/observation> ];
+	].
+
+<#TriplesMap41>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/procedures>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap42>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "actprocedureapproachsitecode"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/actprocedureapproachsitecode/{id}/actprocedureapproachsitecode/{code}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/actprocedureapproachsitecode>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actprocedureapproachsitecode#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actprocedureapproachsitecode#code>;
+		rr:objectMap [ rr:column "code"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actprocedureapproachsitecode#title>;
+		rr:objectMap [ rr:column "title"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actprocedureapproachsitecode#codevocid>;
+		rr:objectMap [ rr:column "codeVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actprocedureapproachsitecode#codeorig>;
+		rr:objectMap [ rr:column "codeOrig"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actprocedureapproachsitecode#codeorigvocid>;
+		rr:objectMap [ rr:column "codeOrigVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actprocedureapproachsitecode#ref-id>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap6>;
+			rr:joinCondition [
+				rr:child "id";
+				rr:parent "id";
+			];
+		];
+	].
+
+<#TriplesMap43>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actprocedureapproachsitecode>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap44>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actprocedureapproachsitecode#id>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actprocedureapproachsitecode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap45>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actprocedureapproachsitecode#code>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actprocedureapproachsitecode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap46>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actprocedureapproachsitecode#title>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actprocedureapproachsitecode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap47>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actprocedureapproachsitecode#codevocid>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actprocedureapproachsitecode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap48>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actprocedureapproachsitecode#codeorig>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actprocedureapproachsitecode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap49>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actprocedureapproachsitecode#codeorigvocid>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actprocedureapproachsitecode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap50>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/proceduresHasactprocedureapproachsitecode>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/procedures> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/actprocedureapproachsitecode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate owl:inverseOf;
+		rr:objectMap [ rr:constant <http://example.com/actprocedureapproachsitecodeHasprocedures> ];
+	].
+
+<#TriplesMap51>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT DISTINCT t_01773.\"id\" FROM (\"procedures\" AS t_01773 JOIN \"actprocedureapproachsitecode\" AS t_09729 ON ((t_01773.\"id\"=t_09729.\"id\")))" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/procedures/{id}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/proceduresHasactprocedureapproachsitecode>;
+		rr:objectMap [ rr:template "http://example.com/actprocedureapproachsitecode/{id}" ];
+	].
+
+<#TriplesMap52>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actprocedureapproachsitecodeHasprocedures>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actprocedureapproachsitecode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/procedures> ];
+	].
+
+<#TriplesMap53>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "act"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/act/{id}/act/{id}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/act>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/act#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/act#classcode>;
+		rr:objectMap [ rr:column "classCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/act#moodcode>;
+		rr:objectMap [ rr:column "moodCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/act#code>;
+		rr:objectMap [ rr:column "code"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/act#codevocid>;
+		rr:objectMap [ rr:column "codeVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/act#codeorig>;
+		rr:objectMap [ rr:column "codeOrig"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/act#codeorigvocid>;
+		rr:objectMap [ rr:column "codeOrigVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/act#actionnegationind>;
+		rr:objectMap [ rr:column "actionNegationInd"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/act#title>;
+		rr:objectMap [ rr:column "title"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/act#text>;
+		rr:objectMap [ rr:column "text"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/act#statuscode>;
+		rr:objectMap [ rr:column "statusCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/act#effectivetime>;
+		rr:objectMap [ rr:column "effectiveTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/act#activitytime>;
+		rr:objectMap [ rr:column "activityTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/act#availabilitytime>;
+		rr:objectMap [ rr:column "availabilityTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/act#creationtime>;
+		rr:objectMap [ rr:column "creationTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/act#modificationtime>;
+		rr:objectMap [ rr:column "modificationTime"; rr:datatype xsd:dateTime; ];
+	].
+
+<#TriplesMap54>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/act#id>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap55>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/act#classcode>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap56>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/act#moodcode>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap57>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/act#code>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap58>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/act#codevocid>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap59>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/act#codeorig>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap60>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/act#codeorigvocid>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap61>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/act#actionnegationind>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:integer ];
+	].
+
+<#TriplesMap62>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/act#title>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap63>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/act#text>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap64>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/act#statuscode>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap65>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/act#effectivetime>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:dateTime ];
+	].
+
+<#TriplesMap66>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/act#activitytime>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:dateTime ];
+	].
+
+<#TriplesMap67>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/act#availabilitytime>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:dateTime ];
+	].
+
+<#TriplesMap68>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/act#creationtime>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:dateTime ];
+	].
+
+<#TriplesMap69>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/act#modificationtime>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:dateTime ];
+	].
+
+<#TriplesMap70>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/act>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap71>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "actrelationship"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/actrelationship/{idA}/actrelationship/{idB}/actrelationship/{typeCode}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/actrelationship>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actrelationship#ida>;
+		rr:objectMap [ rr:column "idA"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actrelationship#idb>;
+		rr:objectMap [ rr:column "idB"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actrelationship#typecode>;
+		rr:objectMap [ rr:column "typeCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actrelationship#ref-idA>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap53>;
+			rr:joinCondition [
+				rr:child "idA";
+				rr:parent "id";
+			];
+			rr:joinCondition [
+				rr:child "idB";
+				rr:parent "id";
+			];
+		];
+	].
+
+<#TriplesMap72>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actrelationship>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap73>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actrelationship#ida>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actrelationship> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap74>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actrelationship#idb>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actrelationship> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap75>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actrelationship#typecode>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actrelationship> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap76>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actHasactrelationship>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/actrelationship> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate owl:inverseOf;
+		rr:objectMap [ rr:constant <http://example.com/actrelationshipHasact> ];
+	].
+
+<#TriplesMap77>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT DISTINCT t_77271.\"id\", t_86236.\"id\" FROM (\"act\" AS t_77271 JOIN \"actrelationship\" AS t_47351 ON ((t_86236.\"id\"=t_47351.\"idA\")))" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/act/{id}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actHasactrelationship>;
+		rr:objectMap [ rr:template "http://example.com/actrelationship/{id}" ];
+	].
+
+<#TriplesMap78>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actrelationshipHasact>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/actrelationship> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	].
+
+<#TriplesMap79>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "acttargetsitecode"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/acttargetsitecode/{id}/{code}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/acttargetsitecode>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/acttargetsitecode#observation>;
+		rr:objectMap [ rr:template "http://example.com/observation/{ID}" ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/acttargetsitecode#code>;
+		rr:objectMap [ rr:column "code"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/acttargetsitecode#title>;
+		rr:objectMap [ rr:column "title"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/acttargetsitecode#codeVocId>;
+		rr:objectMap [ rr:column "codeVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/acttargetsitecode#codeOrig>;
+		rr:objectMap [ rr:column "codeOrig"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/acttargetsitecode#codeOrigVocId>;
+		rr:objectMap [ rr:column "codeOrigVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/acttargetsitecode#ref-id>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap1>;
+			rr:joinCondition [
+				rr:child "id";
+				rr:parent "id";
+			];
+		];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/acttargetsitecode#ref-id>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap6>;
+			rr:joinCondition [
+				rr:child "id";
+				rr:parent "id";
+			];
+		];
+	].
+
+<#TriplesMap80>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/acttargetsitecode#id>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/acttargetsitecode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap81>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/acttargetsitecode#code>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/acttargetsitecode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap82>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/acttargetsitecode#title>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/acttargetsitecode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap83>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/acttargetsitecode#codevocid>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/acttargetsitecode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap84>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/acttargetsitecode#codeorig>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/acttargetsitecode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap85>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/acttargetsitecode#codeorigvocid>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/acttargetsitecode> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap86>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/acttargetsitecode>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap87>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/observationHasprocedures>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/observation> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/procedures> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate owl:inverseOf;
+		rr:objectMap [ rr:constant <http://example.com/proceduresHasobservation> ];
+	].
+
+<#TriplesMap88>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT DISTINCT t_95298.\"id\" AS id, t_95298.\"id\" AS id FROM (\"observation\" AS t_57478 JOIN \"acttargetsitecode\" AS t_95298 ON ((t_57478.\"id\"=t_95298.\"id\"))) JOIN \"procedures\" AS t_95340 ON ((t_95340.\"id\"=t_95298.\"id\"))" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/observation/{id}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/observationHasprocedures>;
+		rr:objectMap [ rr:template "http://example.com/procedures/{id}" ];
+	].
+
+<#TriplesMap89>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/proceduresHasobservation>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/procedures> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/observation> ];
+	].
+
+<#TriplesMap90>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/act>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap91>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "exposure"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/exposure/{id}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/exposure>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/exposure#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/exposure#routecode>;
+		rr:objectMap [ rr:column "routeCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/exposure#exposurelevel>;
+		rr:objectMap [ rr:column "exposureLevel"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/exposure#exposuremodecode>;
+		rr:objectMap [ rr:column "exposureModeCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/exposure#ref-id>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap53>;
+			rr:joinCondition [
+				rr:child "id";
+				rr:parent "id";
+			];
+		];
+	].
+
+<#TriplesMap92>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/exposure>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap93>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/exposure#id>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/exposure> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap94>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/exposure#routecode>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/exposure> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap95>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/exposure#exposurelevel>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/exposure> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap96>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/exposure#exposuremodecode>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/exposure> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap97>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actHasexposure>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/exposure> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate owl:inverseOf;
+		rr:objectMap [ rr:constant <http://example.com/exposureHasact> ];
+	].
+
+<#TriplesMap98>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT DISTINCT t_49577.\"id\" FROM (\"act\" AS t_49577 JOIN \"exposure\" AS t_07531 ON ((t_49577.\"id\"=t_07531.\"id\")))" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/act/{id}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actHasexposure>;
+		rr:objectMap [ rr:template "http://example.com/exposure/{id}" ];
+	].
+
+<#TriplesMap99>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/exposureHasact>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/exposure> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	].
+
+<#TriplesMap100>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "entity"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/entity/{id}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/entity>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/entity#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/entity#classcode>;
+		rr:objectMap [ rr:column "classCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/entity#determinercode>;
+		rr:objectMap [ rr:column "determinerCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/entity#code>;
+		rr:objectMap [ rr:column "code"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/entity#codevocid>;
+		rr:objectMap [ rr:column "codeVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/entity#codeorig>;
+		rr:objectMap [ rr:column "codeOrig"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/entity#codeorigvocid>;
+		rr:objectMap [ rr:column "codeOrigVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/entity#quantity>;
+		rr:objectMap [ rr:column "quantity"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/entity#name>;
+		rr:objectMap [ rr:column "name"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/entity#desc_1>;
+		rr:objectMap [ rr:column "desc_1"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/entity#statuscode>;
+		rr:objectMap [ rr:column "statusCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/entity#creationtime>;
+		rr:objectMap [ rr:column "creationTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/entity#modificationtime>;
+		rr:objectMap [ rr:column "modificationTime"; rr:datatype xsd:dateTime; ];
+	].
+
+<#TriplesMap101>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/entity#id>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/entity> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap102>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/entity#classcode>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/entity> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap103>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/entity#determinercode>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/entity> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap104>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/entity#code>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/entity> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap105>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/entity#codevocid>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/entity> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap106>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/entity#codeorig>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/entity> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap107>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/entity#codeorigvocid>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/entity> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap108>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/entity#quantity>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/entity> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap109>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/entity#name>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/entity> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap110>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/entity#desc_1>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/entity> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap111>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/entity#statuscode>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/entity> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap112>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/entity#creationtime>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/entity> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:dateTime ];
+	].
+
+<#TriplesMap113>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/entity#modificationtime>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/entity> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:dateTime ];
+	].
+
+<#TriplesMap114>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/entity>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap115>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "livingsubject"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/livingsubject/{id}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/livingsubject>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/livingsubject#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/livingsubject#administrativegendercode>;
+		rr:objectMap [ rr:column "administrativeGenderCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/livingsubject#birthtime>;
+		rr:objectMap [ rr:column "birthTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/livingsubject#birthtimetolerance>;
+		rr:objectMap [ rr:column "birthTimeTolerance"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/livingsubject#deceasedind>;
+		rr:objectMap [ rr:column "deceasedInd"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/livingsubject#deceasedtime>;
+		rr:objectMap [ rr:column "deceasedTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/livingsubject#ref-id>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap100>;
+			rr:joinCondition [
+				rr:child "id";
+				rr:parent "id";
+			];
+		];
+	].
+
+<#TriplesMap116>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/livingsubject>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap117>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/livingsubject#id>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/livingsubject> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap118>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/livingsubject#administrativegendercode>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/livingsubject> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap119>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/livingsubject#birthtime>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/livingsubject> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:dateTime ];
+	].
+
+<#TriplesMap120>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/livingsubject#birthtimetolerance>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/livingsubject> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:integer ];
+	].
+
+<#TriplesMap121>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/livingsubject#deceasedind>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/livingsubject> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:integer ];
+	].
+
+<#TriplesMap122>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/livingsubject#deceasedtime>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/livingsubject> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:dateTime ];
+	].
+
+<#TriplesMap123>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/entityHaslivingsubject>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/entity> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/livingsubject> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate owl:inverseOf;
+		rr:objectMap [ rr:constant <http://example.com/livingsubjectHasentity> ];
+	].
+
+<#TriplesMap124>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT DISTINCT t_16327.\"id\" FROM (\"entity\" AS t_16327 JOIN \"livingsubject\" AS t_32603 ON ((t_16327.\"id\"=t_32603.\"id\")))" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/entity/{id}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/entityHaslivingsubject>;
+		rr:objectMap [ rr:template "http://example.com/livingsubject/{id}" ];
+	].
+
+<#TriplesMap125>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/livingsubjectHasentity>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/livingsubject> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/entity> ];
+	].
+
+<#TriplesMap126>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/act>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap127>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "observation"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/observation/{id}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/observation>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/observation#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/observation#value>;
+		rr:objectMap [ rr:column "value"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/observation#valuenegationind>;
+		rr:objectMap [ rr:column "valueNegationInd"; rr:datatype xsd:integer; ];
+	].
+
+<#TriplesMap128>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actHasobservation>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/observation> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate owl:inverseOf;
+		rr:objectMap [ rr:constant <http://example.com/observationHasact> ];
+	].
+
+<#TriplesMap129>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT DISTINCT t_64146.\"id\" FROM (\"act\" AS t_64146 JOIN \"observation\" AS t_05732 ON ((t_64146.\"id\"=t_05732.\"id\")))" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/act/{id}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actHasobservation>;
+		rr:objectMap [ rr:template "http://example.com/observation/{id}" ];
+	].
+
+<#TriplesMap130>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/observationHasact>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/observation> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	].
+
+<#TriplesMap131>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "role"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/role/{entityId}/role/{id}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/role>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/role#entityid>;
+		rr:objectMap [ rr:column "entityId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/role#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/role#classcode>;
+		rr:objectMap [ rr:column "classCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/role#code>;
+		rr:objectMap [ rr:column "code"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/role#negationind>;
+		rr:objectMap [ rr:column "negationInd"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/role#name>;
+		rr:objectMap [ rr:column "name"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/role#statuscode>;
+		rr:objectMap [ rr:column "statusCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/role#effectivetime_start>;
+		rr:objectMap [ rr:column "effectiveTime_start"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/role#effectivetime_end>;
+		rr:objectMap [ rr:column "effectiveTime_end"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/role#confidentialitycode>;
+		rr:objectMap [ rr:column "confidentialityCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/role#ref-entityId>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap100>;
+			rr:joinCondition [
+				rr:child "entityId";
+				rr:parent "id";
+			];
+		];
+	].
+
+<#TriplesMap132>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/role#entityid>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/role> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap133>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/role#id>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/role> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap134>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/role#classcode>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/role> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap135>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/role#code>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/role> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap136>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/role#negationind>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/role> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:integer ];
+	].
+
+<#TriplesMap137>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/role#name>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/role> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap138>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/role#statuscode>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/role> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap139>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/role#effectivetime_start>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/role> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:dateTime ];
+	].
+
+<#TriplesMap140>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/role#effectivetime_end>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/role> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:dateTime ];
+	].
+
+<#TriplesMap141>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/role#confidentialitycode>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/role> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap142>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/role>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap143>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "participation"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/participation/{entityId}/{roleId}/{typeCode}/{actId}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/participation>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/participation#role>;
+		rr:objectMap [ rr:template "http://example.com/role/{ENTITYID}" ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/participation#roleId>;
+		rr:objectMap [ rr:column "roleId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/participation#typeCode>;
+		rr:objectMap [ rr:column "typeCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/participation#actId>;
+		rr:objectMap [ rr:column "actId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/participation#functionCode>;
+		rr:objectMap [ rr:column "functionCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/participation#negationInd>;
+		rr:objectMap [ rr:column "negationInd"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/participation#noteText>;
+		rr:objectMap [ rr:column "noteText"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/participation#time_start>;
+		rr:objectMap [ rr:column "time_start"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/participation#time_end>;
+		rr:objectMap [ rr:column "time_end"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/participation#modeCode>;
+		rr:objectMap [ rr:column "modeCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/participation#ref-actId>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap53>;
+			rr:joinCondition [
+				rr:child "actId";
+				rr:parent "id";
+			];
+		];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/participation#ref-entityId>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap131>;
+			rr:joinCondition [
+				rr:child "entityId";
+				rr:parent "entityId";
+			];
+			rr:joinCondition [
+				rr:child "roleId";
+				rr:parent "id";
+			];
+		];
+	].
+
+<#TriplesMap144>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/participation#entityid>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/participation> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap145>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/participation#roleid>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/participation> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap146>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/participation#typecode>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/participation> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap147>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/participation#actid>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/participation> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap148>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/participation#functioncode>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/participation> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap149>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/participation#negationind>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/participation> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:integer ];
+	].
+
+<#TriplesMap150>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/participation#notetext>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/participation> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap151>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/participation#time_start>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/participation> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:dateTime ];
+	].
+
+<#TriplesMap152>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/participation#time_end>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/participation> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:dateTime ];
+	].
+
+<#TriplesMap153>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/participation#modecode>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/participation> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap154>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/participation>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap155>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actHasrole>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/role> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate owl:inverseOf;
+		rr:objectMap [ rr:constant <http://example.com/roleHasact> ];
+	].
+
+<#TriplesMap156>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT DISTINCT t_83637.\"roleId\" AS roleId, t_83637.\"entityId\" AS entityId, t_83637.\"actId\" AS actId FROM (\"act\" AS t_55422 JOIN \"participation\" AS t_83637 ON ((t_55422.\"id\"=t_83637.\"actId\"))) JOIN \"role\" AS t_99804 ON ((t_99804.\"entityId\"=t_83637.\"entityId\"))" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/act/{actId}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actHasrole>;
+		rr:objectMap [ rr:template "http://example.com/role/{entityId}" ];
+	].
+
+<#TriplesMap157>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/roleHasact>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/role> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	].
+
+<#TriplesMap158>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actHasrole>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/role> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate owl:inverseOf;
+		rr:objectMap [ rr:constant <http://example.com/roleHasact> ];
+	].
+
+<#TriplesMap159>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT DISTINCT t_78811.\"roleId\" AS roleId, t_78811.\"entityId\" AS entityId, t_78811.\"actId\" AS actId FROM (\"act\" AS t_56808 JOIN \"participation\" AS t_78811 ON ((t_56808.\"id\"=t_78811.\"actId\"))) JOIN \"role\" AS t_15076 ON ((t_15076.\"entityId\"=t_78811.\"entityId\"))" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/act/{actId}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actHasrole>;
+		rr:objectMap [ rr:template "http://example.com/role/{entityId}" ];
+	].
+
+<#TriplesMap160>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/roleHasact>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/role> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	].
+
+<#TriplesMap161>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/livingsubject>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap162>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "person"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/person/{id}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/person>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/person#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/person#racecode>;
+		rr:objectMap [ rr:column "raceCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/person#name>;
+		rr:objectMap [ rr:column "name"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/person#surname>;
+		rr:objectMap [ rr:column "surname"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/person#ref-id>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap115>;
+			rr:joinCondition [
+				rr:child "id";
+				rr:parent "id";
+			];
+		];
+	].
+
+<#TriplesMap163>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/person>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap164>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/person#id>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/person> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap165>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/person#racecode>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/person> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap166>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/person#name>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/person> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap167>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/person#surname>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/person> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap168>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/livingsubjectHasperson>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/livingsubject> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/person> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate owl:inverseOf;
+		rr:objectMap [ rr:constant <http://example.com/personHaslivingsubject> ];
+	].
+
+<#TriplesMap169>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT DISTINCT t_77041.\"id\" FROM (\"livingsubject\" AS t_77041 JOIN \"person\" AS t_69562 ON ((t_77041.\"id\"=t_69562.\"id\")))" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/livingsubject/{id}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/livingsubjectHasperson>;
+		rr:objectMap [ rr:template "http://example.com/person/{id}" ];
+	].
+
+<#TriplesMap170>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/personHaslivingsubject>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/person> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/livingsubject> ];
+	].
+
+<#TriplesMap171>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/act>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap172>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "procedures"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/procedures/{id}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/procedures>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/procedures#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+	].
+
+<#TriplesMap173>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/procedures>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap174>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/actHasprocedures>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/procedures> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate owl:inverseOf;
+		rr:objectMap [ rr:constant <http://example.com/proceduresHasact> ];
+	].
+
+<#TriplesMap175>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT DISTINCT t_33710.\"id\" FROM (\"act\" AS t_33710 JOIN \"procedures\" AS t_41902 ON ((t_33710.\"id\"=t_41902.\"id\")))" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/act/{id}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/actHasprocedures>;
+		rr:objectMap [ rr:template "http://example.com/procedures/{id}" ];
+	].
+
+<#TriplesMap176>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/proceduresHasact>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/procedures> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/act> ];
+	].
+
+<#TriplesMap177>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/entity>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap178>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "role"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/role/{entityId}/role/{id}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/role>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/role#entityid>;
+		rr:objectMap [ rr:column "entityId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/role#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/role#classcode>;
+		rr:objectMap [ rr:column "classCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/role#code>;
+		rr:objectMap [ rr:column "code"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/role#negationind>;
+		rr:objectMap [ rr:column "negationInd"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/role#name>;
+		rr:objectMap [ rr:column "name"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/role#statuscode>;
+		rr:objectMap [ rr:column "statusCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/role#effectivetime_start>;
+		rr:objectMap [ rr:column "effectiveTime_start"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/role#effectivetime_end>;
+		rr:objectMap [ rr:column "effectiveTime_end"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/role#confidentialitycode>;
+		rr:objectMap [ rr:column "confidentialityCode"; rr:datatype xsd:string; ];
+	].
+
+<#TriplesMap179>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/role>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap180>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/entityHasrole>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/entity> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/role> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate owl:inverseOf;
+		rr:objectMap [ rr:constant <http://example.com/roleHasentity> ];
+	].
+
+<#TriplesMap181>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT DISTINCT t_59203.\"id\" FROM (\"entity\" AS t_59203 JOIN \"role\" AS t_50860 ON ((t_59203.\"id\"=t_50860.\"entityId\")))" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/entity/{id}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/entityHasrole>;
+		rr:objectMap [ rr:template "http://example.com/role/{id}" ];
+	].
+
+<#TriplesMap182>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/roleHasentity>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/role> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/entity> ];
+	].
+
+<#TriplesMap183>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/procedures>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap184>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "substanceadministration"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/substanceadministration/{id}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/substanceadministration>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/substanceadministration#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/substanceadministration#routecode>;
+		rr:objectMap [ rr:column "routeCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/substanceadministration#dosequantity>;
+		rr:objectMap [ rr:column "doseQuantity"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/substanceadministration#ratequantity>;
+		rr:objectMap [ rr:column "rateQuantity"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/substanceadministration#dosecheckquantity>;
+		rr:objectMap [ rr:column "doseCheckQuantity"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/substanceadministration#ref-id>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap6>;
+			rr:joinCondition [
+				rr:child "id";
+				rr:parent "id";
+			];
+		];
+	].
+
+<#TriplesMap185>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/substanceadministration>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap186>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/substanceadministration#id>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/substanceadministration> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap187>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/substanceadministration#routecode>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/substanceadministration> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap188>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/substanceadministration#dosequantity>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/substanceadministration> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap189>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/substanceadministration#ratequantity>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/substanceadministration> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap190>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/substanceadministration#dosecheckquantity>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/substanceadministration> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap191>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/proceduresHassubstanceadministration>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/procedures> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/substanceadministration> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate owl:inverseOf;
+		rr:objectMap [ rr:constant <http://example.com/substanceadministrationHasprocedures> ];
+	].
+
+<#TriplesMap192>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT DISTINCT t_39868.\"id\" FROM (\"procedures\" AS t_39868 JOIN \"substanceadministration\" AS t_01057 ON ((t_39868.\"id\"=t_01057.\"id\")))" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/procedures/{id}";
+		rr:termType rr:IRI;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/proceduresHassubstanceadministration>;
+		rr:objectMap [ rr:template "http://example.com/substanceadministration/{id}" ];
+	].
+
+<#TriplesMap193>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/substanceadministrationHasprocedures>;
+		rr:termType rr:IRI;
+		rr:class owl:ObjectProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/substanceadministration> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant <http://example.com/procedures> ];
+	].
+
+<#TriplesMap194>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "select `a`.`id` AS `id`,`a`.`classCode` AS `classCode`,`a`.`moodCode` AS `moodCode`,`a`.`code` AS `code`,`a`.`codeVocId` AS `codeVocId`,`a`.`codeOrig` AS `codeOrig`,`a`.`codeOrigVocId` AS `codeOrigVocId`,`a`.`actionNegationInd` AS `actionNegationInd`,`a`.`title` AS `title`,`a`.`text` AS `text`,`a`.`statusCode` AS `statusCode`,`a`.`effectiveTime` AS `effectiveTime`,`a`.`activityTime` AS `activityTime`,`a`.`availabilityTime` AS `availabilityTime`,`a`.`creationTime` AS `creationTime`,`a`.`modificationTime` AS `modificationTime`,`ar`.`idB` AS `clinicalTrialId`,`e`.`routeCode` AS `routeCode`,`e`.`exposureLevel` AS `exposureLevel`,`e`.`exposureModeCode` AS `exposureModeCode` from ((`hl7`.`exposure` `e` join `hl7`.`act` `a` on((`a`.`id` = `e`.`id`))) left join `hl7`.`actrelationship` `ar` on((`ar`.`idA` = `a`.`id`)))" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/v_exposure/{id}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/v_exposure>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_exposure#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_exposure#classcode>;
+		rr:objectMap [ rr:column "classCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_exposure#moodcode>;
+		rr:objectMap [ rr:column "moodCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_exposure#code>;
+		rr:objectMap [ rr:column "code"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_exposure#codevocid>;
+		rr:objectMap [ rr:column "codeVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_exposure#codeorig>;
+		rr:objectMap [ rr:column "codeOrig"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_exposure#codeorigvocid>;
+		rr:objectMap [ rr:column "codeOrigVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_exposure#actionnegationind>;
+		rr:objectMap [ rr:column "actionNegationInd"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_exposure#title>;
+		rr:objectMap [ rr:column "title"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_exposure#text>;
+		rr:objectMap [ rr:column "text"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_exposure#statuscode>;
+		rr:objectMap [ rr:column "statusCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_exposure#effectivetime>;
+		rr:objectMap [ rr:column "effectiveTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_exposure#activitytime>;
+		rr:objectMap [ rr:column "activityTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_exposure#availabilitytime>;
+		rr:objectMap [ rr:column "availabilityTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_exposure#creationtime>;
+		rr:objectMap [ rr:column "creationTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_exposure#modificationtime>;
+		rr:objectMap [ rr:column "modificationTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_exposure#clinicaltrialid>;
+		rr:objectMap [ rr:column "clinicalTrialId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_exposure#routecode>;
+		rr:objectMap [ rr:column "routeCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_exposure#exposurelevel>;
+		rr:objectMap [ rr:column "exposureLevel"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_exposure#exposuremodecode>;
+		rr:objectMap [ rr:column "exposureModeCode"; rr:datatype xsd:string; ];
+	].
+
+<#TriplesMap195>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/v_exposure>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap196>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "select `e`.`id` AS `id`,`e`.`classCode` AS `classCode`,`e`.`determinerCode` AS `determinerCode`,`e`.`code` AS `code`,`e`.`codeVocId` AS `codeVocId`,`e`.`codeOrig` AS `codeOrig`,`e`.`codeOrigVocId` AS `codeOrigVocId`,`e`.`quantity` AS `quantity`,`e`.`name` AS `name`,`e`.`desc_1` AS `desc`,`e`.`statusCode` AS `statusCode`,`l`.`administrativeGenderCode` AS `administrativeGenderCode`,`e`.`creationTime` AS `creationTime`,`e`.`modificationTime` AS `modificationTime`,`l`.`birthTime` AS `birthTime`,`l`.`birthTimeTolerance` AS `birthTimeTolerance`,`l`.`deceasedInd` AS `deceasedInd`,`l`.`deceasedTime` AS `deceasedTime` from (`hl7`.`entity` `e` join `hl7`.`livingsubject` `l` on((`e`.`id` = `l`.`id`)))" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/v_livingsubject/{id}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/v_livingsubject>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_livingsubject#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_livingsubject#classcode>;
+		rr:objectMap [ rr:column "classCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_livingsubject#determinercode>;
+		rr:objectMap [ rr:column "determinerCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_livingsubject#code>;
+		rr:objectMap [ rr:column "code"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_livingsubject#codevocid>;
+		rr:objectMap [ rr:column "codeVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_livingsubject#codeorig>;
+		rr:objectMap [ rr:column "codeOrig"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_livingsubject#codeorigvocid>;
+		rr:objectMap [ rr:column "codeOrigVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_livingsubject#quantity>;
+		rr:objectMap [ rr:column "quantity"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_livingsubject#name>;
+		rr:objectMap [ rr:column "name"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_livingsubject#desc>;
+		rr:objectMap [ rr:column "desc"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_livingsubject#statuscode>;
+		rr:objectMap [ rr:column "statusCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_livingsubject#administrativegendercode>;
+		rr:objectMap [ rr:column "administrativeGenderCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_livingsubject#creationtime>;
+		rr:objectMap [ rr:column "creationTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_livingsubject#modificationtime>;
+		rr:objectMap [ rr:column "modificationTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_livingsubject#birthtime>;
+		rr:objectMap [ rr:column "birthTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_livingsubject#birthtimetolerance>;
+		rr:objectMap [ rr:column "birthTimeTolerance"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_livingsubject#deceasedind>;
+		rr:objectMap [ rr:column "deceasedInd"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_livingsubject#deceasedtime>;
+		rr:objectMap [ rr:column "deceasedTime"; rr:datatype xsd:dateTime; ];
+	].
+
+<#TriplesMap197>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/v_livingsubject>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap198>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "select `a`.`id` AS `id`,`a`.`classCode` AS `classCode`,`a`.`moodCode` AS `moodCode`,`a`.`code` AS `code`,`a`.`codeVocId` AS `codeVocId`,`a`.`codeOrig` AS `codeOrig`,`a`.`codeOrigVocId` AS `codeOrigVocId`,`a`.`actionNegationInd` AS `actionNegationInd`,`a`.`title` AS `title`,`a`.`text` AS `text`,`a`.`statusCode` AS `statusCode`,`a`.`effectiveTime` AS `effectiveTime`,`a`.`activityTime` AS `activityTime`,`a`.`availabilityTime` AS `availabilityTime`,`o`.`valueNegationInd` AS `valueNegationInd`,`a`.`creationTime` AS `creationTime`,`a`.`modificationTime` AS `modificationTime`,`ar`.`idB` AS `clinicalTrialId`,`aov`.`valueST` AS `valueST`,`aov`.`valuePQ` AS `valuePQ`,`aov`.`units` AS `units`,`aov`.`referenceRangeMin` AS `referenceRangeMin`,`aov`.`referenceRangeMax` AS `referenceRangeMax`,`aoic`.`code` AS `interpretationCode`,`amc`.`code` AS `methodCode`,`amc`.`title` AS `methodCodeTitle`,`amc`.`codeVocId` AS `methodCodeVocId`,`amc`.`codeOrig` AS `methodCodeOrig`,`amc`.`codeOrigVocId` AS `methodCodeOrigVocId`,`atsc`.`code` AS `targetSiteCode`,`atsc`.`title` AS `targetSiteCodeTitle`,`atsc`.`codeVocId` AS `targetSiteCodeVocId`,`atsc`.`codeOrig` AS `targetSiteCodeOrig`,`atsc`.`codeOrigVocId` AS `targetSiteCodeOrigVocId` from ((((((`hl7`.`observation` `o` join `hl7`.`act` `a` on((`a`.`id` = `o`.`id`))) left join `hl7`.`actrelationship` `ar` on((`ar`.`idA` = `a`.`id`))) left join `hl7`.`actobservationvalues` `aov` on((`o`.`id` = `aov`.`id`))) left join `hl7`.`actobservationinterpretationcode` `aoic` on((`aoic`.`id` = `o`.`id`))) left join `hl7`.`acttargetsitecode` `atsc` on((`atsc`.`id` = `o`.`id`))) left join `hl7`.`actmethodcode` `amc` on((`amc`.`id` = `o`.`id`)))" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/v_observation/{id}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/v_observation>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#classcode>;
+		rr:objectMap [ rr:column "classCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#moodcode>;
+		rr:objectMap [ rr:column "moodCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#code>;
+		rr:objectMap [ rr:column "code"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#codevocid>;
+		rr:objectMap [ rr:column "codeVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#codeorig>;
+		rr:objectMap [ rr:column "codeOrig"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#codeorigvocid>;
+		rr:objectMap [ rr:column "codeOrigVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#actionnegationind>;
+		rr:objectMap [ rr:column "actionNegationInd"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#title>;
+		rr:objectMap [ rr:column "title"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#text>;
+		rr:objectMap [ rr:column "text"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#statuscode>;
+		rr:objectMap [ rr:column "statusCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#effectivetime>;
+		rr:objectMap [ rr:column "effectiveTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#activitytime>;
+		rr:objectMap [ rr:column "activityTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#availabilitytime>;
+		rr:objectMap [ rr:column "availabilityTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#valuenegationind>;
+		rr:objectMap [ rr:column "valueNegationInd"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#creationtime>;
+		rr:objectMap [ rr:column "creationTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#modificationtime>;
+		rr:objectMap [ rr:column "modificationTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#clinicaltrialid>;
+		rr:objectMap [ rr:column "clinicalTrialId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#valuest>;
+		rr:objectMap [ rr:column "valueST"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#valuepq>;
+		rr:objectMap [ rr:column "valuePQ"; rr:datatype xsd:double; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#units>;
+		rr:objectMap [ rr:column "units"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#referencerangemin>;
+		rr:objectMap [ rr:column "referenceRangeMin"; rr:datatype xsd:double; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#referencerangemax>;
+		rr:objectMap [ rr:column "referenceRangeMax"; rr:datatype xsd:double; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#interpretationcode>;
+		rr:objectMap [ rr:column "interpretationCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#methodcode>;
+		rr:objectMap [ rr:column "methodCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#methodcodetitle>;
+		rr:objectMap [ rr:column "methodCodeTitle"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#methodcodevocid>;
+		rr:objectMap [ rr:column "methodCodeVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#methodcodeorig>;
+		rr:objectMap [ rr:column "methodCodeOrig"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#methodcodeorigvocid>;
+		rr:objectMap [ rr:column "methodCodeOrigVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#targetsitecode>;
+		rr:objectMap [ rr:column "targetSiteCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#targetsitecodetitle>;
+		rr:objectMap [ rr:column "targetSiteCodeTitle"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#targetsitecodevocid>;
+		rr:objectMap [ rr:column "targetSiteCodeVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#targetsitecodeorig>;
+		rr:objectMap [ rr:column "targetSiteCodeOrig"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_observation#targetsitecodeorigvocid>;
+		rr:objectMap [ rr:column "targetSiteCodeOrigVocId"; rr:datatype xsd:string; ];
+	].
+
+<#TriplesMap199>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/v_observation>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap200>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "select `e`.`id` AS `id`,`e`.`classCode` AS `classCode`,`e`.`determinerCode` AS `determinerCode`,`e`.`code` AS `code`,`e`.`codeVocId` AS `codeVocId`,`e`.`codeOrig` AS `codeOrig`,`e`.`codeOrigVocId` AS `codeOrigVocId`,`e`.`quantity` AS `quantity`,`e`.`name` AS `name`,`e`.`desc_1` AS `desc`,`e`.`statusCode` AS `statusCode`,`l`.`administrativeGenderCode` AS `administrativeGenderCode`,`e`.`creationTime` AS `creationTime`,`e`.`modificationTime` AS `modificationTime`,`l`.`birthTime` AS `birthTime`,`l`.`birthTimeTolerance` AS `birthTimeTolerance`,`l`.`deceasedInd` AS `deceasedInd`,`l`.`deceasedTime` AS `deceasedTime`,`p`.`raceCode` AS `raceCode`,`p`.`name` AS `personName`,`p`.`surname` AS `personSurname` from ((`hl7`.`entity` `e` join `hl7`.`livingsubject` `l` on((`e`.`id` = `l`.`id`))) join `hl7`.`person` `p` on((`p`.`id` = `e`.`id`)))" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/v_person/{id}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/v_person>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_person#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_person#classcode>;
+		rr:objectMap [ rr:column "classCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_person#determinercode>;
+		rr:objectMap [ rr:column "determinerCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_person#code>;
+		rr:objectMap [ rr:column "code"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_person#codevocid>;
+		rr:objectMap [ rr:column "codeVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_person#codeorig>;
+		rr:objectMap [ rr:column "codeOrig"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_person#codeorigvocid>;
+		rr:objectMap [ rr:column "codeOrigVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_person#quantity>;
+		rr:objectMap [ rr:column "quantity"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_person#name>;
+		rr:objectMap [ rr:column "name"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_person#desc>;
+		rr:objectMap [ rr:column "desc"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_person#statuscode>;
+		rr:objectMap [ rr:column "statusCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_person#administrativegendercode>;
+		rr:objectMap [ rr:column "administrativeGenderCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_person#creationtime>;
+		rr:objectMap [ rr:column "creationTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_person#modificationtime>;
+		rr:objectMap [ rr:column "modificationTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_person#birthtime>;
+		rr:objectMap [ rr:column "birthTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_person#birthtimetolerance>;
+		rr:objectMap [ rr:column "birthTimeTolerance"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_person#deceasedind>;
+		rr:objectMap [ rr:column "deceasedInd"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_person#deceasedtime>;
+		rr:objectMap [ rr:column "deceasedTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_person#racecode>;
+		rr:objectMap [ rr:column "raceCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_person#personname>;
+		rr:objectMap [ rr:column "personName"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_person#personsurname>;
+		rr:objectMap [ rr:column "personSurname"; rr:datatype xsd:string; ];
+	].
+
+<#TriplesMap201>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/v_person>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap202>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "select `a`.`id` AS `id`,`a`.`classCode` AS `classCode`,`a`.`moodCode` AS `moodCode`,`a`.`code` AS `code`,`a`.`codeVocId` AS `codeVocId`,`a`.`codeOrig` AS `codeOrig`,`a`.`codeOrigVocId` AS `codeOrigVocId`,`a`.`actionNegationInd` AS `actionNegationInd`,`a`.`title` AS `title`,`a`.`text` AS `text`,`a`.`statusCode` AS `statusCode`,`a`.`effectiveTime` AS `effectiveTime`,`a`.`activityTime` AS `activityTime`,`a`.`availabilityTime` AS `availabilityTime`,`a`.`creationTime` AS `creationTime`,`a`.`modificationTime` AS `modificationTime`,`ar`.`idB` AS `clinicalTrialId`,`apasc`.`code` AS `approachSiteCode`,`apasc`.`title` AS `approachSiteCodeTitle`,`apasc`.`codeVocId` AS `approachSiteCodeVocId`,`apasc`.`codeOrig` AS `approachSiteCodeOrig`,`apasc`.`codeOrigVocId` AS `approachSiteCodeOrigVocId`,`amc`.`code` AS `methodCode`,`amc`.`title` AS `methodCodeTitle`,`amc`.`codeVocId` AS `methodCodeVocId`,`amc`.`codeOrig` AS `methodCodeOrig`,`amc`.`codeOrigVocId` AS `methodCodeOrigVocId`,`atsc`.`code` AS `targetSiteCode`,`atsc`.`title` AS `targetSiteCodeTitle`,`atsc`.`codeVocId` AS `targetSiteCodeVocId`,`atsc`.`codeOrig` AS `targetSiteCodeOrig`,`atsc`.`codeOrigVocId` AS `targetSiteCodeOrigVocId` from (((((`hl7`.`procedures` `p` join `hl7`.`act` `a` on((`p`.`id` = `a`.`id`))) left join `hl7`.`actrelationship` `ar` on((`ar`.`idA` = `a`.`id`))) left join `hl7`.`actprocedureapproachsitecode` `apasc` on((`apasc`.`id` = `p`.`id`))) left join `hl7`.`acttargetsitecode` `atsc` on((`atsc`.`id` = `p`.`id`))) left join `hl7`.`actmethodcode` `amc` on((`p`.`id` = `amc`.`id`)))" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/v_procedure/{id}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/v_procedure>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#classcode>;
+		rr:objectMap [ rr:column "classCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#moodcode>;
+		rr:objectMap [ rr:column "moodCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#code>;
+		rr:objectMap [ rr:column "code"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#codevocid>;
+		rr:objectMap [ rr:column "codeVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#codeorig>;
+		rr:objectMap [ rr:column "codeOrig"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#codeorigvocid>;
+		rr:objectMap [ rr:column "codeOrigVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#actionnegationind>;
+		rr:objectMap [ rr:column "actionNegationInd"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#title>;
+		rr:objectMap [ rr:column "title"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#text>;
+		rr:objectMap [ rr:column "text"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#statuscode>;
+		rr:objectMap [ rr:column "statusCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#effectivetime>;
+		rr:objectMap [ rr:column "effectiveTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#activitytime>;
+		rr:objectMap [ rr:column "activityTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#availabilitytime>;
+		rr:objectMap [ rr:column "availabilityTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#creationtime>;
+		rr:objectMap [ rr:column "creationTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#modificationtime>;
+		rr:objectMap [ rr:column "modificationTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#clinicaltrialid>;
+		rr:objectMap [ rr:column "clinicalTrialId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#approachsitecode>;
+		rr:objectMap [ rr:column "approachSiteCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#approachsitecodetitle>;
+		rr:objectMap [ rr:column "approachSiteCodeTitle"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#approachsitecodevocid>;
+		rr:objectMap [ rr:column "approachSiteCodeVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#approachsitecodeorig>;
+		rr:objectMap [ rr:column "approachSiteCodeOrig"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#approachsitecodeorigvocid>;
+		rr:objectMap [ rr:column "approachSiteCodeOrigVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#methodcode>;
+		rr:objectMap [ rr:column "methodCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#methodcodetitle>;
+		rr:objectMap [ rr:column "methodCodeTitle"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#methodcodevocid>;
+		rr:objectMap [ rr:column "methodCodeVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#methodcodeorig>;
+		rr:objectMap [ rr:column "methodCodeOrig"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#methodcodeorigvocid>;
+		rr:objectMap [ rr:column "methodCodeOrigVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#targetsitecode>;
+		rr:objectMap [ rr:column "targetSiteCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#targetsitecodetitle>;
+		rr:objectMap [ rr:column "targetSiteCodeTitle"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#targetsitecodevocid>;
+		rr:objectMap [ rr:column "targetSiteCodeVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#targetsitecodeorig>;
+		rr:objectMap [ rr:column "targetSiteCodeOrig"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_procedure#targetsitecodeorigvocid>;
+		rr:objectMap [ rr:column "targetSiteCodeOrigVocId"; rr:datatype xsd:string; ];
+	].
+
+<#TriplesMap203>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/v_procedure>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+
+<#TriplesMap204>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "select `a`.`id` AS `id`,`a`.`classCode` AS `classCode`,`a`.`moodCode` AS `moodCode`,`a`.`code` AS `code`,`a`.`codeVocId` AS `codeVocId`,`a`.`codeOrig` AS `codeOrig`,`a`.`codeOrigVocId` AS `codeOrigVocId`,`a`.`actionNegationInd` AS `actionNegationInd`,`a`.`title` AS `title`,`a`.`text` AS `text`,`a`.`statusCode` AS `statusCode`,`a`.`effectiveTime` AS `effectiveTime`,`a`.`activityTime` AS `activityTime`,`a`.`availabilityTime` AS `availabilityTime`,`a`.`creationTime` AS `creationTime`,`a`.`modificationTime` AS `modificationTime`,`ar`.`idB` AS `clinicalTrialId`,`apasc`.`code` AS `approachSiteCode`,`atsc`.`title` AS `approachSiteCodeTitle`,`apasc`.`codeVocId` AS `approachSiteCodeVocId`,`apasc`.`codeOrig` AS `approachSiteCodeOrig`,`apasc`.`codeOrigVocId` AS `approachSiteCodeOrigVocId`,`amc`.`code` AS `methodCode`,`amc`.`title` AS `methodCodeTitle`,`amc`.`codeVocId` AS `methodCodeVocId`,`amc`.`codeOrig` AS `methodCodeOrig`,`amc`.`codeOrigVocId` AS `methodCodeOrigVocId`,`atsc`.`code` AS `targetSiteCode`,`atsc`.`title` AS `targetSiteCodeTitle`,`atsc`.`codeVocId` AS `targetSiteCodeVocId`,`atsc`.`codeOrig` AS `targetSiteCodeOrig`,`atsc`.`codeOrigVocId` AS `targetSiteCodeOrigVocId`,`s`.`routeCode` AS `routeCode`,`s`.`doseQuantity` AS `doseQuantity`,`s`.`rateQuantity` AS `rateQuantity`,`s`.`doseCheckQuantity` AS `doseCheckQuantity` from ((((((`hl7`.`substanceadministration` `s` join `hl7`.`procedures` `p` on((`s`.`id` = `p`.`id`))) join `hl7`.`act` `a` on((`p`.`id` = `a`.`id`))) left join `hl7`.`actrelationship` `ar` on((`ar`.`idA` = `a`.`id`))) left join `hl7`.`actprocedureapproachsitecode` `apasc` on((`apasc`.`id` = `p`.`id`))) left join `hl7`.`acttargetsitecode` `atsc` on((`atsc`.`id` = `p`.`id`))) left join `hl7`.`actmethodcode` `amc` on((`p`.`id` = `amc`.`id`)))" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/v_substanceadministration/{id}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/v_substanceadministration>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#id>;
+		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#classcode>;
+		rr:objectMap [ rr:column "classCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#moodcode>;
+		rr:objectMap [ rr:column "moodCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#code>;
+		rr:objectMap [ rr:column "code"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#codevocid>;
+		rr:objectMap [ rr:column "codeVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#codeorig>;
+		rr:objectMap [ rr:column "codeOrig"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#codeorigvocid>;
+		rr:objectMap [ rr:column "codeOrigVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#actionnegationind>;
+		rr:objectMap [ rr:column "actionNegationInd"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#title>;
+		rr:objectMap [ rr:column "title"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#text>;
+		rr:objectMap [ rr:column "text"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#statuscode>;
+		rr:objectMap [ rr:column "statusCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#effectivetime>;
+		rr:objectMap [ rr:column "effectiveTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#activitytime>;
+		rr:objectMap [ rr:column "activityTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#availabilitytime>;
+		rr:objectMap [ rr:column "availabilityTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#creationtime>;
+		rr:objectMap [ rr:column "creationTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#modificationtime>;
+		rr:objectMap [ rr:column "modificationTime"; rr:datatype xsd:dateTime; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#clinicaltrialid>;
+		rr:objectMap [ rr:column "clinicalTrialId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#approachsitecode>;
+		rr:objectMap [ rr:column "approachSiteCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#approachsitecodetitle>;
+		rr:objectMap [ rr:column "approachSiteCodeTitle"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#approachsitecodevocid>;
+		rr:objectMap [ rr:column "approachSiteCodeVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#approachsitecodeorig>;
+		rr:objectMap [ rr:column "approachSiteCodeOrig"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#approachsitecodeorigvocid>;
+		rr:objectMap [ rr:column "approachSiteCodeOrigVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#methodcode>;
+		rr:objectMap [ rr:column "methodCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#methodcodetitle>;
+		rr:objectMap [ rr:column "methodCodeTitle"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#methodcodevocid>;
+		rr:objectMap [ rr:column "methodCodeVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#methodcodeorig>;
+		rr:objectMap [ rr:column "methodCodeOrig"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#methodcodeorigvocid>;
+		rr:objectMap [ rr:column "methodCodeOrigVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#targetsitecode>;
+		rr:objectMap [ rr:column "targetSiteCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#targetsitecodetitle>;
+		rr:objectMap [ rr:column "targetSiteCodeTitle"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#targetsitecodevocid>;
+		rr:objectMap [ rr:column "targetSiteCodeVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#targetsitecodeorig>;
+		rr:objectMap [ rr:column "targetSiteCodeOrig"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#targetsitecodeorigvocid>;
+		rr:objectMap [ rr:column "targetSiteCodeOrigVocId"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#routecode>;
+		rr:objectMap [ rr:column "routeCode"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#dosequantity>;
+		rr:objectMap [ rr:column "doseQuantity"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#ratequantity>;
+		rr:objectMap [ rr:column "rateQuantity"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/v_substanceadministration#dosecheckquantity>;
+		rr:objectMap [ rr:column "doseCheckQuantity"; rr:datatype xsd:string; ];
+	].
+
+<#TriplesMap205>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/v_substanceadministration>;
+		rr:termType rr:IRI;
+		rr:class owl:Class;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:subClassOf;
+		rr:objectMap [ rr:constant owl:Thing ];
+	].
+

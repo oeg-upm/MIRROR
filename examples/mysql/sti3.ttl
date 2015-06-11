@@ -1,0 +1,859 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1#> .
+@prefix dc: <http://purl.org/stuff/rev#> .
+@prefix rev: <http://purl.org/stuff/rev#> .
+@prefix bsbm: <http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/> .
+@prefix bsbm-inst: <http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/> .
+@prefix ex: <http://example.com/> .
+
+@base <http://mappingpedia.org/rdb2rdf/r2rml/tc/> .
+
+<#TriplesMap1>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "valor"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/valor/{ID_VALOR}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/valor>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#id_valor>;
+		rr:objectMap [ rr:column "ID_VALOR"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#nome>;
+		rr:objectMap [ rr:column "NOME"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#nome_fonema>;
+		rr:objectMap [ rr:column "NOME_FONEMA"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#autor>;
+		rr:objectMap [ rr:column "AUTOR"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#autor_fonema>;
+		rr:objectMap [ rr:column "AUTOR_FONEMA"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#ano>;
+		rr:objectMap [ rr:column "ANO"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#data_evento>;
+		rr:objectMap [ rr:column "DATA_EVENTO"; rr:datatype xsd:date; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#id_objeto>;
+		rr:objectMap [ rr:column "ID_OBJETO"; rr:datatype xsd:integer; ];
+	].
+
+<#TriplesMap11>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT t_23236.\"ID_VALOR\", t_23236.\"COMPLEMENTO\", t_83102.\"NOME\", t_83102.\"NOME_FONEMA\", t_83102.\"AUTOR\", t_83102.\"AUTOR_FONEMA\", t_83102.\"ANO\", t_83102.\"DATA_EVENTO\", t_83102.\"ID_OBJETO\" FROM \"valor\" AS t_83102 JOIN \"complemento\" AS t_23236 ON (t_83102.\"ID_VALOR\"=t_23236.\"ID_VALOR\")" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/complemento>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdf:type;
+		rr:objectMap [ rr:constant <http://example.com/valor> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/complemento#id_valor>;
+		rr:objectMap [ rr:column "ID_VALOR"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/complemento#complemento>;
+		rr:objectMap [ rr:column "COMPLEMENTO"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/complemento#nome>;
+		rr:objectMap [ rr:column "NOME"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/complemento#nome_fonema>;
+		rr:objectMap [ rr:column "NOME_FONEMA"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/complemento#autor>;
+		rr:objectMap [ rr:column "AUTOR"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/complemento#autor_fonema>;
+		rr:objectMap [ rr:column "AUTOR_FONEMA"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/complemento#ano>;
+		rr:objectMap [ rr:column "ANO"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/complemento#data_evento>;
+		rr:objectMap [ rr:column "DATA_EVENTO"; rr:datatype xsd:date; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/complemento#id_objeto>;
+		rr:objectMap [ rr:column "ID_OBJETO"; rr:datatype xsd:integer; ];
+	].
+
+<#TriplesMap18>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "objeto"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/objeto/{ID_OBJETO}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/objeto>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto#id_objeto>;
+		rr:objectMap [ rr:column "ID_OBJETO"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto#nome>;
+		rr:objectMap [ rr:column "NOME"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto#nomeplural>;
+		rr:objectMap [ rr:column "NOMEPLURAL"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto#data_objeto>;
+		rr:objectMap [ rr:column "DATA_OBJETO"; rr:datatype xsd:date; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto#id_usuario>;
+		rr:objectMap [ rr:column "ID_USUARIO"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto#tipo>;
+		rr:objectMap [ rr:column "TIPO"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto#id_superobjeto>;
+		rr:objectMap [ rr:column "ID_SUPEROBJETO"; rr:datatype xsd:integer; ];
+	].
+
+<#TriplesMap27>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT t_90598.\"ID_OBJETO\", t_90598.\"NOME\", t_90598.\"NOMEPLURAL\", t_90598.\"DATA_OBJETO\", t_90598.\"ID_USUARIO\", t_90598.\"TIPO\", t_90598.\"ID_SUPEROBJETO\", t_88943.\"NOME\" AS \"objeto_NOME\", t_88943.\"NOMEPLURAL\" AS \"objeto_NOMEPLURAL\", t_88943.\"DATA_OBJETO\" AS \"objeto_DATA_OBJETO\", t_88943.\"ID_USUARIO\" AS \"objeto_ID_USUARIO\", t_88943.\"TIPO\" AS \"objeto_TIPO\", t_88943.\"ID_SUPEROBJETO\" AS \"objeto_ID_SUPEROBJETO\" FROM \"objeto\" AS t_88943 JOIN \"objeto\" AS t_90598 ON (t_88943.\"ID_OBJETO\"=t_90598.\"ID_SUPEROBJETO\")" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/objeto/{ID_OBJETO}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/objeto>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdf:type;
+		rr:objectMap [ rr:constant <http://example.com/objeto> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto#id_objeto>;
+		rr:objectMap [ rr:column "ID_OBJETO"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto#nome>;
+		rr:objectMap [ rr:column "NOME"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto#nomeplural>;
+		rr:objectMap [ rr:column "NOMEPLURAL"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto#data_objeto>;
+		rr:objectMap [ rr:column "DATA_OBJETO"; rr:datatype xsd:date; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto#id_usuario>;
+		rr:objectMap [ rr:column "ID_USUARIO"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto#tipo>;
+		rr:objectMap [ rr:column "TIPO"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto#id_superobjeto>;
+		rr:objectMap [ rr:column "ID_SUPEROBJETO"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto#objeto_nome>;
+		rr:objectMap [ rr:column "objeto_NOME"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto#objeto_nomeplural>;
+		rr:objectMap [ rr:column "objeto_NOMEPLURAL"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto#objeto_data_objeto>;
+		rr:objectMap [ rr:column "objeto_DATA_OBJETO"; rr:datatype xsd:date; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto#objeto_id_usuario>;
+		rr:objectMap [ rr:column "objeto_ID_USUARIO"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto#objeto_tipo>;
+		rr:objectMap [ rr:column "objeto_TIPO"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto#objeto_id_superobjeto>;
+		rr:objectMap [ rr:column "objeto_ID_SUPEROBJETO"; rr:datatype xsd:integer; ];
+	].
+
+<#TriplesMap29>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "disciplina"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/disciplina/{ID_DISCIPLINA}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/disciplina>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/disciplina#id_disciplina>;
+		rr:objectMap [ rr:column "ID_DISCIPLINA"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/disciplina#disciplina>;
+		rr:objectMap [ rr:column "DISCIPLINA"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/disciplina#sigla>;
+		rr:objectMap [ rr:column "SIGLA"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/disciplina#habilitada>;
+		rr:objectMap [ rr:column "HABILITADA"; rr:datatype xsd:boolean; ];
+	].
+
+<#TriplesMap35>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "objeto_disciplina"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/objeto_disciplina/{ID}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/objeto_disciplina>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto_disciplina#ID>;
+		rr:objectMap [ rr:column "ID"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto_disciplina#objeto>;
+		rr:objectMap [ rr:template "http://example.com/objeto/{ID_OBJETO}" ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto_disciplina#disciplina>;
+		rr:objectMap [ rr:template "http://example.com/disciplina/{ID_DISCIPLINA}" ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto_disciplina#ref-ID_OBJETO>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap18>;
+			rr:joinCondition [
+				rr:child "ID_OBJETO";
+				rr:parent "ID_OBJETO";
+			];
+		];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto_disciplina#ref-ID_DISCIPLINA>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap29>;
+			rr:joinCondition [
+				rr:child "ID_DISCIPLINA";
+				rr:parent "ID_DISCIPLINA";
+			];
+		];
+	].
+
+<#TriplesMap43>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "subarea"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/subarea/{ID_SUBAREA}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/subarea>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/subarea#id_subarea>;
+		rr:objectMap [ rr:column "ID_SUBAREA"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/subarea#cod_cnpq>;
+		rr:objectMap [ rr:column "COD_CNPQ"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/subarea#subarea>;
+		rr:objectMap [ rr:column "SUBAREA"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/subarea#id_area>;
+		rr:objectMap [ rr:column "ID_AREA"; rr:datatype xsd:integer; ];
+	].
+
+<#TriplesMap49>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "objeto_subarea"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/objeto_subarea/objeto/{ID_OBJETO}/subarea/{ID_SUBAREA}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/objeto_subarea>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto_subarea#objeto>;
+		rr:objectMap [ rr:template "http://example.com/objeto/{ID_OBJETO}" ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto_subarea#subarea>;
+		rr:objectMap [ rr:template "http://example.com/subarea/{ID_SUBAREA}" ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto_subarea#ref-ID_OBJETO>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap18>;
+			rr:joinCondition [
+				rr:child "ID_OBJETO";
+				rr:parent "ID_OBJETO";
+			];
+		];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/objeto_subarea#ref-ID_SUBAREA>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap43>;
+			rr:joinCondition [
+				rr:child "ID_SUBAREA";
+				rr:parent "ID_SUBAREA";
+			];
+		];
+	].
+
+<#TriplesMap56>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "atributo"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/atributo/{ID_ATRIBUTO}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/atributo>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/atributo#id_atributo>;
+		rr:objectMap [ rr:column "ID_ATRIBUTO"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/atributo#nome>;
+		rr:objectMap [ rr:column "NOME"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/atributo#nomeplural>;
+		rr:objectMap [ rr:column "NOMEPLURAL"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/atributo#genero>;
+		rr:objectMap [ rr:column "GENERO"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/atributo#cardinalidade>;
+		rr:objectMap [ rr:column "CARDINALIDADE"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/atributo#id_atributosinonimo>;
+		rr:objectMap [ rr:column "ID_ATRIBUTOSINONIMO"; rr:datatype xsd:integer; ];
+	].
+
+<#TriplesMap64>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "orav"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/orav/{ID_ORAV}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/orav>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/orav#ID_ORAV>;
+		rr:objectMap [ rr:column "ID_ORAV"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/orav#objeto>;
+		rr:objectMap [ rr:template "http://example.com/objeto/{ID_OBJETO}" ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/orav#atributo>;
+		rr:objectMap [ rr:template "http://example.com/atributo/{ID_ATRIBUTO}" ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/orav#valor>;
+		rr:objectMap [ rr:template "http://example.com/valor/{ID_VALOR}" ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/orav#DATA_ORAV>;
+		rr:objectMap [ rr:column "DATA_ORAV"; rr:datatype xsd:date; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/orav#ref-ID_OBJETO>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap18>;
+			rr:joinCondition [
+				rr:child "ID_OBJETO";
+				rr:parent "ID_OBJETO";
+			];
+		];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/orav#ref-ID_ATRIBUTO>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap56>;
+			rr:joinCondition [
+				rr:child "ID_ATRIBUTO";
+				rr:parent "ID_ATRIBUTO";
+			];
+		];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/orav#ref-ID_VALOR>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap1>;
+			rr:joinCondition [
+				rr:child "ID_VALOR";
+				rr:parent "ID_VALOR";
+			];
+		];
+	].
+
+<#TriplesMap80>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "area"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/area/{ID_AREA}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/area>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/area#id_area>;
+		rr:objectMap [ rr:column "ID_AREA"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/area#area>;
+		rr:objectMap [ rr:column "AREA"; rr:datatype xsd:string; ];
+	].
+
+<#TriplesMap82>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT t_57919.\"ID_SUBAREA\", t_57919.\"COD_CNPQ\", t_57919.\"SUBAREA\", t_57919.\"ID_AREA\", t_21312.\"AREA\" FROM \"area\" AS t_21312 JOIN \"subarea\" AS t_57919 ON (t_21312.\"ID_AREA\"=t_57919.\"ID_AREA\")" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/subarea/{ID_SUBAREA}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/subarea>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdf:type;
+		rr:objectMap [ rr:constant <http://example.com/area> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/subarea#id_subarea>;
+		rr:objectMap [ rr:column "ID_SUBAREA"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/subarea#cod_cnpq>;
+		rr:objectMap [ rr:column "COD_CNPQ"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/subarea#subarea>;
+		rr:objectMap [ rr:column "SUBAREA"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/subarea#id_area>;
+		rr:objectMap [ rr:column "ID_AREA"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/subarea#area>;
+		rr:objectMap [ rr:column "AREA"; rr:datatype xsd:string; ];
+	].
+
+<#TriplesMap87>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT t_17053.\"ID_VALOR\", t_17053.\"NOME\", t_17053.\"NOME_FONEMA\", t_17053.\"AUTOR\", t_17053.\"AUTOR_FONEMA\", t_17053.\"ANO\", t_17053.\"DATA_EVENTO\", t_17053.\"ID_OBJETO\", t_74849.\"NOME\" AS \"objeto_NOME\", t_74849.\"NOMEPLURAL\", t_74849.\"DATA_OBJETO\", t_74849.\"ID_USUARIO\", t_74849.\"TIPO\", t_74849.\"ID_SUPEROBJETO\" FROM \"objeto\" AS t_74849 JOIN \"valor\" AS t_17053 ON (t_74849.\"ID_OBJETO\"=t_17053.\"ID_OBJETO\")" 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/valor/{ID_VALOR}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/valor>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdf:type;
+		rr:objectMap [ rr:constant <http://example.com/objeto> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#id_valor>;
+		rr:objectMap [ rr:column "ID_VALOR"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#nome>;
+		rr:objectMap [ rr:column "NOME"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#nome_fonema>;
+		rr:objectMap [ rr:column "NOME_FONEMA"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#autor>;
+		rr:objectMap [ rr:column "AUTOR"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#autor_fonema>;
+		rr:objectMap [ rr:column "AUTOR_FONEMA"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#ano>;
+		rr:objectMap [ rr:column "ANO"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#data_evento>;
+		rr:objectMap [ rr:column "DATA_EVENTO"; rr:datatype xsd:date; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#id_objeto>;
+		rr:objectMap [ rr:column "ID_OBJETO"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#objeto_nome>;
+		rr:objectMap [ rr:column "objeto_NOME"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#nomeplural>;
+		rr:objectMap [ rr:column "NOMEPLURAL"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#data_objeto>;
+		rr:objectMap [ rr:column "DATA_OBJETO"; rr:datatype xsd:date; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#id_usuario>;
+		rr:objectMap [ rr:column "ID_USUARIO"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#tipo>;
+		rr:objectMap [ rr:column "TIPO"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor#id_superobjeto>;
+		rr:objectMap [ rr:column "ID_SUPEROBJETO"; rr:datatype xsd:integer; ];
+	].
+
+<#TriplesMap92>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "propriedade"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/propriedade/{ID_PROPRIEDADE}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/propriedade>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/propriedade#id_propriedade>;
+		rr:objectMap [ rr:column "ID_PROPRIEDADE"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/propriedade#propriedade>;
+		rr:objectMap [ rr:column "PROPRIEDADE"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/propriedade#genero>;
+		rr:objectMap [ rr:column "GENERO"; rr:datatype xsd:integer; ];
+	].
+
+<#TriplesMap97>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "valor_propriedade"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/valor_propriedade/{ID_VALOR}/{ID_PROPRIEDADE}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/valor_propriedade>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor_propriedade#valor>;
+		rr:objectMap [ rr:template "http://example.com/valor/{ID_VALOR}" ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor_propriedade#propriedade>;
+		rr:objectMap [ rr:template "http://example.com/propriedade/{ID_PROPRIEDADE}" ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor_propriedade#ref-ID_VALOR>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap1>;
+			rr:joinCondition [
+				rr:child "ID_VALOR";
+				rr:parent "ID_VALOR";
+			];
+		];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor_propriedade#ref-ID_PROPRIEDADE>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap92>;
+			rr:joinCondition [
+				rr:child "ID_PROPRIEDADE";
+				rr:parent "ID_PROPRIEDADE";
+			];
+		];
+	].
+
+<#TriplesMap104>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "qualificador"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/qualificador/{ID_QUALIFICADOR}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/qualificador>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/qualificador#id_qualificador>;
+		rr:objectMap [ rr:column "ID_QUALIFICADOR"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/qualificador#qualificador>;
+		rr:objectMap [ rr:column "QUALIFICADOR"; rr:datatype xsd:string; ];
+	].
+
+<#TriplesMap108>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "valor_qualificador"; 
+	];
+
+	rr:subjectMap [
+		rr:template "http://example.com/valor_qualificador/{ID_VALOR}/{ID_QUALIFICADOR}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/valor_qualificador>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor_qualificador#valor>;
+		rr:objectMap [ rr:template "http://example.com/valor/{ID_VALOR}" ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor_qualificador#qualificador>;
+		rr:objectMap [ rr:template "http://example.com/qualificador/{ID_QUALIFICADOR}" ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor_qualificador#ref-ID_VALOR>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap1>;
+			rr:joinCondition [
+				rr:child "ID_VALOR";
+				rr:parent "ID_VALOR";
+			];
+		];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/valor_qualificador#ref-ID_QUALIFICADOR>;
+		rr:objectMap [
+			rr:parentTriplesMap <#TriplesMap104>;
+			rr:joinCondition [
+				rr:child "ID_QUALIFICADOR";
+				rr:parent "ID_QUALIFICADOR";
+			];
+		];
+	].
+
+<#TriplesMap115>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:tableName "unknown"; 
+	];
+
+	rr:subjectMap [
+		rr:template "example.com//unknown/ID_UNKNOWN={ID_UNKNOWN}.ID_SECOND={ID_SECOND}.OBS={OBS}";
+		rr:termType rr:BlankNode;
+		rr:class <http://example.com/unknown>;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/unknown#id_unknown>;
+		rr:objectMap [ rr:column "ID_UNKNOWN"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/unknown#id_second>;
+		rr:objectMap [ rr:column "ID_SECOND"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/unknown#obs>;
+		rr:objectMap [ rr:column "OBS"; rr:datatype xsd:string; ];
+	].
+

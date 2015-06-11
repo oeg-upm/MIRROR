@@ -1,12 +1,3 @@
-@prefix rr: <http://www.w3.org/ns/r2rml#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix dc: <http://purl.org/dc/elements/1.1#> .
-@prefix rev: <http://purl.org/stuff/rev#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1#> .
 @prefix ex: <http://example.com> .
 
 @base <http://mappingpedia.org/rdb2rdf/r2rml/tc/> .
@@ -21,21 +12,21 @@
 	rr:subjectMap [
 		rr:template "http://example.com/dept/{deptno}";
 		rr:termType rr:IRI;
-		rr:class <http://example.com/Dept>;
+		rr:class <http://example.com/dept>;
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Dept#deptno>;
+		rr:predicate <http://example.com/dept#deptno>;
 		rr:objectMap [ rr:column "deptno"; rr:datatype xsd:integer; ];
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Dept#dname>;
+		rr:predicate <http://example.com/dept#dname>;
 		rr:objectMap [ rr:column "dname"; rr:datatype xsd:string; ];
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Dept#loc>;
+		rr:predicate <http://example.com/dept#loc>;
 		rr:objectMap [ rr:column "loc"; rr:datatype xsd:string; ];
 	].
 
@@ -47,14 +38,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Dept#deptno>;
+		rr:constant <http://example.com/dept#deptno>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Dept> ];
+		rr:objectMap [ rr:constant <http://example.com/dept> ];
 	];
 
 	rr:predicateObjectMap [
@@ -70,14 +61,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Dept#dname>;
+		rr:constant <http://example.com/dept#dname>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Dept> ];
+		rr:objectMap [ rr:constant <http://example.com/dept> ];
 	];
 
 	rr:predicateObjectMap [
@@ -93,14 +84,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Dept#loc>;
+		rr:constant <http://example.com/dept#loc>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Dept> ];
+		rr:objectMap [ rr:constant <http://example.com/dept> ];
 	];
 
 	rr:predicateObjectMap [
@@ -116,7 +107,7 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Dept>;
+		rr:constant <http://example.com/dept>;
 		rr:termType rr:IRI;
 		rr:class owl:Class;
 	];
@@ -136,36 +127,36 @@
 	rr:subjectMap [
 		rr:template "http://example.com/emp/{empno}";
 		rr:termType rr:IRI;
-		rr:class <http://example.com/Emp>;
+		rr:class <http://example.com/emp>;
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Emp#empno>;
+		rr:predicate <http://example.com/emp#empno>;
 		rr:objectMap [ rr:column "empno"; rr:datatype xsd:integer; ];
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Emp#ename>;
+		rr:predicate <http://example.com/emp#ename>;
 		rr:objectMap [ rr:column "ename"; rr:datatype xsd:string; ];
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Emp#job>;
+		rr:predicate <http://example.com/emp#job>;
 		rr:objectMap [ rr:column "job"; rr:datatype xsd:string; ];
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Emp#deptno>;
+		rr:predicate <http://example.com/emp#deptno>;
 		rr:objectMap [ rr:column "deptno"; rr:datatype xsd:integer; ];
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Emp#etype>;
+		rr:predicate <http://example.com/emp#etype>;
 		rr:objectMap [ rr:column "etype"; rr:datatype xsd:string; ];
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Emp#ref-deptno>;
+		rr:predicate <http://example.com/emp#ref-deptno>;
 		rr:objectMap [
 			rr:parentTriplesMap <#TriplesMap1>;
 			rr:joinCondition [
@@ -183,7 +174,7 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Emp>;
+		rr:constant <http://example.com/emp>;
 		rr:termType rr:IRI;
 		rr:class owl:Class;
 	];
@@ -201,14 +192,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Emp#empno>;
+		rr:constant <http://example.com/emp#empno>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Emp> ];
+		rr:objectMap [ rr:constant <http://example.com/emp> ];
 	];
 
 	rr:predicateObjectMap [
@@ -224,14 +215,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Emp#ename>;
+		rr:constant <http://example.com/emp#ename>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Emp> ];
+		rr:objectMap [ rr:constant <http://example.com/emp> ];
 	];
 
 	rr:predicateObjectMap [
@@ -247,14 +238,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Emp#job>;
+		rr:constant <http://example.com/emp#job>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Emp> ];
+		rr:objectMap [ rr:constant <http://example.com/emp> ];
 	];
 
 	rr:predicateObjectMap [
@@ -270,14 +261,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Emp#deptno>;
+		rr:constant <http://example.com/emp#deptno>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Emp> ];
+		rr:objectMap [ rr:constant <http://example.com/emp> ];
 	];
 
 	rr:predicateObjectMap [
@@ -293,14 +284,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Emp#etype>;
+		rr:constant <http://example.com/emp#etype>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Emp> ];
+		rr:objectMap [ rr:constant <http://example.com/emp> ];
 	];
 
 	rr:predicateObjectMap [
@@ -316,41 +307,41 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/DeptHasEmp>;
+		rr:constant <http://example.com/deptHasemp>;
 		rr:termType rr:IRI;
 		rr:class owl:ObjectProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Dept> ];
+		rr:objectMap [ rr:constant <http://example.com/dept> ];
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:range;
-		rr:objectMap [ rr:constant <http://example.com/Emp> ];
+		rr:objectMap [ rr:constant <http://example.com/emp> ];
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate owl:inverseOf;
-		rr:objectMap [ rr:constant <http://example.com/EmphasDept> ];
+		rr:objectMap [ rr:constant <http://example.com/empHasdept> ];
 	].
 
 <#TriplesMap14>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:sqlQuery "SELECT DISTINCT t_39207.\"deptno\" FROM (\"dept\" AS t_39207 JOIN \"emp\" AS t_29589 ON ((t_39207.\"deptno\"=t_29589.\"deptno\")))" 
+		rr:sqlQuery "SELECT DISTINCT t_97337.\"deptno\" FROM (\"dept\" AS t_97337 JOIN \"emp\" AS t_18013 ON ((t_97337.\"deptno\"=t_18013.\"deptno\")))" 
 	];
 
 	rr:subjectMap [
-		rr:template "http://example.com/Dept/{deptno}";
+		rr:template "http://example.com/dept/{deptno}";
 		rr:termType rr:IRI;
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/DeptHasEmp>;
-		rr:objectMap [ rr:template "http://example.com/Emp/{deptno}" ];
+		rr:predicate <http://example.com/deptHasemp>;
+		rr:objectMap [ rr:template "http://example.com/emp/{deptno}" ];
 	].
 
 <#TriplesMap15>
@@ -361,19 +352,19 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/EmphasDept>;
+		rr:constant <http://example.com/empHasdept>;
 		rr:termType rr:IRI;
 		rr:class owl:ObjectProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Emp> ];
+		rr:objectMap [ rr:constant <http://example.com/emp> ];
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:range;
-		rr:objectMap [ rr:constant <http://example.com/Dept> ];
+		rr:objectMap [ rr:constant <http://example.com/dept> ];
 	].
 
 <#TriplesMap16>
@@ -386,21 +377,21 @@
 	rr:subjectMap [
 		rr:template "example.com/likes/id={id}.likeType={likeType}.likedObj={likedObj}";
 		rr:termType rr:BlankNode;
-		rr:class <http://example.com/Likes>;
+		rr:class <http://example.com/likes>;
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Likes#id>;
+		rr:predicate <http://example.com/likes#id>;
 		rr:objectMap [ rr:column "id"; rr:datatype xsd:integer; ];
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Likes#liketype>;
+		rr:predicate <http://example.com/likes#liketype>;
 		rr:objectMap [ rr:column "likeType"; rr:datatype xsd:string; ];
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Likes#likedobj>;
+		rr:predicate <http://example.com/likes#likedobj>;
 		rr:objectMap [ rr:column "likedObj"; rr:datatype xsd:string; ];
 	].
 
@@ -412,7 +403,7 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Likes>;
+		rr:constant <http://example.com/likes>;
 		rr:termType rr:IRI;
 		rr:class owl:Class;
 	];
@@ -430,14 +421,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Likes#id>;
+		rr:constant <http://example.com/likes#id>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Likes> ];
+		rr:objectMap [ rr:constant <http://example.com/likes> ];
 	];
 
 	rr:predicateObjectMap [
@@ -453,14 +444,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Likes#liketype>;
+		rr:constant <http://example.com/likes#liketype>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Likes> ];
+		rr:objectMap [ rr:constant <http://example.com/likes> ];
 	];
 
 	rr:predicateObjectMap [
@@ -476,14 +467,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Likes#likedobj>;
+		rr:constant <http://example.com/likes#likedobj>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Likes> ];
+		rr:objectMap [ rr:constant <http://example.com/likes> ];
 	];
 
 	rr:predicateObjectMap [

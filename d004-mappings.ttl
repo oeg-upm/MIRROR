@@ -1,12 +1,3 @@
-@prefix rr: <http://www.w3.org/ns/r2rml#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix dc: <http://purl.org/dc/elements/1.1#> .
-@prefix rev: <http://purl.org/stuff/rev#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1#> .
 @prefix ex: <http://example.com> .
 
 @base <http://mappingpedia.org/rdb2rdf/r2rml/tc/> .
@@ -21,16 +12,16 @@
 	rr:subjectMap [
 		rr:template "example.com/student_sport/Student={Student}.Sport={Sport}";
 		rr:termType rr:BlankNode;
-		rr:class <http://example.com/Student_sport>;
+		rr:class <http://example.com/student_sport>;
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Student_sport#student>;
+		rr:predicate <http://example.com/student_sport#student>;
 		rr:objectMap [ rr:column "Student"; rr:datatype xsd:string; ];
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/Student_sport#sport>;
+		rr:predicate <http://example.com/student_sport#sport>;
 		rr:objectMap [ rr:column "Sport"; rr:datatype xsd:string; ];
 	].
 
@@ -42,7 +33,7 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Student_sport>;
+		rr:constant <http://example.com/student_sport>;
 		rr:termType rr:IRI;
 		rr:class owl:Class;
 	];
@@ -60,14 +51,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Student_sport#student>;
+		rr:constant <http://example.com/student_sport#student>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Student_sport> ];
+		rr:objectMap [ rr:constant <http://example.com/student_sport> ];
 	];
 
 	rr:predicateObjectMap [
@@ -83,14 +74,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/Student_sport#sport>;
+		rr:constant <http://example.com/student_sport#sport>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/Student_sport> ];
+		rr:objectMap [ rr:constant <http://example.com/student_sport> ];
 	];
 
 	rr:predicateObjectMap [

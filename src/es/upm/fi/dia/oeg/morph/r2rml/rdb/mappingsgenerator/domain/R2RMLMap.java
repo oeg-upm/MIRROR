@@ -3,12 +3,14 @@ package es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.control.R2RMLProcess;
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.domain.R2RMLBase;
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.domain.R2RMLPrefix;
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.domain.R2RMLTriplesMap;
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.exception.R2RMLException;
+import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.main.R2RMLMapper;
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.persistency.base.IGateway;
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.persistency.impl.Gateway;
 
@@ -29,7 +31,9 @@ public class R2RMLMap {
 	public int indexPrefixSchema; // index for ex:
 
 	public static String enclosed_char = "\\" + "\"";
-	
+
+	private static final Logger log = Logger.getLogger(R2RMLMapper.class.getName());
+
 	/**
 	 * @return the filename
 	 */
@@ -387,7 +391,7 @@ public class R2RMLMap {
 		cObjectMap = new R2RMLObjectMap();
 		//pred = Character.toString(tables.get(1).charAt(0)).toUpperCase()+tables.get(1).substring(1) + "BelongsTo" +
 		//	   Character.toString(tables.get(0).charAt(0)).toUpperCase()+tables.get(0).substring(1);
-		String pred = tableRange + "has" + tableDomain;
+		String pred = tableRange + "Has" + tableDomain;
 		//pred = tab1 + "BelongsTo" + tab0;
 		cObjectMap.column = "[ rr:constant <" + this.template + "/" + R2RMLProcess.encodeURIcomponent(pred) + "> ]";
 
@@ -403,7 +407,7 @@ public class R2RMLMap {
 		R2RMLTriplesMap triplesMap;
 		
 		triplesMap = new R2RMLTriplesMap(this, R2RMLTriplesMap.TM_ONTO);
-		String objectPropertyName = tableRange + "has" + tableDomain;
+		String objectPropertyName = tableRange + "Has" + tableDomain;
 
 		triplesMap.comments.add("#");
 		triplesMap.comments.add("# inverseOf: " + objectPropertyName);
@@ -619,7 +623,7 @@ public class R2RMLMap {
 		return sqlQuery;
 	}
 	
-	public String buildSQLQuerySaturation(Properties fileProperties, String schema, String tableParent, String tableChild) {
+	public String buildSQLQuerySaturation(R2RMLProcess p, Properties fileProperties, String schema, String tableParent, String tableChild) {
 
 		// Conex�o � camada de dados
 		IGateway gateway = new Gateway();
@@ -634,7 +638,16 @@ public class R2RMLMap {
 		ArrayList<String> columnName = new ArrayList<String>();
 		ArrayList<String> dataType = new ArrayList<String>();
 		ArrayList<String> columnKey = new ArrayList<String>();
-
+		
+		String escape = "";
+		if(p.driver == p.DB_MYSQL) {
+			escape = "`";
+		} else
+		if(p.driver == p.DB_POSTGRESQL) {
+			escape = '\\' + Character.toString((char)34);
+			//escape = enclosed_char;
+		}
+			
 		
 		int r = (int) (Math.random() * 100000);
 		String aliasChild = "t_" + String.format("%05d", r);
@@ -651,11 +664,25 @@ public class R2RMLMap {
 		for(int k=0; k < columnName.size(); k++) {
 			// Add all fields of child
 			//sqlFields = sqlFields + r2 + "." + graph8.get(k) + ", " ;
-			sqlFields = sqlFields + aliasChild + ".`" + columnName.get(k) + "`, " ;
+			//sqlFields = sqlFields + aliasChild + ".`" + columnName.get(k) + "`, " ;
+			sqlFields = sqlFields + aliasChild + "." + escape + columnName.get(k) + escape + ", " ;
 			if(columnKey.get(k).equals("MUL")) {
 				// Add field join to the list
 				//joinChildPK.add(r2 + "." + graph8.get(k)); 
-				joinChildPK.add(aliasChild+ ".`" + columnName.get(k) + "`"); 
+				//joinChildPK.add(aliasChild+ ".`" + columnName.get(k) + "`"); 
+				joinChildPK.add(aliasChild+ "." + escape + columnName.get(k) + escape); 
+			}
+		}
+
+		// For the case of PK = FK (graph10 isn't "MUL")
+		if(joinChildPK.isEmpty()) {
+			for(int k=columnName.size()-1; k>=0; k--) {
+				if(columnKey.get(k).equals("PRIMARY KEY")) {
+					// Add field join to the list
+					//joinChildPK.add(r2 + "." + graph8.get(k));
+					//joinChildPK.add(aliasChild + ".`" + columnName.get(k) + "`");
+					joinChildPK.add(aliasChild + "." + escape + columnName.get(k) + escape);
+				}
 			}
 		}
 
@@ -669,33 +696,27 @@ public class R2RMLMap {
 		for(int k=0; k < columnName.size(); k++) {
 			if(!columnKey.get(k).equals("PRIMARY KEY")) {
 				//if(sqlFields.indexOf(r2 + "." + graph8.get(k)) > 0) {
-				if(sqlFields.indexOf(aliasChild + ".`" + columnName.get(k) + "`") > 0) {
+				//if(sqlFields.indexOf(aliasChild + ".`" + columnName.get(k) + "`") > 0) {
+				if(sqlFields.indexOf(aliasChild + "." + escape + columnName.get(k) + escape) > 0) {
 					//sqlFields = sqlFields + graph2.get(0) + "." + graph8.get(k) + " AS " + graph2.get(0) + "_" + graph8.get(k) + ", ";
-					sqlFields = sqlFields + aliasParent + ".`" + columnName.get(k) + "` AS `" + tableParent + "_" + columnName.get(k) + "`, ";
-					columnName.set(k, "`" + tableParent + "_" + columnName.get(k) + "`");
+					//sqlFields = sqlFields + aliasParent + ".`" + columnName.get(k) + "` AS `" + tableParent + "_" + columnName.get(k) + "`, ";
+					sqlFields = sqlFields + aliasParent + "." + escape + columnName.get(k) + escape + " AS " + escape + tableParent + "_" + columnName.get(k) + escape +", ";
+					//columnName.set(k, "`" + tableParent + "_" + columnName.get(k) + "`");
+					columnName.set(k, escape + tableParent + "_" + columnName.get(k) + escape);
 				} else {
 					//sqlFields = sqlFields + graph2.get(0) + "." + graph8.get(k) + ", ";
-					sqlFields = sqlFields + aliasParent + ".`" + columnName.get(k) + "`, ";
+					//sqlFields = sqlFields + aliasParent + ".`" + columnName.get(k) + "`, ";
+					sqlFields = sqlFields + aliasParent + "." + escape + columnName.get(k) + escape + ", ";
 				}
 			} else {
 				// Add field join to the list
 				//joinParentPK.add(graph2.get(0) + "." + graph8.get(k)); 
-				joinParentPK.add(aliasParent + ".`" + columnName.get(k) + "`"); 
+				//joinParentPK.add(aliasParent + ".`" + columnName.get(k) + "`"); 
+				joinParentPK.add(aliasParent + "." + escape + columnName.get(k) + escape); 
 			}
 		}
 		sqlFields = sqlFields.substring(0, sqlFields.length()-2);
 
-		// For the case of PK = FK (graph10 isn't "MUL")
-		if(joinChildPK.isEmpty()) {
-			for(int k=columnName.size()-1; k>=0; k--) {
-				if(columnKey.get(k).equals("PRIMARY KEY")) {
-					// Add field join to the list
-					//joinChildPK.add(r2 + "." + graph8.get(k));
-					joinChildPK.add(aliasChild + ".`" + columnName.get(k) + "`");
-				}
-			}
-		}
-		
 		// Build the join string
 		for(int k=0; k < joinParentPK.size(); k++) {
 			sqlJoin = "(" + sqlJoin + joinParentPK.get(k) + "=" + joinChildPK.get(k) + ")";
@@ -704,7 +725,8 @@ public class R2RMLMap {
 			}
 		}
 		// Add tables
-		sqlJoin = "`" + tableParent + "` AS " + aliasParent + " JOIN `" + tableChild + "` AS " + aliasChild + " ON " + sqlJoin; 
+		//sqlJoin = "`" + tableParent + "` AS " + aliasParent + " JOIN `" + tableChild + "` AS " + aliasChild + " ON " + sqlJoin; 
+		sqlJoin = escape + tableParent + escape + " AS " + aliasParent + " JOIN " + escape + tableChild + escape + " AS " + aliasChild + " ON " + sqlJoin; 
 
 		// Build SQL Command
 		sqlQuery = "SELECT " + sqlFields + " FROM " + sqlJoin;
