@@ -189,14 +189,15 @@ public class R2RMLMapper {
 
 		int len;
 
+		//System.out.println("v.0.4 beta");
+		log.info("MIRROR v.1.1.6 beta");
 		try {
 			if(p.verbose >= 1) {
 				//System.out.println("");
 				//System.out.println("MIRROR: MappIng from Relational to Rdf generatOR");
 				log.info("MIRROR: MappIng from Relational to Rdf generatOR");
 
-				//System.out.println("v.0.4 beta");
-				log.info("v.1.1.5 beta");
+
 
 				//System.out.println("---------------------------------------------------------");
 				log.info("---------------------------------------------------------");
