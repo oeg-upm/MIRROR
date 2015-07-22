@@ -519,14 +519,33 @@ public class R2RMLProcess {
 		map.prefix.clear();
         FileInputStream arquivoDePropriedades = null;
         try {
-
+        	
             int i=1;
             String prop;
+            Map<String, String> mapPrefixes = new HashMap<String, String>();
             while((prop=properties.getProperty("prefix"+i)) != null && i <= 100) {
             	String[] a = properties.getProperty("prefix"+i).split(",");
-        		map.prefix.add(new R2RMLPrefix(a[0], a[1]));
+        		//map.prefix.add(new R2RMLPrefix(a[0], a[1]));
+        		mapPrefixes.put(a[0], a[1]);
         		i++;
             }
+
+            Map<String, String> defaultPrefixes = R2RMLPrefix.defaultPrefixes;
+            for(String defaultPrefixKey : defaultPrefixes.keySet()) {
+	            if(!mapPrefixes.keySet().contains(defaultPrefixKey)) {
+	            	String defaultPrefixValue = defaultPrefixes.get(defaultPrefixKey);
+	            	String prefixKey = defaultPrefixKey;
+	            	String prefixValue = defaultPrefixValue;
+	            	mapPrefixes.put(defaultPrefixKey, defaultPrefixValue);
+	            	//map.prefix.add(new R2RMLPrefix(prefixKey, prefixValue));
+	            }
+            }
+            
+            for(String mapPrefixKey : mapPrefixes.keySet()) {
+            	String mapPrefixValue = mapPrefixes.get(mapPrefixKey);
+            	map.prefix.add(new R2RMLPrefix(mapPrefixKey, mapPrefixValue));
+            }
+            
             
     		// Add base 
     		if(compatible == COMPATIBLE_W3C) {
