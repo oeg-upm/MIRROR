@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>es.upm.fi.dia.oeg</groupId>
 	<artifactId>mirror</artifactId>
-	<version>1.1.5-SNAPSHOT</version>
+	<version>1.1.6-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<build>
 		<sourceDirectory>src</sourceDirectory>

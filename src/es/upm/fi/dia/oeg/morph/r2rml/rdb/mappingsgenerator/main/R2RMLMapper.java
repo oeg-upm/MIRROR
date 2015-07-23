@@ -33,7 +33,10 @@ public class R2RMLMapper {
 
 	private R2RMLProcess p = new R2RMLProcess();
 
-	
+	public R2RMLMapper() {
+		//System.out.println("v.0.4 beta");
+		log.info("MIRROR v.1.1.6 beta");
+	}
 
 	/**
 	 * @param args
@@ -66,6 +69,8 @@ public class R2RMLMapper {
 	}
 
 	public void run(Properties properties) {
+
+		
 		//System.out.println("Generating R2RML Mappings ...");
 		VerboseMode vm = new VerboseMode(); 
 
@@ -189,8 +194,7 @@ public class R2RMLMapper {
 
 		int len;
 
-		//System.out.println("v.0.4 beta");
-		log.info("MIRROR v.1.1.6 beta");
+
 		try {
 			if(p.verbose >= 1) {
 				//System.out.println("");

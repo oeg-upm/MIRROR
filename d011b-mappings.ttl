@@ -1,3 +1,8 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex: <http://example.com> .
 
 @base <http://mappingpedia.org/rdb2rdf/r2rml/tc/> .
@@ -121,7 +126,7 @@
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:sqlQuery "SELECT t_53314.\"ID\", t_53314.\"SID\", t_53314.\"Email\", t_78427.\"FirstName\", t_78427.\"LastName\" FROM \"student\" AS t_78427 JOIN \"contact\" AS t_53314 ON (t_78427.\"ID\"=t_53314.\"SID\")" 
+		rr:sqlQuery "SELECT t_79779.\"ID\", t_79779.\"SID\", t_79779.\"Email\", t_69334.\"FirstName\", t_69334.\"LastName\" FROM \"student\" AS t_69334 JOIN \"contact\" AS t_79779 ON (t_69334.\"ID\"=t_79779.\"SID\")" 
 	];
 
 	rr:subjectMap [
@@ -279,7 +284,7 @@
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:sqlQuery "SELECT DISTINCT t_14776.\"ID\" FROM (\"student\" AS t_14776 JOIN \"contact\" AS t_02625 ON ((t_14776.\"ID\"=t_02625.\"SID\")))" 
+		rr:sqlQuery "SELECT DISTINCT t_75598.\"ID\" FROM (\"student\" AS t_75598 JOIN \"contact\" AS t_37877 ON ((t_75598.\"ID\"=t_37877.\"SID\")))" 
 	];
 
 	rr:subjectMap [
@@ -406,7 +411,7 @@
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:sqlQuery "SELECT t_75576.\"ID\", t_75576.\"FirstName\", t_75576.\"LastName\", t_82751.\"SSN\" FROM \"person\" AS t_82751 JOIN \"student\" AS t_75576 ON (t_82751.\"ID\"=t_75576.\"ID\")" 
+		rr:sqlQuery "SELECT t_19320.\"ID\", t_19320.\"FirstName\", t_19320.\"LastName\", t_32350.\"SSN\" FROM \"person\" AS t_32350 JOIN \"student\" AS t_19320 ON (t_32350.\"ID\"=t_19320.\"ID\")" 
 	];
 
 	rr:subjectMap [
@@ -490,7 +495,7 @@
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:sqlQuery "SELECT DISTINCT t_93996.\"ID\" FROM (\"person\" AS t_93996 JOIN \"student\" AS t_44664 ON ((t_93996.\"ID\"=t_44664.\"ID\")))" 
+		rr:sqlQuery "SELECT DISTINCT t_88394.\"ID\" FROM (\"person\" AS t_88394 JOIN \"student\" AS t_99968 ON ((t_88394.\"ID\"=t_99968.\"ID\")))" 
 	];
 
 	rr:subjectMap [
@@ -754,7 +759,7 @@
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:sqlQuery "SELECT DISTINCT t_43799.\"ID_Student\" AS ID_Student, t_43799.\"ID_Sport\" AS ID_Sport FROM (\"sport\" AS t_83465 JOIN \"student_sport\" AS t_43799 ON ((t_83465.\"ID\"=t_43799.\"ID_Sport\"))) JOIN \"student\" AS t_58505 ON ((t_58505.\"ID\"=t_43799.\"ID_Student\"))" 
+		rr:sqlQuery "SELECT DISTINCT t_92007.\"ID_Student\" AS ID_Student, t_92007.\"ID_Sport\" AS ID_Sport FROM (\"sport\" AS t_04772 JOIN \"student_sport\" AS t_92007 ON ((t_04772.\"ID\"=t_92007.\"ID_Sport\"))) JOIN \"student\" AS t_87422 ON ((t_87422.\"ID\"=t_92007.\"ID_Student\"))" 
 	];
 
 	rr:subjectMap [
