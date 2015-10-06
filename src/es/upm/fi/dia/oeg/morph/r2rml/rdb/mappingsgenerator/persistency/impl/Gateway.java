@@ -593,7 +593,8 @@ public class Gateway implements IGateway {
 		"SELECT DISTINCT "+
 		"ccu.table_name AS R1, "+
 		"tc.table_name AS R2, "+
-		"tc.constraint_name AS C1 "+
+		"tc.constraint_name AS C1, "+
+		"kcu.column_name AS CN1 " + 
 		"FROM information_schema.table_constraints AS tc "+ 
 		"JOIN information_schema.key_column_usage AS kcu "+
 		"ON tc.constraint_name = kcu.constraint_name "+
@@ -1591,8 +1592,11 @@ public class Gateway implements IGateway {
 			stmt = con.prepareStatement(SQL_GETCOLUMNSFROMTABLENAME[database]);
 			stmt.setString(1, schema);
 			stmt.setString(2, tablename);
-			stmt.setString(3, schema);
-			stmt.setString(4, tablename);
+			if(database == DBTYPE_MYSQL) {
+				stmt.setString(3, schema);
+				stmt.setString(4, tablename);				
+			}
+
 			VerboseMode.verbose(stmt.toString(), VerboseMode.VERBOSE_SQL);
 			rs = stmt.executeQuery();
 
@@ -1755,8 +1759,11 @@ public class Gateway implements IGateway {
 			stmt = con.prepareStatement(SQL_GETCOLUMNSFROMTABLENAMEMXN[database]);
 			stmt.setString(1, schema);
 			stmt.setString(2, tablename);
-			stmt.setString(3, schema);
-			stmt.setString(4, tablename);
+			if(database == DBTYPE_MYSQL) {
+				stmt.setString(3, schema);
+				stmt.setString(4, tablename);				
+			}
+
 			VerboseMode.verbose(stmt.toString(), VerboseMode.VERBOSE_SQL);
 			rs = stmt.executeQuery();
 

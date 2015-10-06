@@ -40,7 +40,7 @@ public class R2RMLMapper {
 
 	public R2RMLMapper() {
 		//System.out.println("v.0.4 beta");
-		log.info("MIRROR v.1.1.6 beta");
+		log.info("MIRROR v.1.2 beta");
 	}
 
 	/**
@@ -289,11 +289,11 @@ public class R2RMLMapper {
 			}
 		} catch (MIRRORException e) {
 			// TODO Auto-generated catch block
-			log.log(Level.SEVERE, e.toString(), e);
-			e.printStackTrace();
+			log.log(Level.SEVERE, "", e);
+			//e.printStackTrace();
 		}
 		log.info("Mappings generated.");
-		log.info("");
+		//log.info("");
 	}
 
 	public String getGeneratedMappingsFile() {
