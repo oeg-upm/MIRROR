@@ -1,3 +1,8 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex: <http://example.com> .
 
 @base <http://mappingpedia.org/rdb2rdf/r2rml/tc/> .
@@ -6,28 +11,28 @@
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:tableName "ious"; 
+		rr:tableName "person"; 
 	];
 
 	rr:subjectMap [
-		rr:template "example.com/ious/fname={fname}.lname={lname}.amount={amount}";
-		rr:termType rr:BlankNode;
-		rr:class <http://example.com/ious>;
+		rr:template "http://example.com/person/{ID}";
+		rr:termType rr:IRI;
+		rr:class <http://example.com/person>;
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/ious#fname>;
-		rr:objectMap [ rr:column "fname"; rr:datatype xsd:string; ];
+		rr:predicate <http://example.com/person#id>;
+		rr:objectMap [ rr:column "ID"; rr:datatype xsd:integer; ];
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/ious#lname>;
-		rr:objectMap [ rr:column "lname"; rr:datatype xsd:string; ];
+		rr:predicate <http://example.com/person#name>;
+		rr:objectMap [ rr:column "Name"; rr:datatype xsd:string; ];
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/ious#amount>;
-		rr:objectMap [ rr:column "amount"; rr:datatype xsd:double; ];
+		rr:predicate <http://example.com/person#dateofbirth>;
+		rr:objectMap [ rr:column "DateOfBirth"; rr:datatype xsd:string; ];
 	].
 
 <#TriplesMap2>
@@ -38,7 +43,7 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/ious>;
+		rr:constant <http://example.com/person>;
 		rr:termType rr:IRI;
 		rr:class owl:Class;
 	];
@@ -56,19 +61,19 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/ious#fname>;
+		rr:constant <http://example.com/person#id>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/ious> ];
+		rr:objectMap [ rr:constant <http://example.com/person> ];
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:range;
-		rr:objectMap [ rr:constant xsd:string ];
+		rr:objectMap [ rr:constant xsd:integer ];
 	].
 
 <#TriplesMap4>
@@ -79,14 +84,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/ious#lname>;
+		rr:constant <http://example.com/person#name>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/ious> ];
+		rr:objectMap [ rr:constant <http://example.com/person> ];
 	];
 
 	rr:predicateObjectMap [
@@ -102,18 +107,18 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/ious#amount>;
+		rr:constant <http://example.com/person#dateofbirth>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/ious> ];
+		rr:objectMap [ rr:constant <http://example.com/person> ];
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:range;
-		rr:objectMap [ rr:constant xsd:double ];
+		rr:objectMap [ rr:constant xsd:string ];
 	].
 

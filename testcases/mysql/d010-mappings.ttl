@@ -1,3 +1,8 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex: <http://example.com> .
 
 @base <http://mappingpedia.org/rdb2rdf/r2rml/tc/> .
@@ -6,28 +11,28 @@
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:tableName "student"; 
+		rr:tableName "\"country info\""; 
 	];
 
 	rr:subjectMap [
-		rr:template "http://example.com/student/{ID}/{Name}";
+		rr:template "http://example.com/country info/{\"Country Code\"}";
 		rr:termType rr:IRI;
-		rr:class <http://example.com/student>;
+		rr:class <http://example.com/country%20info>;
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/student#id>;
-		rr:objectMap [ rr:column "ID"; rr:datatype xsd:integer; ];
+		rr:predicate <http://example.com/country%20info#country%20code>;
+		rr:objectMap [ rr:column "\"Country Code\""; rr:datatype xsd:integer; ];
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/student#name>;
+		rr:predicate <http://example.com/country%20info#name>;
 		rr:objectMap [ rr:column "Name"; rr:datatype xsd:string; ];
 	];
 
 	rr:predicateObjectMap [
-		rr:predicate <http://example.com/student#sport>;
-		rr:objectMap [ rr:column "Sport"; rr:datatype xsd:string; ];
+		rr:predicate <http://example.com/country%20info#iso%203166>;
+		rr:objectMap [ rr:column "\"ISO 3166\""; rr:datatype xsd:string; ];
 	].
 
 <#TriplesMap2>
@@ -38,7 +43,7 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/student>;
+		rr:constant <http://example.com/country%20info>;
 		rr:termType rr:IRI;
 		rr:class owl:Class;
 	];
@@ -56,14 +61,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/student#id>;
+		rr:constant <http://example.com/country%20info#country%20code>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/student> ];
+		rr:objectMap [ rr:constant <http://example.com/country%20info> ];
 	];
 
 	rr:predicateObjectMap [
@@ -79,14 +84,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/student#name>;
+		rr:constant <http://example.com/country%20info#name>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/student> ];
+		rr:objectMap [ rr:constant <http://example.com/country%20info> ];
 	];
 
 	rr:predicateObjectMap [
@@ -102,14 +107,14 @@
 	];
 
 	rr:subjectMap [
-		rr:constant <http://example.com/student#sport>;
+		rr:constant <http://example.com/country%20info#iso%203166>;
 		rr:termType rr:IRI;
 		rr:class owl:DatatypeProperty;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/student> ];
+		rr:objectMap [ rr:constant <http://example.com/country%20info> ];
 	];
 
 	rr:predicateObjectMap [

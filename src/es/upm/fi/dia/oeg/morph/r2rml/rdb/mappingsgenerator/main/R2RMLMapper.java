@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 //import org.apache.log4j.PropertyConfigurator;
 
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.control.R2RMLProcess;
-import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.exception.R2RMLException;
+import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.exception.MIRRORException;
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.util.VerboseMode;
 
 /**
@@ -30,6 +30,11 @@ import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.util.VerboseMode;
 public class R2RMLMapper {
 	//PropertyConfigurator.configure("log4j.properties");
 	private static final Logger log = Logger.getLogger("R2RMLMapper");
+	private String outputDirectory = "";
+	
+	public void setOutputDirectory(String outputDirectory) {
+		this.outputDirectory = outputDirectory;
+	}
 
 	private R2RMLProcess p = new R2RMLProcess();
 
@@ -40,9 +45,9 @@ public class R2RMLMapper {
 
 	/**
 	 * @param args
-	 * @throws R2RMLException 
+	 * @throws MIRRORException 
 	 */
-	public static void main(String[] args) throws R2RMLException {
+	public static void main(String[] args) throws MIRRORException {
 		// TODO Auto-generated method stub
 		Properties properties = new Properties();
 		FileInputStream arquivoDePropriedades = null;
@@ -56,12 +61,12 @@ public class R2RMLMapper {
 			StringBuffer mensagem = new StringBuffer("R2RML file properties not found");
 			mensagem.append("\nMotive: " + exc.getMessage());
 			log.log(Level.SEVERE, exc.toString(), exc);
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} catch(IOException exc) {
 			StringBuffer mensagem = new StringBuffer("I/O error in loading properties");
 			mensagem.append("\nMotive: " + exc.getMessage());
 			log.log(Level.SEVERE, exc.toString(), exc);
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		}
 
 
@@ -97,10 +102,10 @@ public class R2RMLMapper {
 		if(p.schema == null) { p.schema = properties.getProperty("database.name[0]"); }
 
 		p.outputFile = properties.getProperty("outputfile");
-		if(p.outputFile == null) { p.outputFile = p.schema + "-mappings.ttl"; }
+		if(p.outputFile == null) { p.outputFile = outputDirectory + p.schema + "-mappings.ttl"; }
 
 		p.filelog = properties.getProperty("logfile");
-		if(p.filelog == null) { p.filelog = p.schema + ".log"; }
+		if(p.filelog == null) { p.filelog = outputDirectory + p.schema + ".log"; }
 
 
 		p.prefix = properties.getProperty("prefix");
@@ -282,7 +287,7 @@ public class R2RMLMapper {
 					log.info("End of generation.");
 				}
 			}
-		} catch (R2RMLException e) {
+		} catch (MIRRORException e) {
 			// TODO Auto-generated catch block
 			log.log(Level.SEVERE, e.toString(), e);
 			e.printStackTrace();

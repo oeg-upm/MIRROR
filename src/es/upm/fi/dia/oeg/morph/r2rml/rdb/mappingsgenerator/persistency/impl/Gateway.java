@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.exception.R2RMLException;
+import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.exception.MIRRORException;
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.persistency.base.IGateway;
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.util.VerboseMode;
 
@@ -677,10 +677,10 @@ public class Gateway implements IGateway {
 
 	public void getViewsFromSchema(Properties properties
 			, ArrayList<String> listTableNames, ArrayList<String> listViewDefinition
-			, String schema) throws R2RMLException {
+			, String schema) throws MIRRORException {
 		if((listTableNames == null) || (listViewDefinition == null)) {
 			String mensagem = "Lists for views not informed.";
-			throw new R2RMLException(mensagem);
+			throw new MIRRORException(mensagem);
 		}
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -714,14 +714,14 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Could not query the tables from specified schema.");
 			mensagem.append("\nReason: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
 	}
 
 
-	public long countRecordsFromRelationship(Properties properties, String dbName, String parentTable, String childTable, String parentPK, String childPK) throws R2RMLException {
+	public long countRecordsFromRelationship(Properties properties, String dbName, String parentTable, String childTable, String parentPK, String childPK) throws MIRRORException {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -749,14 +749,14 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Could not account records number.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
 		return n;
 	}
 
-	public boolean checkRelationship1x1(Properties properties, String DBName, String parentTable, String childTable, String parentPK, String childPK) throws R2RMLException {
+	public boolean checkRelationship1x1(Properties properties, String DBName, String parentTable, String childTable, String parentPK, String childPK) throws MIRRORException {
 		Connection con = null;
 		//PreparedStatement stmt = null;
 		Statement stmt = null;
@@ -792,7 +792,7 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Unable to check the cardinality.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			//ConnectionManager.closeConnection(con, stmt, rs);
 			ConnectionManager.closeConnection(con);
@@ -800,7 +800,7 @@ public class Gateway implements IGateway {
 		return check;
 	}
 
-	public boolean checkRelationshipISA(Properties properties, String schema, String parentTable, String childTable) throws R2RMLException {
+	public boolean checkRelationshipISA(Properties properties, String schema, String parentTable, String childTable) throws MIRRORException {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -832,7 +832,7 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Unable to check ISA relationship.");
 			mensagem.append("\nMotive: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -872,7 +872,7 @@ public class Gateway implements IGateway {
 	// -----------------------------------------------------------------------------------------------------------------
 
 
-	public void createDatabaseFromSchema(Properties properties, String DBname) throws R2RMLException {
+	public void createDatabaseFromSchema(Properties properties, String DBname) throws MIRRORException {
 		Connection con = null;
 		Statement stmt = null;
 
@@ -887,14 +887,14 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Unable to create the database.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con);
 		}
 
 	}
 
-	public void dropDatabaseFromSchema(Properties properties, String DBname) throws R2RMLException {
+	public void dropDatabaseFromSchema(Properties properties, String DBname) throws MIRRORException {
 		Connection con = null;
 		Statement stmt = null;
 
@@ -908,14 +908,14 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Unable to delete the database.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con);
 		}
 
 	}
 
-	public void useDatabase(Properties properties, String DBname) throws R2RMLException {
+	public void useDatabase(Properties properties, String DBname) throws MIRRORException {
 		Connection con = null;
 		Statement stmt = null;
 
@@ -929,14 +929,14 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Can't open the database.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con);
 		}
 
 	}
 
-	public void generalCommand(Properties properties, String DBname, String command) throws R2RMLException {
+	public void generalCommand(Properties properties, String DBname, String command) throws MIRRORException {
 		Connection con = null;
 		Statement stmt = null;
 
@@ -951,14 +951,14 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Unable to execute SQL general command.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con);
 		}
 
 	}
 
-	public int getColumnsFromSQLQuery(Properties properties, String DBname, String query, ArrayList<String> columns, ArrayList<String> type, ArrayList<String> key) throws R2RMLException {
+	public int getColumnsFromSQLQuery(Properties properties, String DBname, String query, ArrayList<String> columns, ArrayList<String> type, ArrayList<String> key) throws MIRRORException {
 
 		Connection con = null;
 		Statement stmt = null;
@@ -994,7 +994,7 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Unable to execute SQL query");
 			mensagem.append("\nMotivo: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con);
 		}
@@ -1002,13 +1002,13 @@ public class Gateway implements IGateway {
 		return countColumns;
 	}
 
-	public void getSchemaRelationshipAll(Properties properties, ArrayList<String> arq1, ArrayList<String> arq2, ArrayList<String> arq3, ArrayList<String> arq4) throws R2RMLException {
+	public void getSchemaRelationshipAll(Properties properties, ArrayList<String> arq1, ArrayList<String> arq2, ArrayList<String> arq3, ArrayList<String> arq4) throws MIRRORException {
 		if((arq1 == null) ||
 				(arq2 == null) || 
 				(arq3 == null) || 
 				(arq4 == null)) {
 			String mensagem = "List for R2RML not passed.";
-			throw new R2RMLException(mensagem);
+			throw new MIRRORException(mensagem);
 		}
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -1054,20 +1054,20 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Unable to query the general schema.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
 
 	}
-	public void getSchemaRelationshipDetail(Properties properties, ArrayList<String> arq1, ArrayList<String> arq2, ArrayList<String> arq3, ArrayList<String> arq4, String tablename) throws R2RMLException {
+	public void getSchemaRelationshipDetail(Properties properties, ArrayList<String> arq1, ArrayList<String> arq2, ArrayList<String> arq3, ArrayList<String> arq4, String tablename) throws MIRRORException {
 
 		if((arq1 == null) ||
 				(arq2 == null) || 
 				(arq3 == null) || 
 				(arq4 == null)) {
 			String mensagem = "Lists for R2RML not passed.";
-			throw new R2RMLException(mensagem);
+			throw new MIRRORException(mensagem);
 		}
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -1112,16 +1112,16 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Unable to query the detailed schema.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
 	}
 
-	public void getSchemaRelationRightAll(Properties properties, ArrayList<String> arq1) throws R2RMLException {
+	public void getSchemaRelationRightAll(Properties properties, ArrayList<String> arq1) throws MIRRORException {
 		if((arq1 == null)) {
 			String mensagem = "List for R2RML not passed.";
-			throw new R2RMLException(mensagem);
+			throw new MIRRORException(mensagem);
 		}
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -1152,13 +1152,13 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Unable to query all right tables.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
 	}
 
-	public int getSchemaRelationLeftCount(Properties properties, String tablename) throws R2RMLException {
+	public int getSchemaRelationLeftCount(Properties properties, String tablename) throws MIRRORException {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -1184,7 +1184,7 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Unable to account the left tables.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1192,10 +1192,10 @@ public class Gateway implements IGateway {
 
 	}
 
-	public void getSchemaRelationLeftDetail(Properties properties, ArrayList<String> arq1, String tablename) throws R2RMLException {
+	public void getSchemaRelationLeftDetail(Properties properties, ArrayList<String> arq1, String tablename) throws MIRRORException {
 		if((arq1 == null)) {
 			String mensagem = "List for R2RML not passed.";
-			throw new R2RMLException(mensagem);
+			throw new MIRRORException(mensagem);
 		}
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -1226,16 +1226,16 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Unable to query the left table detailed.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
 	}
 
-	public void getSchemaColumnsName(Properties properties, ArrayList<String> arq1, String tablename) throws R2RMLException {
+	public void getSchemaColumnsName(Properties properties, ArrayList<String> arq1, String tablename) throws MIRRORException {
 		if((arq1 == null)) {
 			String mensagem = "List for R2RML not passed.";
-			throw new R2RMLException(mensagem);
+			throw new MIRRORException(mensagem);
 		}
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -1268,13 +1268,13 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Unable to query the columns of the specified table.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
 	}
 
-	public int getSchemaColumnsNameCount(Properties properties, String tablename) throws R2RMLException {
+	public int getSchemaColumnsNameCount(Properties properties, String tablename) throws MIRRORException {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -1300,7 +1300,7 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Unable to account table columns.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1312,10 +1312,10 @@ public class Gateway implements IGateway {
 	public void getTablesFromSchema(Properties properties
 			, List<String> listTableNames, List<String> listTableTypes
 			, String schema) 
-					throws R2RMLException {
+					throws MIRRORException {
 		if((listTableNames == null) || (listTableTypes == null)) {
 			String mensagem = "Lists for tables not informed.";
-			throw new R2RMLException(mensagem);
+			throw new MIRRORException(mensagem);
 		}
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -1349,7 +1349,7 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Can't query the tables from specified schema.");
 			mensagem.append("\nReason: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1357,10 +1357,10 @@ public class Gateway implements IGateway {
 
 	public void getTablesViewsFromSchema(Properties properties, List<String> arq1
 			, List<String> arq2, String schema, Map<String, String> mapTableTypes) 
-					throws R2RMLException {
+					throws MIRRORException {
 		if((arq1 == null) || (arq2 == null)) {
 			String mensagem = "Lists for tables and views not informed.";
-			throw new R2RMLException(mensagem);
+			throw new MIRRORException(mensagem);
 		}
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -1397,7 +1397,7 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Can't query the tables from specified schema.");
 			mensagem.append("\nReason: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1405,10 +1405,10 @@ public class Gateway implements IGateway {
 
 	public void getRelationshipsFromSchema(Properties properties
 			, List<String> listColumnNames, List<String> listReferencedTableNames
-			, String schema, String tablename) throws R2RMLException {
+			, String schema, String tablename) throws MIRRORException {
 		if((listColumnNames == null) || (listReferencedTableNames == null)) {
 			String mensagem = "List for relationships not informed.";
-			throw new R2RMLException(mensagem);
+			throw new MIRRORException(mensagem);
 		}
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -1444,7 +1444,7 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Can't query the relationships from specified schema and table.");
 			mensagem.append("\nReason: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1453,10 +1453,10 @@ public class Gateway implements IGateway {
 	public void getKeysFromConstraint(Properties properties
 			, List<String> listColumnNames
 			, List<String> listReferencedTableNames
-			, ArrayList<String> listReferencedColumnNames, String schema, String constraint) throws R2RMLException {
+			, ArrayList<String> listReferencedColumnNames, String schema, String constraint) throws MIRRORException {
 		if((listColumnNames == null) || (listReferencedTableNames == null)) {
 			String mensagem = "List for keys or tables not informed.";
-			throw new R2RMLException(mensagem);
+			throw new MIRRORException(mensagem);
 		}
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -1493,16 +1493,16 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Can't query the keys of relationships from specified constraint.");
 			mensagem.append("\nReason: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
 	}
 
-	public boolean hasPrimaryKey(Properties properties, String schema, String tablename, ArrayList<String> columns) throws R2RMLException {
+	public boolean hasPrimaryKey(Properties properties, String schema, String tablename, ArrayList<String> columns) throws MIRRORException {
 		if((columns == null)) {
 			String mensagem = "List for columns not passed.";
-			throw new R2RMLException(mensagem);
+			throw new MIRRORException(mensagem);
 		}
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -1539,7 +1539,7 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Unable to find PK.");
 			mensagem.append("\nReason: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1547,7 +1547,7 @@ public class Gateway implements IGateway {
 		return(hasPK);
 	}
 
-	public boolean isPrimaryKey(Properties properties, String schema, String tablename, String column) throws R2RMLException {
+	public boolean isPrimaryKey(Properties properties, String schema, String tablename, String column) throws MIRRORException {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -1586,7 +1586,7 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Unable to ask if field is PK.");
 			mensagem.append("\nReason: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1596,13 +1596,13 @@ public class Gateway implements IGateway {
 
 	public void getColumnsFromTableName(Properties properties
 			, List<String> listColumnNames, List<String> listReferencedTableNames
-			, List<String> listColumnKeys, String schema, String tablename) throws R2RMLException {
+			, List<String> listColumnKeys, String schema, String tablename) throws MIRRORException {
 		if((listColumnNames == null) 
 				|| (listReferencedTableNames == null)
 				|| (listColumnKeys == null)
 				) {
 			String mensagem = "List for columns not informed.";
-			throw new R2RMLException(mensagem);
+			throw new MIRRORException(mensagem);
 		}
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -1647,22 +1647,22 @@ public class Gateway implements IGateway {
 				}
 			}
 
-		} catch (SQLException exc) {
+		} catch (SQLException e) {
 			StringBuffer mensagem = new StringBuffer("Can't query the columns from specified tablename.");
-			mensagem.append("\nReason: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			mensagem.append("\nReason: " + e.getMessage());
+			throw new MIRRORException(mensagem.toString(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
 	}
 
-	public void getColumnsFromTableNameMxN(Properties properties, ArrayList<String> arq1, ArrayList<String> arq2, ArrayList<String> arq3, String schema, String tablename) throws R2RMLException {
+	public void getColumnsFromTableNameMxN(Properties properties, ArrayList<String> arq1, ArrayList<String> arq2, ArrayList<String> arq3, String schema, String tablename) throws MIRRORException {
 		if((arq1 == null) 
 				|| (arq2 == null)
 				|| (arq3 == null)
 				) {
 			String mensagem = "List for columns not informed.";
-			throw new R2RMLException(mensagem);
+			throw new MIRRORException(mensagem);
 		}
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -1710,19 +1710,19 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Can't query the columns from specified tablename.");
 			mensagem.append("\nReason: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
 	}
 
-	public void getPKColumnsFromTableName(Properties properties, ArrayList<String> arq1, ArrayList<String> arq2, ArrayList<String> arq3, String schema, String tablename) throws R2RMLException {
+	public void getPKColumnsFromTableName(Properties properties, ArrayList<String> arq1, ArrayList<String> arq2, ArrayList<String> arq3, String schema, String tablename) throws MIRRORException {
 		if((arq1 == null) 
 				|| (arq2 == null)
 				|| (arq3 == null)
 				) {
 			String mensagem = "List for columns not informed.";
-			throw new R2RMLException(mensagem);
+			throw new MIRRORException(mensagem);
 		}
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -1768,7 +1768,7 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Can't query the PK columns from such tablename.");
 			mensagem.append("\nReason: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1779,7 +1779,7 @@ public class Gateway implements IGateway {
 			ArrayList<String> arq2, 
 			ArrayList<String> arq3, 
 			ArrayList<String> arq4, 
-			ArrayList<String> arq5, String schema) throws R2RMLException {
+			ArrayList<String> arq5, String schema) throws MIRRORException {
 		if((arq1 == null) 
 				|| (arq2 == null)
 				|| (arq3 == null)
@@ -1787,7 +1787,7 @@ public class Gateway implements IGateway {
 				|| (arq5 == null)
 				) {
 			String mensagem = "Lists for relationships not informed.";
-			throw new R2RMLException(mensagem);
+			throw new MIRRORException(mensagem);
 		}
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -1830,17 +1830,17 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Can't query the relationships from specified schema.");
 			mensagem.append("\nReason: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
 	}
 
 	public void getRightTablesFromSchemaAll(Properties properties
-			, List<String> arq1, String schema) throws R2RMLException {
+			, List<String> arq1, String schema) throws MIRRORException {
 		if((arq1 == null)) {
 			String mensagem = "List for right tables not informed.";
-			throw new R2RMLException(mensagem);
+			throw new MIRRORException(mensagem);
 		}
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -1871,13 +1871,13 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Can't query the all tables from specified schema.");
 			mensagem.append("\nReason: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
 	}
 
-	public int getRelationshipsFromRightTableCount(Properties properties, String schema, String tablename) throws R2RMLException {
+	public int getRelationshipsFromRightTableCount(Properties properties, String schema, String tablename) throws MIRRORException {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -1904,7 +1904,7 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Can't account the relationships from right table and schema.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1929,7 +1929,7 @@ public class Gateway implements IGateway {
 			List<String> listIsNullable,
 			List<String> listConstraintNames,
 			String schema,
-			String tablename) throws R2RMLException {
+			String tablename) throws MIRRORException {
 
 		if((listParentTables == null) ||
 				(listPK == null) || 
@@ -1939,7 +1939,7 @@ public class Gateway implements IGateway {
 				(listConstraintNames == null) 
 				) {
 			String mensagem = "Lists for relationships fields not informed.";
-			throw new R2RMLException(mensagem);
+			throw new MIRRORException(mensagem);
 		}
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -1990,13 +1990,13 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Can't query the detailed relationships from table and schema.");
 			mensagem.append("\nReason: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
 	}
 
-	public int getColumnsFromTableNameCount(Properties properties, String schema, String tablename) throws R2RMLException {
+	public int getColumnsFromTableNameCount(Properties properties, String schema, String tablename) throws MIRRORException {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -2023,7 +2023,7 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Can't account the relationships from right table and schema.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -2035,11 +2035,11 @@ public class Gateway implements IGateway {
 	/* getConstraintsFromTableName */
 	public void getConstraintsFromTableName(Properties properties
 			, List<String> listColumnNames, List<String> listDataTypes
-			, List<String> arq3, List<String> listReferencedColumnNames, String schema, String tablename) throws R2RMLException {
+			, List<String> arq3, List<String> listReferencedColumnNames, String schema, String tablename) throws MIRRORException {
 
 		if((listColumnNames == null) || (listDataTypes == null) || (arq3 == null)) {
 			String mensagem = "Lists for constraints not informed.";
-			throw new R2RMLException(mensagem);
+			throw new MIRRORException(mensagem);
 		}
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -2078,7 +2078,7 @@ public class Gateway implements IGateway {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Can't query the relationships from specified schema and table.");
 			mensagem.append("\nReason: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}

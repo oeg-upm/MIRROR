@@ -29,7 +29,7 @@ import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.domain.R2RMLPrefix;
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.domain.R2RMLSubjectMap;
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.domain.R2RMLTriplesMap;
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.domain.SQLColumn;
-import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.exception.R2RMLException;
+import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.exception.MIRRORException;
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.util.Combine;
 
 public class R2RMLProcess {
@@ -140,7 +140,7 @@ public class R2RMLProcess {
 	}
 	
 	// R2RMLPrint - class for printing the R2RML file
-	public void R2RMLPrint() throws R2RMLException {
+	public void R2RMLPrint() throws MIRRORException {
 		
 		PrintWriter output;
 		try {
@@ -364,7 +364,7 @@ public class R2RMLProcess {
 	}
 	
 	// R2RMLPreprocessing - class for preprocessing the schema database and generates the log
-	public void R2RMLPreprocessing() throws R2RMLException {
+	public void R2RMLPreprocessing() throws MIRRORException {
 
 		PrintWriter output;
 
@@ -498,7 +498,7 @@ public class R2RMLProcess {
 	}
 		
 	// R2RMLBuild - class that performs the job
-	public void R2RMLBuild() throws R2RMLException {
+	public void R2RMLBuild() throws MIRRORException {
 
 
 		// Datatype translation
@@ -560,7 +560,7 @@ public class R2RMLProcess {
         } catch(Exception e) {
             StringBuffer mensagem = new StringBuffer("Exception occured");
             mensagem.append("\nMotive: " + e.getMessage());
-            throw new R2RMLException(mensagem.toString());
+            throw new MIRRORException(mensagem.toString());
         }
 		
 		map.prefix.add(new R2RMLPrefix(prefix, IRI));
@@ -1638,7 +1638,7 @@ public class R2RMLProcess {
 	}
 	
 	// R2RMLCreateSchema - install the database schema in the DBMS
-	public void R2RMLCreateSchema() throws R2RMLException {
+	public void R2RMLCreateSchema() throws MIRRORException {
 
 		// Connect with commands layer
 		IGateway gateway = new Gateway();
@@ -1711,7 +1711,7 @@ public class R2RMLProcess {
 	}
 	
 	// R2RMLDropSchema - delete the database schema from DBMS
-	public void R2RMLDropSchema() throws R2RMLException {
+	public void R2RMLDropSchema() throws MIRRORException {
 
 		// Connect with commands layer
 		IGateway gateway = new Gateway();
@@ -1722,7 +1722,7 @@ public class R2RMLProcess {
 	}
 
 	// R2RMLClearMap - class for cleaning the buffers
-	public void R2RMLClearMap() throws R2RMLException {
+	public void R2RMLClearMap() throws MIRRORException {
 		map.clear();
 	}
 	

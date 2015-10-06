@@ -9,7 +9,7 @@ import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.control.R2RMLProcess;
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.domain.R2RMLBase;
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.domain.R2RMLPrefix;
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.domain.R2RMLTriplesMap;
-import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.exception.R2RMLException;
+import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.exception.MIRRORException;
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.main.R2RMLMapper;
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.persistency.base.IGateway;
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.persistency.impl.Gateway;
@@ -657,7 +657,7 @@ public class R2RMLMap {
 		// Get the child fields
 		try {
 			gateway.getColumnsFromTableName(fileProperties, columnName, dataType, columnKey, schema, tableChild);
-		} catch (R2RMLException e) {
+		} catch (MIRRORException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -689,7 +689,7 @@ public class R2RMLMap {
 		// Get the parent fields
 		try {
 			gateway.getColumnsFromTableName(fileProperties, columnName, dataType, columnKey, schema, tableParent);
-		} catch (R2RMLException e) {
+		} catch (MIRRORException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

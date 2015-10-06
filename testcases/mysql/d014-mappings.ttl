@@ -1,3 +1,8 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex: <http://example.com> .
 
 @base <http://mappingpedia.org/rdb2rdf/r2rml/tc/> .
@@ -331,7 +336,7 @@
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:sqlQuery "SELECT DISTINCT t_97337.\"deptno\" FROM (\"dept\" AS t_97337 JOIN \"emp\" AS t_18013 ON ((t_97337.\"deptno\"=t_18013.\"deptno\")))" 
+		rr:sqlQuery "SELECT DISTINCT t_67767.\"deptno\" FROM (\"dept\" AS t_67767 JOIN \"emp\" AS t_40435 ON ((t_67767.\"deptno\"=t_40435.\"deptno\")))" 
 	];
 
 	rr:subjectMap [

@@ -1,3 +1,8 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ex: <http://example.com> .
 
 @base <http://mappingpedia.org/rdb2rdf/r2rml/tc/> .
@@ -10,14 +15,9 @@
 	];
 
 	rr:subjectMap [
-		rr:template "example.com/student/ID={ID}.Name={Name}";
+		rr:template "example.com/student/Name={Name}";
 		rr:termType rr:BlankNode;
 		rr:class <http://example.com/student>;
-	];
-
-	rr:predicateObjectMap [
-		rr:predicate <http://example.com/student#id>;
-		rr:objectMap [ rr:column "ID"; rr:datatype xsd:integer; ];
 	];
 
 	rr:predicateObjectMap [
@@ -44,29 +44,6 @@
 	].
 
 <#TriplesMap3>
-	a rr:TriplesMap;
-
-	rr:logicalTable [ 
-		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
-	];
-
-	rr:subjectMap [
-		rr:constant <http://example.com/student#id>;
-		rr:termType rr:IRI;
-		rr:class owl:DatatypeProperty;
-	];
-
-	rr:predicateObjectMap [
-		rr:predicate rdfs:domain;
-		rr:objectMap [ rr:constant <http://example.com/student> ];
-	];
-
-	rr:predicateObjectMap [
-		rr:predicate rdfs:range;
-		rr:objectMap [ rr:constant xsd:integer ];
-	].
-
-<#TriplesMap4>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 

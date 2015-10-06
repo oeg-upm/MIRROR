@@ -9,7 +9,7 @@ import java.util.Properties;
 
 import org.junit.Test;
 
-import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.exception.R2RMLException;
+import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.exception.MIRRORException;
 
 public class DirectGraphTestSuitePostgreSQLTest {
 	private void run(String propertiesFile) {
@@ -100,7 +100,7 @@ public class DirectGraphTestSuitePostgreSQLTest {
 	
 	@Test
 	public void testDirectGraphTC0011() {
-		String propertiesFile = "testcases/DirectGraphTC0011.morph.properties";
+		String propertiesFile = "testcases/postgresql/DirectGraphTC0011.morph.properties";
 		this.run(propertiesFile);
 	}
 	

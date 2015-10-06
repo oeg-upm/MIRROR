@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.exception.R2RMLException;
+import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.exception.MIRRORException;
 
 /**
  *
@@ -28,7 +28,7 @@ public class ConnectionManager {
 	//private static Connection cachedConnection = null;
 
 
-	public static void init(int DBindex, Properties properties) throws R2RMLException {
+	public static void init(int DBindex, Properties properties) throws MIRRORException {
 		try {
 			//if(DBindex == 0) {
 			//arquivoDePropriedades = new FileInputStream("C:\\Users\\Moser\\workspace\\R2RMLApp\\mysql.cfg");
@@ -63,12 +63,12 @@ public class ConnectionManager {
 			exc.printStackTrace();
 			StringBuffer mensagem = new StringBuffer("Não foi possível conectar com banco de dados");
 			mensagem.append("\nMotivo: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		}
 
 	}
 
-	public static Connection manageConnection(int DBindex, Properties properties) throws R2RMLException {
+	public static Connection manageConnection(int DBindex, Properties properties) throws MIRRORException {
 		try {
 			init(DBindex, properties);
 
@@ -80,13 +80,13 @@ public class ConnectionManager {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Não foi possível estabelecer conexão para criação de BD");
 			mensagem.append("\nMotivo: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		}
 	}
 
 
 
-	public static Connection getConnection(int DBindex, Properties properties) throws R2RMLException {
+	public static Connection getConnection(int DBindex, Properties properties) throws MIRRORException {
 		Connection connection = null;
 		try {
 			init(DBindex, properties);
@@ -119,13 +119,13 @@ public class ConnectionManager {
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Didn't possible to establish connection!");
 			mensagem.append("\nError Message: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		}
 
 
 }
 
-public static Connection getConnectionDB(int DBindex, String DBname, Properties properties) throws R2RMLException {
+public static Connection getConnectionDB(int DBindex, String DBname, Properties properties) throws MIRRORException {
 		Connection connection = null;
 		try {
 			init(DBindex, properties);
@@ -151,21 +151,21 @@ public static Connection getConnectionDB(int DBindex, String DBname, Properties 
 		} catch (SQLException exc) {
 			StringBuffer mensagem = new StringBuffer("Não foi possível estabelecer conexão nomeada com banco de dados");
 			mensagem.append("\nMotivo: " + exc.getMessage());
-			throw new R2RMLException(mensagem.toString());
+			throw new MIRRORException(mensagem.toString());
 		}
 
 }
 
 
-public static void closeConnection(Connection con) throws R2RMLException {
+public static void closeConnection(Connection con) throws MIRRORException {
 	closeConnection(con, null, null);
 }
 
-public static void closeConnection(Connection con, PreparedStatement stmt) throws R2RMLException {
+public static void closeConnection(Connection con, PreparedStatement stmt) throws MIRRORException {
 	closeConnection(con, stmt, null);
 }
 
-public static void closeConnection(Connection con, PreparedStatement stmt, ResultSet rs) throws R2RMLException {
+public static void closeConnection(Connection con, PreparedStatement stmt, ResultSet rs) throws MIRRORException {
 	try {
 		if (rs != null){
 			rs.close();
@@ -181,7 +181,7 @@ public static void closeConnection(Connection con, PreparedStatement stmt, Resul
 	} catch(SQLException exc){
 		StringBuffer mensagem = new StringBuffer("Não foi possível finalizar a conexão com banco de dados");
 		mensagem.append("\nMotivo: " + exc.getMessage());
-		throw new R2RMLException(mensagem.toString());
+		throw new MIRRORException(mensagem.toString());
 	}
 }
 
