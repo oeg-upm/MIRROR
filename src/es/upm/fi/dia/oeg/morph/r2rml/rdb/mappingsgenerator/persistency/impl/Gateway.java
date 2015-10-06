@@ -20,7 +20,19 @@ import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.util.VerboseMode;
 public class Gateway implements IGateway {
 
 	private static int database; 
-
+	private static byte DBTYPE_MYSQL = 0;
+	private static byte DBTYPE_POSTGRESQL = 1;
+	private static byte DBTYPE_MSSQLSERVER = 2;
+	
+	public static final String[] SQL_COUNTRECORDSFROMRELATIONSHIP = {
+		//MYSQL
+		"SELECT COUNT(*) AS N "+ "FROM `?1`.`?2` AS C JOIN `?3`.`?4` AS P ON C.`?5`=P.`?6`"
+		//POSTGRESQL
+		, "SELECT COUNT(*) AS N "+ "FROM \"?2\" JOIN \"?4\" ON \"?2\".\"?5\"=\"?4\".\"?6\""
+		//MSSQLServer (Not tested yet)
+		, "SELECT COUNT(*) AS N "+ "FROM `?1`.`?2` AS C JOIN `?3`.`?4` AS P ON C.`?5`=P.`?6`"
+	};
+			
 	public static final String SQL_GETSCHEMARELATIONSHIPALL = 
 			"SELECT S1.table_name AS R1, S1.column_name AS FIELD, S2.table_name AS R2, S2.is_nullable AS NULLABLE "+
 					"FROM INFORMATION_SCHEMA.COLUMNS AS S1, INFORMATION_SCHEMA.COLUMNS AS S2 "+
@@ -220,9 +232,9 @@ public class Gateway implements IGateway {
 		"AND CONSTRAINT_NAME = ?",
 		// PostgreSQL
 		"SELECT DISTINCT "+
-		"ccu.column_name AS COLUMN_NAME, "+ 
+		"kcu.column_name AS COLUMN_NAME, "+ 
 		"ccu.table_name AS REFERENCED_TABLE_NAME, "+ 
-		"kcu.column_name AS REFERENCED_COLUMN_NAME "+
+		"ccu.column_name AS REFERENCED_COLUMN_NAME "+
 		"FROM information_schema.table_constraints AS tc "+ 
 		"JOIN information_schema.key_column_usage AS kcu "+
 		"ON tc.constraint_name = kcu.constraint_name "+
@@ -732,10 +744,38 @@ public class Gateway implements IGateway {
 
 		try {
 			con = ConnectionManager.getConnection(database, properties);
-			String cmd = "SELECT COUNT(*) AS N "+
-					"FROM `"+dbName+"`.`"+childTable+"` AS C JOIN `"+
-					dbName+"`.`"+parentTable+"` AS P ON C.`"+childPK+"`=P.`"+parentPK+"`";
-			//System.out.println(cmd);
+//			String cmd = "SELECT COUNT(*) AS N "+
+//					"FROM `"+dbName+"`.`"+childTable+"` AS C JOIN `"+
+//					dbName+"`.`"+parentTable+"` AS P ON C.`"+childPK+"`=P.`"+parentPK+"`";
+//			System.out.println(cmd);
+//			stmt = con.prepareStatement(cmd);
+			
+			String cmd = SQL_COUNTRECORDSFROMRELATIONSHIP[database];
+			if(database == DBTYPE_MYSQL || database == DBTYPE_MSSQLSERVER) {
+				//stmt.setString(1, dbName);
+				cmd = cmd.replace("?1", dbName);
+				
+//				stmt.setString(2, childTable);
+				cmd = cmd.replace("?2", childTable);
+				
+//				stmt.setString(3, dbName);
+				cmd = cmd.replace("?3", dbName);
+				
+//				stmt.setString(4, parentTable);
+				cmd = cmd.replace("?4", parentTable);
+				
+//				stmt.setString(5, childPK);
+				cmd = cmd.replace("?5", childPK);
+				
+//				stmt.setString(6, parentPK);
+				cmd = cmd.replace("?6", parentPK);
+			} else if(database == DBTYPE_POSTGRESQL) {
+				cmd = cmd.replace("?2", childTable);
+				cmd = cmd.replace("?4", parentTable);
+				cmd = cmd.replace("?5", childPK);
+				cmd = cmd.replace("?6", parentPK);
+				
+			}
 			stmt = con.prepareStatement(cmd);
 			VerboseMode.verbose(stmt.toString(), VerboseMode.VERBOSE_SQL);
 			rs = stmt.executeQuery();
@@ -1619,8 +1659,11 @@ public class Gateway implements IGateway {
 			stmt = con.prepareStatement(SQL_GETCOLUMNSFROMTABLENAME[database]);
 			stmt.setString(1, schema);
 			stmt.setString(2, tablename);
-			stmt.setString(3, schema);
-			stmt.setString(4, tablename);
+			if(database == DBTYPE_MYSQL) {
+				stmt.setString(3, schema);
+				stmt.setString(4, tablename);				
+			}
+
 			VerboseMode.verbose(stmt.toString(), VerboseMode.VERBOSE_SQL);
 			rs = stmt.executeQuery();
 
