@@ -514,12 +514,12 @@ public class Gateway implements IGateway {
 		"ORDER BY PARENT, R1.ORDINAL_POSITION",
 		// PostgreSQL
 		"SELECT DISTINCT "+
-		"ccu.table_name AS R1, "+
-		"ccu.column_name AS REF_FIELD, "+ 
-		"tc.table_name AS R2, "+ 
-		"kcu.column_name AS FIELD, "+ 
+		"ccu.table_name AS PARENT, "+
+		"ccu.column_name AS PK, "+ 
+		"tc.table_name AS CHILD, "+ 
+		"kcu.column_name AS FK, "+ 
 		"c.is_nullable AS NULLABLE, "+ 
-		"tc.constraint_name AS C1 "+
+		"tc.constraint_name AS CONSTRAINT_NAME "+
 		"FROM information_schema.table_constraints AS tc "+ 
 		"JOIN information_schema.key_column_usage AS kcu "+
 		"ON tc.constraint_name = kcu.constraint_name "+
@@ -531,15 +531,15 @@ public class Gateway implements IGateway {
 		"AND tc.table_catalog = ? "+
 		"AND tc.table_schema = 'public' "+ 
 		"AND tc.table_name = ?"+
-		"ORDER BY R1",
+		"ORDER BY PARENT",
 		// SQL Server
 		"SELECT  "+
-		"OBJECT_NAME(fc.referenced_object_id) R1, "+
-		"COL_NAME(fc.referenced_object_id,fc.referenced_column_id) REF_FIELD, "+
-		"OBJECT_NAME(f.parent_object_id) R2, "+
-		"COL_NAME(fc.parent_object_id,fc.parent_column_id) FIELD, "+
+		"OBJECT_NAME(fc.referenced_object_id) PARENT, "+
+		"COL_NAME(fc.referenced_object_id,fc.referenced_column_id) PK, "+
+		"OBJECT_NAME(f.parent_object_id) CHILD, "+
+		"COL_NAME(fc.parent_object_id,fc.parent_column_id) FK, "+
 		"c.is_nullable AS NULLABLE, "+
-		"f.name C1 "+
+		"f.name CONSTRAINT_NAME "+
 		"FROM sys.foreign_keys AS f "+
 		"INNER JOIN sys.foreign_key_columns AS fc ON f.OBJECT_ID = fc.constraint_object_id "+
 		"INNER JOIN sys.tables t ON t.OBJECT_ID = fc.referenced_object_id "+
