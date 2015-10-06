@@ -23,16 +23,43 @@ public class Gateway implements IGateway {
 	private static byte DBTYPE_MYSQL = 0;
 	private static byte DBTYPE_POSTGRESQL = 1;
 	private static byte DBTYPE_MSSQLSERVER = 2;
-	
+
 	public static final String[] SQL_COUNTRECORDSFROMRELATIONSHIP = {
 		//MYSQL
-		"SELECT COUNT(*) AS N "+ "FROM `?1`.`?2` AS C JOIN `?3`.`?4` AS P ON C.`?5`=P.`?6`"
+		"SELECT COUNT(*) AS N "+ "FROM `?dbName`.`?childTable` AS C JOIN `?dbName`.`?parentTable` AS P ON C.`?childPK`=P.`?parentPK`"
 		//POSTGRESQL
-		, "SELECT COUNT(*) AS N "+ "FROM \"?2\" JOIN \"?4\" ON \"?2\".\"?5\"=\"?4\".\"?6\""
-		//MSSQLServer (Not tested yet)
-		, "SELECT COUNT(*) AS N "+ "FROM `?1`.`?2` AS C JOIN `?3`.`?4` AS P ON C.`?5`=P.`?6`"
+		, "SELECT COUNT(*) AS N "+ "FROM \"?childTable\" JOIN \"?parentTable\" ON \"?childTable\".\"?childPK\"=\"?parentTable\".\"?parentPK\""
+				//MSSQLServer (Not tested yet)
+				, "SELECT COUNT(*) AS N "+ "FROM \"?childTable\" JOIN \"?parentTable\" ON \"?childTable\".\"?childPK\"=\"?parentTable\".\"?parentPK\""
 	};
-			
+
+	public String generateSQLCountRecordsFromRelationship(String dbName, String childTable
+			, String parentTable, String childPK, String parentPK) {
+		String cmd = SQL_COUNTRECORDSFROMRELATIONSHIP[database];
+		cmd = cmd.replace("?childTable", childTable);
+		cmd = cmd.replace("?parentTable", parentTable);
+		cmd = cmd.replace("?childPK", childPK);
+		cmd = cmd.replace("?parentPK", parentPK);
+		cmd = cmd.replace("?dbName", dbName);
+
+		return cmd;
+	}
+
+	public static final String SQL_CheckRelationship1x1[] = {
+			"SELECT COUNT(*) AS TOTAL "+"FROM ( ?subquery GROUP BY C.`?childPK` HAVING N>1 "+") AS internal_query;"
+			,"SELECT COUNT(*) AS TOTAL "+"FROM ( ?subquery GROUP BY \"?childTable\".\"?childPK\" HAVING COUNT(*)>1 "+") AS internal_query;"
+			, "SELECT COUNT(*) AS TOTAL "+"FROM ( ?subquery GROUP BY \"?childTable\".\"?childPK\" HAVING COUNT(*)>1 "+") AS internal_query;"
+	};
+
+	public String generateSQLCheckRelationship1x1(String subquery, String childTable, String childPK) {
+		String cmd = SQL_CheckRelationship1x1[database];
+		//System.out.println(cmd);
+		cmd = cmd.replace("?subquery", subquery);
+		cmd = cmd.replace("?childTable", childTable);
+		cmd = cmd.replace("?childPK", childPK);
+		return cmd;
+	}
+	
 	public static final String SQL_GETSCHEMARELATIONSHIPALL = 
 			"SELECT S1.table_name AS R1, S1.column_name AS FIELD, S2.table_name AS R2, S2.is_nullable AS NULLABLE "+
 					"FROM INFORMATION_SCHEMA.COLUMNS AS S1, INFORMATION_SCHEMA.COLUMNS AS S2 "+
@@ -744,38 +771,40 @@ public class Gateway implements IGateway {
 
 		try {
 			con = ConnectionManager.getConnection(database, properties);
-//			String cmd = "SELECT COUNT(*) AS N "+
-//					"FROM `"+dbName+"`.`"+childTable+"` AS C JOIN `"+
-//					dbName+"`.`"+parentTable+"` AS P ON C.`"+childPK+"`=P.`"+parentPK+"`";
-//			System.out.println(cmd);
-//			stmt = con.prepareStatement(cmd);
-			
-			String cmd = SQL_COUNTRECORDSFROMRELATIONSHIP[database];
-			if(database == DBTYPE_MYSQL || database == DBTYPE_MSSQLSERVER) {
-				//stmt.setString(1, dbName);
-				cmd = cmd.replace("?1", dbName);
-				
-//				stmt.setString(2, childTable);
-				cmd = cmd.replace("?2", childTable);
-				
-//				stmt.setString(3, dbName);
-				cmd = cmd.replace("?3", dbName);
-				
-//				stmt.setString(4, parentTable);
-				cmd = cmd.replace("?4", parentTable);
-				
-//				stmt.setString(5, childPK);
-				cmd = cmd.replace("?5", childPK);
-				
-//				stmt.setString(6, parentPK);
-				cmd = cmd.replace("?6", parentPK);
-			} else if(database == DBTYPE_POSTGRESQL) {
-				cmd = cmd.replace("?2", childTable);
-				cmd = cmd.replace("?4", parentTable);
-				cmd = cmd.replace("?5", childPK);
-				cmd = cmd.replace("?6", parentPK);
-				
-			}
+			//			String cmd = "SELECT COUNT(*) AS N "+
+			//					"FROM `"+dbName+"`.`"+childTable+"` AS C JOIN `"+
+			//					dbName+"`.`"+parentTable+"` AS P ON C.`"+childPK+"`=P.`"+parentPK+"`";
+			//			System.out.println(cmd);
+			//			stmt = con.prepareStatement(cmd);
+
+			//			String cmd = SQL_COUNTRECORDSFROMRELATIONSHIP[database];
+			//			if(database == DBTYPE_MYSQL || database == DBTYPE_MSSQLSERVER) {
+			//				//stmt.setString(1, dbName);
+			//				cmd = cmd.replace("?1", dbName);
+			//				
+			////				stmt.setString(2, childTable);
+			//				cmd = cmd.replace("?2", childTable);
+			//				
+			////				stmt.setString(3, dbName);
+			//				cmd = cmd.replace("?3", dbName);
+			//				
+			////				stmt.setString(4, parentTable);
+			//				cmd = cmd.replace("?4", parentTable);
+			//				
+			////				stmt.setString(5, childPK);
+			//				cmd = cmd.replace("?5", childPK);
+			//				
+			////				stmt.setString(6, parentPK);
+			//				cmd = cmd.replace("?6", parentPK);
+			//			} else if(database == DBTYPE_POSTGRESQL) {
+			//				cmd = cmd.replace("?2", childTable);
+			//				cmd = cmd.replace("?4", parentTable);
+			//				cmd = cmd.replace("?5", childPK);
+			//				cmd = cmd.replace("?6", parentPK);
+			//				
+			//			}
+
+			String cmd = this.generateSQLCountRecordsFromRelationship(dbName, childTable, parentTable, childPK, parentPK);
 			stmt = con.prepareStatement(cmd);
 			VerboseMode.verbose(stmt.toString(), VerboseMode.VERBOSE_SQL);
 			rs = stmt.executeQuery();
@@ -796,7 +825,7 @@ public class Gateway implements IGateway {
 		return n;
 	}
 
-	public boolean checkRelationship1x1(Properties properties, String DBName, String parentTable, String childTable, String parentPK, String childPK) throws MIRRORException {
+	public boolean checkRelationship1x1(Properties properties, String dbName, String parentTable, String childTable, String parentPK, String childPK) throws MIRRORException {
 		Connection con = null;
 		//PreparedStatement stmt = null;
 		Statement stmt = null;
@@ -809,16 +838,20 @@ public class Gateway implements IGateway {
 		boolean check = false;
 		try {
 			con = ConnectionManager.getConnection(database, properties);
-			String cmd = "SELECT COUNT(*) AS TOTAL "+
-					"FROM ( "+
-					"SELECT COUNT(*) AS N "+
-					"FROM `"+childTable+"` AS C JOIN `"+parentTable+"` AS P ON C.`"+childPK+"`=P.`"+parentPK+"` "+
-					"GROUP BY C.`"+childPK+"` HAVING N>1 "+
-					") AS internal_query;";
-			//System.out.println(cmd);
+			String subquery = this.generateSQLCountRecordsFromRelationship(dbName, childTable, parentTable, childPK, parentPK);
+
+			//			String cmd = "SELECT COUNT(*) AS TOTAL "+
+			//					"FROM ( "+
+			//					"SELECT COUNT(*) AS N "+
+			//					"FROM `"+childTable+"` AS C JOIN `"+parentTable+"` AS P ON C.`"+childPK+"`=P.`"+parentPK+"` "+
+			//					"GROUP BY C.`"+childPK+"` HAVING N>1 "+
+			//					") AS internal_query;";
+			
+			String cmd = this.generateSQLCheckRelationship1x1(subquery, childTable, childPK);
+
 			stmt = con.createStatement();
-			stmt.executeUpdate("USE "+DBName+";");
-			stmt = con.prepareStatement(cmd);
+			//stmt.executeUpdate("USE "+dbName+";");
+			//stmt = con.prepareStatement(cmd);
 			VerboseMode.verbose(stmt.toString(), VerboseMode.VERBOSE_SQL);
 			rs = stmt.executeQuery(cmd);
 
@@ -1015,7 +1048,7 @@ public class Gateway implements IGateway {
 		try {
 			con = ConnectionManager.getConnectionDB(database, DBname, properties);
 			//con = ConnectionManager.getConnectionDB(database, DBname, properties);
-			
+
 			stmt = con.createStatement();
 			//stmt.executeUpdate("SET FOREIGN_KEY_CHECKS=0;");
 			rs = stmt.executeQuery(query);
