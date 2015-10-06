@@ -28,9 +28,9 @@ public class Gateway implements IGateway {
 		//MYSQL
 		"SELECT COUNT(*) AS N "+ "FROM `?dbName`.`?childTable` AS C JOIN `?dbName`.`?parentTable` AS P ON C.`?childPK`=P.`?parentPK`"
 		//POSTGRESQL
-		, "SELECT COUNT(*) AS N "+ "FROM \"?childTable\" JOIN \"?parentTable\" ON \"?childTable\".\"?childPK\"=\"?parentTable\".\"?parentPK\""
+		, "SELECT COUNT(*) AS N "+ "FROM \"?childTable\" AS C JOIN \"?parentTable\" AS P ON C.\"?childPK\"=P.\"?parentPK\""
 				//MSSQLServer (Not tested yet)
-				, "SELECT COUNT(*) AS N "+ "FROM \"?childTable\" JOIN \"?parentTable\" ON \"?childTable\".\"?childPK\"=\"?parentTable\".\"?parentPK\""
+		, "SELECT COUNT(*) AS N "+ "FROM \"?childTable\" AS C JOIN \"?parentTable\" AS P ON C.\"?childPK\"=P.\"?parentPK\""
 	};
 
 	public String generateSQLCountRecordsFromRelationship(String dbName, String childTable
@@ -47,8 +47,8 @@ public class Gateway implements IGateway {
 
 	public static final String SQL_CheckRelationship1x1[] = {
 			"SELECT COUNT(*) AS TOTAL "+"FROM ( ?subquery GROUP BY C.`?childPK` HAVING N>1 "+") AS internal_query;"
-			,"SELECT COUNT(*) AS TOTAL "+"FROM ( ?subquery GROUP BY \"?childTable\".\"?childPK\" HAVING COUNT(*)>1 "+") AS internal_query;"
-			, "SELECT COUNT(*) AS TOTAL "+"FROM ( ?subquery GROUP BY \"?childTable\".\"?childPK\" HAVING COUNT(*)>1 "+") AS internal_query;"
+			,"SELECT COUNT(*) AS TOTAL "+"FROM ( ?subquery GROUP BY C.\"?childPK\" HAVING COUNT(*)>1 "+") AS internal_query;"
+			, "SELECT COUNT(*) AS TOTAL "+"FROM ( ?subquery GROUP BY C.\"?childPK\" HAVING COUNT(*)>1 "+") AS internal_query;"
 	};
 
 	public String generateSQLCheckRelationship1x1(String subquery, String childTable, String childPK) {
@@ -837,6 +837,7 @@ public class Gateway implements IGateway {
 		int n = 0;
 
 		boolean check = false;
+		String cmd;
 		try {
 			con = ConnectionManager.getConnection(database, properties);
 			String subquery = this.generateSQLCountRecordsFromRelationship(dbName, childTable, parentTable, childPK, parentPK);
@@ -848,7 +849,7 @@ public class Gateway implements IGateway {
 			//					"GROUP BY C.`"+childPK+"` HAVING N>1 "+
 			//					") AS internal_query;";
 			
-			String cmd = this.generateSQLCheckRelationship1x1(subquery, childTable, childPK);
+			cmd = this.generateSQLCheckRelationship1x1(subquery, childTable, childPK);
 
 			stmt = con.createStatement();
 			//stmt.executeUpdate("USE "+dbName+";");
@@ -1574,6 +1575,7 @@ public class Gateway implements IGateway {
 	}
 
 	public boolean hasPrimaryKey(Properties properties, String schema, String tablename, ArrayList<String> columns) throws MIRRORException {
+		//System.out.println("hasPrimaryKey started.");
 		if((columns == null)) {
 			String mensagem = "List for columns not passed.";
 			throw new MIRRORException(mensagem);
@@ -1621,6 +1623,7 @@ public class Gateway implements IGateway {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
 
+		//System.out.println("hasPrimaryKey terminated.");
 		return(hasPK);
 	}
 

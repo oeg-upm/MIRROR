@@ -178,6 +178,8 @@ public static void closeConnection(Connection con, PreparedStatement stmt, Resul
 		if (con != null){
 			con.close();
 		}
+		
+		//System.out.println("Connection closed");
 	} catch(SQLException exc){
 		StringBuffer mensagem = new StringBuffer("Não foi possível finalizar a conexão com banco de dados");
 		mensagem.append("\nMotivo: " + exc.getMessage());

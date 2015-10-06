@@ -284,7 +284,7 @@
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:sqlQuery "SELECT DISTINCT t_50366.\"???\", t_84422.\"?\" FROM (\"??\" AS t_50366 JOIN \"??\" AS t_50664 ON ((t_84422.\"?\"=t_50664.\"???\")))" 
+		rr:sqlQuery "SELECT DISTINCT t_53388.\"???\", t_68326.\"?\" FROM (\"??\" AS t_53388 JOIN \"??\" AS t_00011 ON ((t_68326.\"?\"=t_00011.\"???\")))" 
 	];
 
 	rr:subjectMap [

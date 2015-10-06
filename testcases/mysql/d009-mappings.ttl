@@ -252,7 +252,7 @@
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:sqlQuery "SELECT DISTINCT t_53435.\"ID\" FROM (\"sport\" AS t_53435 JOIN \"student\" AS t_05088 ON ((t_53435.\"ID\"=t_05088.\"Sport\")))" 
+		rr:sqlQuery "SELECT DISTINCT t_70203.\"ID\" FROM (\"sport\" AS t_70203 JOIN \"student\" AS t_39441 ON ((t_70203.\"ID\"=t_39441.\"Sport\")))" 
 	];
 
 	rr:subjectMap [

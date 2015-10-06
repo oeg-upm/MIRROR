@@ -396,6 +396,7 @@ public class R2RMLProcess {
 			boolean isView;
 			
 			for(String t: listTableNames) {
+				log.info("Analyzing " + t + " ...");
 				//isView = graph7.get(listTableNames.indexOf(t)).contains("VIEW");
 				isView = this.mapTableTypes.get(t).contains("VIEW");
 				

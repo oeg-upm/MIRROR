@@ -275,12 +275,14 @@ public class R2RMLMapper {
 					log.info("Using schema "+ p.schema +" in DB (" + db + ") ...");
 					log.info("Preprocessing: " + p.inputFile + "...");
 				}
+				log.info("Running proprocessing ....");
 				p.R2RMLPreprocessing();
 
-				if(p.verbose >= 1) {
+				//if(p.verbose >= 1) {
 					log.info("Building R2RML mapping: " + p.outputFile + "...");
-				}
+				//}
 				p.R2RMLBuild();
+				
 				p.R2RMLPrint();
 
 				if(p.verbose >= 1) {

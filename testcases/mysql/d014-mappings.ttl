@@ -336,7 +336,7 @@
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:sqlQuery "SELECT DISTINCT t_67767.\"deptno\" FROM (\"dept\" AS t_67767 JOIN \"emp\" AS t_40435 ON ((t_67767.\"deptno\"=t_40435.\"deptno\")))" 
+		rr:sqlQuery "SELECT DISTINCT t_30099.\"deptno\" FROM (\"dept\" AS t_30099 JOIN \"emp\" AS t_64289 ON ((t_30099.\"deptno\"=t_64289.\"deptno\")))" 
 	];
 
 	rr:subjectMap [
