@@ -19,6 +19,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 //import org.apache.log4j.PropertyConfigurator;
 
+import java.util.regex.Pattern;
+
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.control.R2RMLProcess;
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.exception.MIRRORException;
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.util.VerboseMode;
@@ -92,8 +94,10 @@ public class R2RMLMapper {
 		}
 
 		String tableRegex = properties.getProperty("table.regex");
-		p.tableRegex = tableRegex; 
-
+		if(tableRegex != null) {
+			p.pattern = Pattern.compile(tableRegex);	
+		}
+		
 		
 		//System.setProperty("file.encoding", "UTF-8");
 
@@ -293,12 +297,14 @@ public class R2RMLMapper {
 					log.info("End of generation.");
 				}
 			}
+			log.info("Mappings generated.");
 		} catch (MIRRORException e) {
 			// TODO Auto-generated catch block
 			log.log(Level.SEVERE, "", e);
 			//e.printStackTrace();
+			log.warning("Mappings generation failed.");
 		}
-		log.info("Mappings generated.");
+		
 		//log.info("");
 	}
 

@@ -143,7 +143,7 @@ public class R2RMLMapperTestExamples {
 
 	@Test // 19
 	public void testBiobi() {
-		String propertiesFile = "C:/Users/fpriyatna/workspace_luna_java/morph-biobi/mappings" + "/biobi.morph.properties";
+		String propertiesFile = ".." + "/biobi.morph.properties";
 		this.run(propertiesFile);
 	}
 	
