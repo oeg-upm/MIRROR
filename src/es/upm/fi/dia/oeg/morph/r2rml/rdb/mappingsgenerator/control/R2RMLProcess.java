@@ -115,6 +115,8 @@ public class R2RMLProcess {
 	public static String enclosed_mysql = "`";
 	public static String enclosed_char = "\\" + "\"";
 	
+	public String tableRegex;
+	
 	public R2RMLProcess() {
 		//this.graph = new ArrayList<String>();
 		this.listTableNames = new ArrayList<String>();
@@ -396,6 +398,16 @@ public class R2RMLProcess {
 			boolean isView;
 			
 			for(String t: listTableNames) {
+				boolean matches = false;
+				
+				if(this.tableRegex == null) {
+						matches = true;
+				} else {
+					matches = t.matches(this.tableRegex);
+					log.info("Table " + t + " matches with " + this.tableRegex);
+				}
+				
+				
 				log.info("Analyzing table " + t + " ...");
 				//isView = graph7.get(listTableNames.indexOf(t)).contains("VIEW");
 				isView = this.mapTableTypes.get(t).contains("VIEW");
@@ -498,6 +510,8 @@ public class R2RMLProcess {
 		
 	}
 		
+
+	
 	// R2RMLBuild - class that performs the job
 	public void R2RMLBuild() throws MIRRORException {
 
@@ -1415,9 +1429,11 @@ public class R2RMLProcess {
 		// -------------------------------------------------------
 		// TABLES WITHOUT RELATIONSHIPS
 		// -------------------------------------------------------
+		log.log(Level.INFO, "Building Triples Map for tables without relationship ...");
 		gateway.getTablesFromSchema(properties, graph11, graph15, schema);
 		
 		for(String t: graph11) {
+			log.log(Level.INFO, "\tBuilding Triples Map for table: " + t);
 			if((triplesMap = map.find(t)) == null) {
 				if(verbose >= 2) {
 					System.out.println("Table without relationship: " + t);

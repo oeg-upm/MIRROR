@@ -316,34 +316,7 @@ public class Gateway implements IGateway {
 		"AND c.table_catalog = ? "+
 	"AND c.table_name = ?"};
 
-//	//fpriyatna
-//	public static final String[] SQL_GETCOLUMNSFROMTABLENAME = { 
-//		// MySQL
-//		"(SELECT COLUMN_NAME, DATA_TYPE, COLUMN_KEY "+
-//		"FROM INFORMATION_SCHEMA.COLUMNS "+
-//		"WHERE TABLE_SCHEMA = ? "+
-//		"AND TABLE_NAME = ? "+
-//		"AND COLUMN_KEY = 'PRI')"+
-//		"UNION"+
-//		"(SELECT COLUMN_NAME, DATA_TYPE, COLUMN_KEY "+
-//		"FROM INFORMATION_SCHEMA.COLUMNS "+
-//		"WHERE TABLE_SCHEMA = ? "+
-//		"AND TABLE_NAME = ? "+
-//		"AND COLUMN_KEY <> 'PRI')",
-//		// PostgreSQL
-//		"SELECT kc.column_name , c.data_type, tc.constraint_name AS column_key "+
-//		"FROM information_schema.table_constraints tc,  information_schema.key_column_usage kc, information_schema.columns AS c  "+
-//		"WHERE tc.constraint_type = 'PRIMARY KEY' AND kc.table_name = tc.table_name AND kc.table_schema = tc.table_schema AND kc.constraint_name = tc.constraint_name  "+
-//		"AND tc.table_catalog = c.table_catalog AND tc.table_name = c.table_name AND kc.column_name = c.column_name " +
-//		"AND tc.table_catalog = ? AND tc.table_name = ?",
-//		// SQL Server
-//		"SELECT c.column_name, c.data_type, ccu.constraint_name AS COLUMN_KEY "+
-//		"FROM information_schema.columns AS c "+
-//		"LEFT OUTER JOIN information_schema.constraint_column_usage AS ccu "+
-//		"ON (c.column_name = ccu.column_name) AND (c.table_name = ccu.table_name) "+
-//		"WHERE c.table_schema = 'guest' "+
-//		"AND c.table_catalog = ? "+
-//	"AND c.table_name = ?"};
+
 	
 	public static final String[] SQL_GETCOLUMNSFROMTABLENAMEMXN = { 
 		// MySQL
@@ -1677,9 +1650,11 @@ public class Gateway implements IGateway {
 				while(rs.next()) {
 					n1 = rs.getString("COLUMN_NAME");
 					n2 = rs.getString("COLUMN_KEY");
-					if(n2.equals("PRI") || n2.contains("pkey")) {
-						hasPK = true;
-						columns.add(n1);
+					if(n2 != null) {
+						if(n2.equals("PRI") || n2.contains("pkey")) {
+							hasPK = true;
+							columns.add(n1);
+						}						
 					}
 				}
 			}

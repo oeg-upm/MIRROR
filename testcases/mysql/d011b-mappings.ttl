@@ -126,7 +126,7 @@
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:sqlQuery "SELECT t_33652.\"ID\", t_33652.\"SID\", t_33652.\"Email\", t_14584.\"FirstName\", t_14584.\"LastName\" FROM \"student\" AS t_14584 JOIN \"contact\" AS t_33652 ON (t_14584.\"ID\"=t_33652.\"SID\")" 
+		rr:sqlQuery "SELECT t_92332.\"ID\", t_92332.\"SID\", t_92332.\"Email\", t_72180.\"FirstName\", t_72180.\"LastName\" FROM \"student\" AS t_72180 JOIN \"contact\" AS t_92332 ON (t_72180.\"ID\"=t_92332.\"SID\")" 
 	];
 
 	rr:subjectMap [
@@ -284,7 +284,7 @@
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:sqlQuery "SELECT DISTINCT t_57784.\"ID\" FROM (\"student\" AS t_57784 JOIN \"contact\" AS t_77652 ON ((t_57784.\"ID\"=t_77652.\"SID\")))" 
+		rr:sqlQuery "SELECT DISTINCT t_72040.\"ID\" FROM (\"student\" AS t_72040 JOIN \"contact\" AS t_40102 ON ((t_72040.\"ID\"=t_40102.\"SID\")))" 
 	];
 
 	rr:subjectMap [
@@ -411,7 +411,7 @@
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:sqlQuery "SELECT t_42683.\"ID\", t_42683.\"FirstName\", t_42683.\"LastName\", t_05240.\"SSN\" FROM \"person\" AS t_05240 JOIN \"student\" AS t_42683 ON (t_05240.\"ID\"=t_42683.\"ID\")" 
+		rr:sqlQuery "SELECT t_06676.\"ID\", t_06676.\"FirstName\", t_06676.\"LastName\", t_48832.\"SSN\" FROM \"person\" AS t_48832 JOIN \"student\" AS t_06676 ON (t_48832.\"ID\"=t_06676.\"ID\")" 
 	];
 
 	rr:subjectMap [
@@ -495,7 +495,7 @@
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:sqlQuery "SELECT DISTINCT t_65622.\"ID\" FROM (\"person\" AS t_65622 JOIN \"student\" AS t_87341 ON ((t_65622.\"ID\"=t_87341.\"ID\")))" 
+		rr:sqlQuery "SELECT DISTINCT t_87355.\"ID\" FROM (\"person\" AS t_87355 JOIN \"student\" AS t_66973 ON ((t_87355.\"ID\"=t_66973.\"ID\")))" 
 	];
 
 	rr:subjectMap [
@@ -759,7 +759,7 @@
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:sqlQuery "SELECT DISTINCT t_43128.\"ID_Student\" AS ID_Student, t_43128.\"ID_Sport\" AS ID_Sport FROM (\"sport\" AS t_54609 JOIN \"student_sport\" AS t_43128 ON ((t_54609.\"ID\"=t_43128.\"ID_Sport\"))) JOIN \"student\" AS t_94674 ON ((t_94674.\"ID\"=t_43128.\"ID_Student\"))" 
+		rr:sqlQuery "SELECT DISTINCT t_78592.\"ID_Student\" AS ID_Student, t_78592.\"ID_Sport\" AS ID_Sport FROM (\"sport\" AS t_96452 JOIN \"student_sport\" AS t_78592 ON ((t_96452.\"ID\"=t_78592.\"ID_Sport\"))) JOIN \"student\" AS t_56020 ON ((t_56020.\"ID\"=t_78592.\"ID_Student\"))" 
 	];
 
 	rr:subjectMap [

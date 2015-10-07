@@ -91,6 +91,10 @@ public class R2RMLMapper {
 			p.driver = p.DB_POSTGRESQL;
 		}
 
+		String tableRegex = properties.getProperty("table.regex");
+		p.tableRegex = tableRegex; 
+
+		
 		//System.setProperty("file.encoding", "UTF-8");
 
 		//p.fileProperties = args[0];

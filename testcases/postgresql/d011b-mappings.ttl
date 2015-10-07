@@ -26,9 +26,19 @@
 	];
 
 	rr:predicateObjectMap [
+		rr:predicate <http://example.com/student#firstname>;
+		rr:objectMap [ rr:column "FirstName"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/student#lastname>;
+		rr:objectMap [ rr:column "LastName"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
 		rr:predicate <http://example.com/student#ref-ID>;
 		rr:objectMap [
-			rr:parentTriplesMap <#TriplesMap10>;
+			rr:parentTriplesMap <#TriplesMap14>;
 			rr:joinCondition [
 				rr:child "ID";
 				rr:parent "ID";
@@ -67,6 +77,52 @@
 	];
 
 	rr:subjectMap [
+		rr:constant <http://example.com/student#firstname>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/student> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap4>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/student#lastname>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/student> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap5>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
 		rr:constant <http://example.com/student>;
 		rr:termType rr:IRI;
 		rr:class owl:Class;
@@ -77,7 +133,7 @@
 		rr:objectMap [ rr:constant owl:Thing ];
 	].
 
-<#TriplesMap4>
+<#TriplesMap6>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
@@ -96,6 +152,16 @@
 	];
 
 	rr:predicateObjectMap [
+		rr:predicate <http://example.com/contact#sid>;
+		rr:objectMap [ rr:column "SID"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/contact#email>;
+		rr:objectMap [ rr:column "Email"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
 		rr:predicate <http://example.com/contact#ref-SID>;
 		rr:objectMap [
 			rr:parentTriplesMap <#TriplesMap1>;
@@ -106,7 +172,7 @@
 		];
 	].
 
-<#TriplesMap5>
+<#TriplesMap7>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
@@ -124,7 +190,7 @@
 		rr:objectMap [ rr:constant owl:Thing ];
 	].
 
-<#TriplesMap6>
+<#TriplesMap8>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
@@ -147,7 +213,53 @@
 		rr:objectMap [ rr:constant xsd:integer ];
 	].
 
-<#TriplesMap7>
+<#TriplesMap9>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/contact#sid>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/contact> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:integer ];
+	].
+
+<#TriplesMap10>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/contact#email>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/contact> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap11>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
@@ -175,11 +287,11 @@
 		rr:objectMap [ rr:constant <http://example.com/contactHasstudent> ];
 	].
 
-<#TriplesMap8>
+<#TriplesMap12>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:sqlQuery "SELECT DISTINCT t_97718.\"ID\" FROM (\"student\" AS t_97718 JOIN \"contact\" AS t_51073 ON ((t_97718.\"ID\"=t_51073.\"SID\")))" 
+		rr:sqlQuery "SELECT DISTINCT t_06576.\"ID\" FROM (\"student\" AS t_06576 JOIN \"contact\" AS t_58334 ON ((t_06576.\"ID\"=t_58334.\"SID\")))" 
 	];
 
 	rr:subjectMap [
@@ -192,7 +304,7 @@
 		rr:objectMap [ rr:template "http://example.com/contact/{ID}" ];
 	].
 
-<#TriplesMap9>
+<#TriplesMap13>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
@@ -215,7 +327,7 @@
 		rr:objectMap [ rr:constant <http://example.com/student> ];
 	].
 
-<#TriplesMap10>
+<#TriplesMap14>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
@@ -231,9 +343,14 @@
 	rr:predicateObjectMap [
 		rr:predicate <http://example.com/person#id>;
 		rr:objectMap [ rr:column "ID"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/person#ssn>;
+		rr:objectMap [ rr:column "SSN"; rr:datatype xsd:string; ];
 	].
 
-<#TriplesMap11>
+<#TriplesMap15>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
@@ -256,7 +373,30 @@
 		rr:objectMap [ rr:constant xsd:integer ];
 	].
 
-<#TriplesMap12>
+<#TriplesMap16>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/person#ssn>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/person> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap17>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
@@ -274,7 +414,7 @@
 		rr:objectMap [ rr:constant owl:Thing ];
 	].
 
-<#TriplesMap13>
+<#TriplesMap18>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
@@ -290,9 +430,19 @@
 	rr:predicateObjectMap [
 		rr:predicate <http://example.com/student#id>;
 		rr:objectMap [ rr:column "ID"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/student#firstname>;
+		rr:objectMap [ rr:column "FirstName"; rr:datatype xsd:string; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/student#lastname>;
+		rr:objectMap [ rr:column "LastName"; rr:datatype xsd:string; ];
 	].
 
-<#TriplesMap14>
+<#TriplesMap19>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
@@ -310,7 +460,7 @@
 		rr:objectMap [ rr:constant owl:Thing ];
 	].
 
-<#TriplesMap15>
+<#TriplesMap20>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
@@ -338,11 +488,11 @@
 		rr:objectMap [ rr:constant <http://example.com/studentHasperson> ];
 	].
 
-<#TriplesMap16>
+<#TriplesMap21>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:sqlQuery "SELECT DISTINCT t_03106.\"ID\" FROM (\"person\" AS t_03106 JOIN \"student\" AS t_05107 ON ((t_03106.\"ID\"=t_05107.\"ID\")))" 
+		rr:sqlQuery "SELECT DISTINCT t_03615.\"ID\" FROM (\"person\" AS t_03615 JOIN \"student\" AS t_04588 ON ((t_03615.\"ID\"=t_04588.\"ID\")))" 
 	];
 
 	rr:subjectMap [
@@ -355,7 +505,7 @@
 		rr:objectMap [ rr:template "http://example.com/student/{ID}" ];
 	].
 
-<#TriplesMap17>
+<#TriplesMap22>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
@@ -378,7 +528,7 @@
 		rr:objectMap [ rr:constant <http://example.com/person> ];
 	].
 
-<#TriplesMap18>
+<#TriplesMap23>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
@@ -394,9 +544,14 @@
 	rr:predicateObjectMap [
 		rr:predicate <http://example.com/sport#id>;
 		rr:objectMap [ rr:column "ID"; rr:datatype xsd:integer; ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate <http://example.com/sport#description>;
+		rr:objectMap [ rr:column "Description"; rr:datatype xsd:string; ];
 	].
 
-<#TriplesMap19>
+<#TriplesMap24>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
@@ -419,7 +574,30 @@
 		rr:objectMap [ rr:constant xsd:integer ];
 	].
 
-<#TriplesMap20>
+<#TriplesMap25>
+	a rr:TriplesMap;
+
+	rr:logicalTable [ 
+		rr:sqlQuery "SELECT 1 FROM INFORMATION_SCHEMA.TABLES LIMIT 1" 
+	];
+
+	rr:subjectMap [
+		rr:constant <http://example.com/sport#description>;
+		rr:termType rr:IRI;
+		rr:class owl:DatatypeProperty;
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:domain;
+		rr:objectMap [ rr:constant <http://example.com/sport> ];
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate rdfs:range;
+		rr:objectMap [ rr:constant xsd:string ];
+	].
+
+<#TriplesMap26>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
@@ -437,7 +615,7 @@
 		rr:objectMap [ rr:constant owl:Thing ];
 	].
 
-<#TriplesMap21>
+<#TriplesMap27>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
@@ -474,7 +652,7 @@
 	rr:predicateObjectMap [
 		rr:predicate <http://example.com/student_sport#ref-ID_Sport>;
 		rr:objectMap [
-			rr:parentTriplesMap <#TriplesMap18>;
+			rr:parentTriplesMap <#TriplesMap23>;
 			rr:joinCondition [
 				rr:child "ID_Sport";
 				rr:parent "ID";
@@ -482,7 +660,7 @@
 		];
 	].
 
-<#TriplesMap22>
+<#TriplesMap28>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
@@ -505,7 +683,7 @@
 		rr:objectMap [ rr:constant xsd:integer ];
 	].
 
-<#TriplesMap23>
+<#TriplesMap29>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
@@ -528,7 +706,7 @@
 		rr:objectMap [ rr:constant xsd:integer ];
 	].
 
-<#TriplesMap24>
+<#TriplesMap30>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
@@ -546,7 +724,7 @@
 		rr:objectMap [ rr:constant owl:Thing ];
 	].
 
-<#TriplesMap25>
+<#TriplesMap31>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
@@ -574,11 +752,11 @@
 		rr:objectMap [ rr:constant <http://example.com/studentHassport> ];
 	].
 
-<#TriplesMap26>
+<#TriplesMap32>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:sqlQuery "SELECT DISTINCT t_82857.\"ID_Student\" AS ID_Student, t_82857.\"ID_Sport\" AS ID_Sport FROM (\"sport\" AS t_13241 JOIN \"student_sport\" AS t_82857 ON ((t_13241.\"ID\"=t_82857.\"ID_Sport\"))) JOIN \"student\" AS t_02362 ON ((t_02362.\"ID\"=t_82857.\"ID_Student\"))" 
+		rr:sqlQuery "SELECT DISTINCT t_16376.\"ID_Student\" AS ID_Student, t_16376.\"ID_Sport\" AS ID_Sport FROM (\"sport\" AS t_11650 JOIN \"student_sport\" AS t_16376 ON ((t_11650.\"ID\"=t_16376.\"ID_Sport\"))) JOIN \"student\" AS t_85003 ON ((t_85003.\"ID\"=t_16376.\"ID_Student\"))" 
 	];
 
 	rr:subjectMap [
@@ -591,7 +769,7 @@
 		rr:objectMap [ rr:template "http://example.com/student/{ID_Student}" ];
 	].
 
-<#TriplesMap27>
+<#TriplesMap33>
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
