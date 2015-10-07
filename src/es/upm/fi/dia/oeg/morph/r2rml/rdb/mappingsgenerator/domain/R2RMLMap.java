@@ -1,8 +1,12 @@
 package es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
+import java.util.Vector;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.control.R2RMLProcess;
@@ -32,7 +36,7 @@ public class R2RMLMap {
 
 	public static String enclosed_char = "\\" + "\"";
 
-	private static final Logger log = Logger.getLogger(R2RMLMapper.class.getName());
+	private static final Logger log = Logger.getLogger(R2RMLMap.class.getName());
 
 	/**
 	 * @return the filename
@@ -139,13 +143,31 @@ public class R2RMLMap {
 	 * find - find the triplesMap for a given tablename
 	 */
 	public R2RMLTriplesMap find(String tablename) {
+		Collection<R2RMLTriplesMap> results = new Vector<R2RMLTriplesMap>();
+		Collection<String> logicalTables = new Vector<String>();
 		
 		for (R2RMLTriplesMap t : this.triplesMap) {
-			if(t.logicalTable.tableName.equals(tablename)) {
-				return t;
+			String logicalTableTableName =  t.logicalTable.tableName;
+			logicalTables.add(logicalTableTableName);
+			if(logicalTableTableName.equals(tablename)) {
+				results.add(t);
 			}
 		}
-		return null;
+
+		R2RMLTriplesMap result = null;
+		if(results.size() == 0) {
+			log.log(Level.WARNING, "no Triples Map found table: " + tablename);
+			log.log(Level.WARNING, "logicalTables: " + Arrays.toString(logicalTables.toArray()));
+			result = null;
+		} else if(results.size() == 1) {
+			result = results.iterator().next();
+		} else if(results.size() > 1) {
+			log.log(Level.WARNING, "Multiple Triples Map found table: " + tablename);
+			log.log(Level.WARNING, "results: " + Arrays.toString(results.toArray()));
+			result = results.iterator().next();
+		}
+		
+		return result;
 	}
 
 	/*

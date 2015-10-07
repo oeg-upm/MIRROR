@@ -396,7 +396,7 @@ public class R2RMLProcess {
 			boolean isView;
 			
 			for(String t: listTableNames) {
-				log.info("Analyzing " + t + " ...");
+				log.info("Analyzing table " + t + " ...");
 				//isView = graph7.get(listTableNames.indexOf(t)).contains("VIEW");
 				isView = this.mapTableTypes.get(t).contains("VIEW");
 				
@@ -1331,8 +1331,15 @@ public class R2RMLProcess {
 						//triplesMap = map.find(graph2.get(i));
 						// Join conditions must be placed on the right table
 						triplesMap = map.find(r2);
+						
 						/* Adding each predicateObjectMap to the triplesMap */
-						triplesMap.predicateObjectMap.add(predicateObjectMap);
+						if(triplesMap == null) {
+							log.log(Level.WARNING, "No Triples Map found for: " + r2);
+						} else {
+							triplesMap.predicateObjectMap.add(predicateObjectMap);	
+						}
+						
+						
 					}
 				}
 				

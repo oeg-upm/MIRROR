@@ -81,6 +81,13 @@ public class R2RMLPredicateObjectMap {
 	public void setComments(ArrayList<String> comments) {
 		this.comments = comments;
 	}
+
+
+	@Override
+	public String toString() {
+		return "R2RMLPredicateObjectMap [predicates=" + predicates
+				+ ", objectMap=" + objectMap + "]";
+	}
 	
 	
 	

@@ -6,6 +6,13 @@ import es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.domain.R2RMLJoinCondi
 
 public class R2RMLObjectMap  {
 
+	@Override
+	public String toString() {
+		return "R2RMLObjectMap [column=" + column + ", parentTripleMap="
+				+ parentTripleMap + ", joinCondition=" + joinCondition
+				+ ", template=" + template + ", hasKey=" + hasKey + "]";
+	}
+
 	public String column;
 	public String parentTripleMap;
 	public ArrayList<R2RMLJoinCondition> joinCondition;
