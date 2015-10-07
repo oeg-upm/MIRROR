@@ -582,8 +582,11 @@ public class R2RMLProcess {
 		R2RMLObjectMap objectMap;
 		
 		boolean tableSaturated = false;
-			
+		
+		
+		log.log(Level.INFO, "Building Triples Map for tables with relationships");	
 		for (String r2 : listTableNames) {
+			log.log(Level.INFO, "\tBuilding Triples Map for tables: " + r2);
 			int n = gateway.getRelationshipsFromRightTableCount(properties, schema, r2);
 
 			if(n == 0) {
@@ -792,7 +795,8 @@ public class R2RMLProcess {
 					subjectMap.template = map.template;
 
 					ArrayList<String> cols = new ArrayList<String>(); 
-					if(gateway.hasPrimaryKey(properties, schema, r2, cols)) {
+					boolean hasPK = gateway.hasPrimaryKey(properties, schema, r2, cols);
+					if(hasPK) {
 						for(int i=0; i<graph8.size(); i++) {
 							if(graph10.get(i).equals("PRIMARY KEY") || graph10.get(i).equals("UNI")) {
 								subjectMap.template = subjectMap.template + "/" + r2 + "/{" + graph8.get(i) + "}";

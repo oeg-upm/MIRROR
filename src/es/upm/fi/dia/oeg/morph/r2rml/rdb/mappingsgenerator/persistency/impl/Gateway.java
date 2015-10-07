@@ -784,6 +784,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Could not query the tables from specified schema.");
 			mensagem.append("\nReason: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -849,6 +851,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Could not account records number.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -897,6 +901,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Unable to check the cardinality.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			//ConnectionManager.closeConnection(con, stmt, rs);
 			ConnectionManager.closeConnection(con);
@@ -937,6 +943,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Unable to check ISA relationship.");
 			mensagem.append("\nMotive: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -992,6 +1000,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Unable to create the database.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con);
 		}
@@ -1013,6 +1023,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Unable to delete the database.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con);
 		}
@@ -1034,6 +1046,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Can't open the database.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con);
 		}
@@ -1056,6 +1070,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Unable to execute SQL general command.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con);
 		}
@@ -1099,6 +1115,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Unable to execute SQL query");
 			mensagem.append("\nMotivo: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con);
 		}
@@ -1159,6 +1177,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Unable to query the general schema.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1217,6 +1237,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Unable to query the detailed schema.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1257,6 +1279,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Unable to query all right tables.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1289,6 +1313,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Unable to account the left tables.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1331,6 +1357,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Unable to query the left table detailed.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1373,6 +1401,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Unable to query the columns of the specified table.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1405,6 +1435,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Unable to account table columns.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1454,6 +1486,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Can't query the tables from specified schema.");
 			mensagem.append("\nReason: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1502,6 +1536,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Can't query the tables from specified schema.");
 			mensagem.append("\nReason: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1549,6 +1585,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Can't query the relationships from specified schema and table.");
 			mensagem.append("\nReason: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1598,6 +1636,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Can't query the keys of relationships from specified constraint.");
 			mensagem.append("\nReason: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1648,6 +1688,9 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Unable to find PK.");
 			mensagem.append("\nReason: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			//e.printStackTrace();
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1696,6 +1739,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Unable to ask if field is PK.");
 			mensagem.append("\nReason: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1763,6 +1808,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Can't query the columns from specified tablename.");
 			mensagem.append("\nReason: " + e.getMessage());
 			throw new MIRRORException(mensagem.toString(), e);
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1826,6 +1873,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Can't query the columns from specified tablename.");
 			mensagem.append("\nReason: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1884,6 +1933,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Can't query the PK columns from such tablename.");
 			mensagem.append("\nReason: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1946,6 +1997,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Can't query the relationships from specified schema.");
 			mensagem.append("\nReason: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -1987,6 +2040,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Can't query the all tables from specified schema.");
 			mensagem.append("\nReason: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -2020,6 +2075,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Can't account the relationships from right table and schema.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -2106,6 +2163,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Can't query the detailed relationships from table and schema.");
 			mensagem.append("\nReason: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -2139,6 +2198,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Can't account the relationships from right table and schema.");
 			mensagem.append("\nMotivo: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}
@@ -2194,6 +2255,8 @@ public class Gateway implements IGateway {
 			StringBuffer mensagem = new StringBuffer("Can't query the relationships from specified schema and table.");
 			mensagem.append("\nReason: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
+		} catch (Exception e) {
+			throw new MIRRORException(e.getMessage(), e);
 		} finally {
 			ConnectionManager.closeConnection(con, stmt, rs);
 		}

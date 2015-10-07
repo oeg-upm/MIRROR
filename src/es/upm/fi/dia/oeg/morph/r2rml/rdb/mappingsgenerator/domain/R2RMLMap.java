@@ -156,14 +156,14 @@ public class R2RMLMap {
 
 		R2RMLTriplesMap result = null;
 		if(results.size() == 0) {
-			log.log(Level.WARNING, "no Triples Map found table: " + tablename);
-			log.log(Level.WARNING, "logicalTables: " + Arrays.toString(logicalTables.toArray()));
+//			log.log(Level.WARNING, "no Triples Map found table: " + tablename);
+//			log.log(Level.WARNING, "logicalTables: " + Arrays.toString(logicalTables.toArray()));
 			result = null;
 		} else if(results.size() == 1) {
 			result = results.iterator().next();
 		} else if(results.size() > 1) {
-			log.log(Level.WARNING, "Multiple Triples Map found table: " + tablename);
-			log.log(Level.WARNING, "results: " + Arrays.toString(results.toArray()));
+//			log.log(Level.WARNING, "Multiple Triples Map found table: " + tablename);
+//			log.log(Level.WARNING, "results: " + Arrays.toString(results.toArray()));
 			result = results.iterator().next();
 		}
 		
