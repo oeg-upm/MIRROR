@@ -770,9 +770,16 @@ public class R2RMLProcess {
 							// Check if there is data in database schema
 							//long nreg = gateway.countRecordsFromRelationship(properties, databaseName, listParentTables.get(0), r2, listDataTypes.get(0).toUpperCase(), listReferencedTableNames.get(0).toUpperCase());
 							long nreg = gateway.countRecordsFromRelationship(properties, databaseName, listParentTables.get(0), r2, listDataTypes.get(0), listReferencedTableNames.get(0));
-							//if((nreg > 0) && gateway.checkRelationship1x1(properties, databaseName, listParentTables.get(0), r2, listDataTypes.get(0).toUpperCase(), listReferencedTableNames.get(0).toUpperCase()) 
+							//if((nreg > 0) && gateway.checkRelationship1x1(properties, databaseName, listParentTables.get(0), r2, listDataTypes.get(0).toUpperCase(), listReferencedTableNames.get(0).toUpperCase())
+							boolean isISARelationship = false;
+							try {
+								isISARelationship = gateway.checkRelationshipISA(properties, databaseName, listParentTables.get(0), r2);
+							} catch(Exception e) {
+								log.warning("Error while checking ISA relationship!");
+							}
+							
 							if((nreg > 0) && gateway.checkRelationship1x1(properties, databaseName, listParentTables.get(0), r2, listDataTypes.get(0), listReferencedTableNames.get(0)) 
-									|| gateway.checkRelationshipISA(properties, databaseName, listParentTables.get(0), r2)) {
+									|| isISARelationship) {
 
 									// child will be saturated
 									tableSaturated = true;
