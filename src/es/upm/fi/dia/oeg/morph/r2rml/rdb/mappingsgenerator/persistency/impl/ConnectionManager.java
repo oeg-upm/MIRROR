@@ -61,7 +61,7 @@ public class ConnectionManager {
 			Class.forName(driver);
 		} catch(ClassNotFoundException exc) {
 			exc.printStackTrace();
-			StringBuffer mensagem = new StringBuffer("Não foi possível conectar com banco de dados");
+			StringBuffer mensagem = new StringBuffer("No foi possivel conectar com banco de dados");
 			mensagem.append("\nMotivo: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
 		}
@@ -78,7 +78,7 @@ public class ConnectionManager {
 				return DriverManager.getConnection(url);
 
 		} catch (SQLException exc) {
-			StringBuffer mensagem = new StringBuffer("Não foi possível estabelecer conexão para criação de BD");
+			StringBuffer mensagem = new StringBuffer("No foi possvel estabelecer conexo para criao de BD");
 			mensagem.append("\nMotivo: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
 		}
@@ -149,7 +149,7 @@ public static Connection getConnectionDB(int DBindex, String DBname, Properties 
 			
 			return connection;
 		} catch (SQLException exc) {
-			StringBuffer mensagem = new StringBuffer("Não foi possível estabelecer conexão nomeada com banco de dados");
+			StringBuffer mensagem = new StringBuffer("No foi possvel estabelecer conexo nomeada com banco de dados");
 			mensagem.append("\nMotivo: " + exc.getMessage());
 			throw new MIRRORException(mensagem.toString());
 		}
@@ -181,7 +181,7 @@ public static void closeConnection(Connection con, PreparedStatement stmt, Resul
 		
 		//System.out.println("Connection closed");
 	} catch(SQLException exc){
-		StringBuffer mensagem = new StringBuffer("Não foi possível finalizar a conexão com banco de dados");
+		StringBuffer mensagem = new StringBuffer("No foi possvel finalizar a conexo com banco de dados");
 		mensagem.append("\nMotivo: " + exc.getMessage());
 		throw new MIRRORException(mensagem.toString());
 	}

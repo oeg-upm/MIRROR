@@ -227,7 +227,7 @@ public class FileUploadServlet extends HttpServlet {
         try {
             p.R2RMLDropSchema();
         } catch (Exception ex) {
-            System.out.println("Não pode excluir database");
+            System.out.println("No pode excluir database");
         }
         
 	}
