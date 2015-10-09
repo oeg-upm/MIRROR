@@ -58,8 +58,8 @@
 					</includes>
 					<merge>true</merge>
 					<repositoryName>MIRROR</repositoryName>
-					<repositoryOwner>fpriyatna</repositoryOwner>
-					<server>github</server>
+					<repositoryOwner>oeg-upm</repositoryOwner>
+					<server>mirror</server>
 				</configuration>
 				<executions>
 					<execution>
