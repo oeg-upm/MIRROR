@@ -1,6 +1,5 @@
 package es.upm.fi.dia.oeg.morph.r2rml.rdb.mappingsgenerator.persistency.impl;
 
-import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -189,8 +188,8 @@ public class Gateway implements IGateway {
 		// PostgreSQL
 		"SELECT table_name, table_type " +
 		"FROM INFORMATION_SCHEMA.TABLES "+ 
-		"WHERE table_catalog = ? "+
-		"AND table_schema = 'public'",
+		//"WHERE table_catalog = ? "+
+		"WHERE table_schema = ?",
 		// SQL Server
 		"SELECT table_name, table_type "+
 		"FROM INFORMATION_SCHEMA.TABLES "+
@@ -205,8 +204,8 @@ public class Gateway implements IGateway {
 		// PostgreSQL
 		"SELECT table_name, table_type " +
 		"FROM INFORMATION_SCHEMA.TABLES "+ 
-		"WHERE table_catalog = ? "+
-		"AND table_schema = 'public'",
+		//"WHERE table_catalog = ? "+
+		"WHERE table_schema = ?",
 		// SQL Server
 		"SELECT table_name, table_type "+
 		"FROM INFORMATION_SCHEMA.TABLES "+
@@ -229,13 +228,16 @@ public class Gateway implements IGateway {
 		"FROM information_schema.table_constraints AS tc "+ 
 		"JOIN information_schema.key_column_usage AS kcu "+
 		"ON tc.constraint_name = kcu.constraint_name "+
+		"AND tc.table_schema = kcu.table_schema "+ // added line
 		"JOIN information_schema.constraint_column_usage AS ccu "+
 		"ON ccu.constraint_name = tc.constraint_name "+
+		"AND tc.table_schema = ccu.table_schema "+ // added line
 		"JOIN information_schema.columns AS c "+
 		"ON (c.column_name = kcu.column_name) AND (c.table_name = tc.table_name) "+
+		"AND tc.table_schema = c.table_schema "+ // added line
 		"WHERE constraint_type = 'FOREIGN KEY'  "+
-		"AND tc.table_catalog = ? "+
-		"AND tc.table_schema = 'public' "+
+		//"AND tc.table_catalog = ? "+
+		"AND tc.table_schema = ? "+
 		"AND tc.table_name = ?;",
 		// SQL Server
 		"SELECT "+ 
@@ -265,13 +267,16 @@ public class Gateway implements IGateway {
 		"FROM information_schema.table_constraints AS tc "+ 
 		"JOIN information_schema.key_column_usage AS kcu "+
 		"ON tc.constraint_name = kcu.constraint_name "+
+		"AND tc.table_schema = kcu.table_schema "+ // added line
 		"JOIN information_schema.constraint_column_usage AS ccu "+
 		"ON ccu.constraint_name = tc.constraint_name "+
+		"AND tc.table_schema = ccu.table_schema "+ // added line
 		"JOIN information_schema.columns AS c "+
 		"ON (c.column_name = kcu.column_name) AND (c.table_name = tc.table_name) "+
+		"AND tc.table_schema = c.table_schema "+ // added line
 		"WHERE constraint_type = 'FOREIGN KEY' "+
-		"AND tc.table_catalog = ? "+
-		"AND tc.table_schema = 'public' "+
+		//"AND tc.table_catalog = ? "+
+		"AND tc.table_schema = ? "+
 		"AND tc.constraint_name = ?",
 		// SQL Server
 		"SELECT "+ 
@@ -303,8 +308,9 @@ public class Gateway implements IGateway {
 		"FROM information_schema.columns AS c "+
 		"LEFT OUTER JOIN information_schema.constraint_column_usage AS ccu "+
 		"ON (c.column_name = ccu.column_name) AND (c.table_name = ccu.table_name) "+
-		"WHERE c.table_schema = 'public' "+
-		"AND c.table_catalog = ? "+
+		"AND c.table_schema = ccu.table_schema "+ // added line
+		"WHERE c.table_schema = ? "+
+		//"AND c.table_catalog = ? "+
 		"AND (ccu.constraint_name LIKE '%pkey' OR ccu.constraint_name IS NULL) "+
 		"AND c.table_name = ?",
 		// SQL Server
@@ -336,8 +342,9 @@ public class Gateway implements IGateway {
 		"FROM information_schema.columns AS c "+
 		"LEFT OUTER JOIN information_schema.constraint_column_usage AS ccu "+
 		"ON (c.column_name = ccu.column_name) AND (c.table_name = ccu.table_name) "+
-		"WHERE c.table_schema = 'public' "+
-		"AND c.table_catalog = ? "+
+		"AND c.table_schema = ccu.table_schema "+ // added line
+		"WHERE c.table_schema = ? "+
+		//"AND c.table_catalog = ? "+
 		"AND (ccu.constraint_name LIKE '%pkey' OR ccu.constraint_name IS NULL) "+
 		"AND c.table_name = ?",
 		// SQL Server
@@ -361,8 +368,9 @@ public class Gateway implements IGateway {
 		"FROM information_schema.columns AS c "+
 		"LEFT OUTER JOIN information_schema.constraint_column_usage AS ccu "+
 		"ON (c.column_name = ccu.column_name) AND (c.table_name = ccu.table_name) "+
-		"WHERE c.table_schema = 'public' "+
-		"AND c.table_catalog = ? "+
+		"AND c.table_schema = ccu.table_schema "+ // added line
+		"WHERE c.table_schema = ? "+
+		//"AND c.table_catalog = ? "+
 		"AND (ccu.constraint_name LIKE '%pkey' OR ccu.constraint_name IS NULL) "+
 		"AND c.table_name = ?",
 		// SQL Server
@@ -392,13 +400,16 @@ public class Gateway implements IGateway {
 		"FROM information_schema.table_constraints AS tc "+ 
 		"JOIN information_schema.key_column_usage AS kcu "+
 		"ON tc.constraint_name = kcu.constraint_name "+
+		"AND tc.table_schema = kcu.table_schema "+ // added line
 		"JOIN information_schema.constraint_column_usage AS ccu "+
 		"ON ccu.constraint_name = tc.constraint_name "+
+		"AND tc.table_schema = ccu.table_schema "+ // added line
 		"JOIN information_schema.columns AS c "+
 		"ON (c.column_name = kcu.column_name) AND (c.table_name = tc.table_name) "+
+		"AND tc.table_schema = c.table_schema "+ // added line
 		"WHERE constraint_type = 'FOREIGN KEY' "+
-		"AND tc.table_catalog = ? "+
-		"AND tc.table_schema = 'public' "+
+		//"AND tc.table_catalog = ? "+
+		"AND tc.table_schema = ? "+
 		"ORDER BY REFERENCED_TABLE_NAME",
 		// SQL Server
 		"SELECT "+
@@ -438,13 +449,16 @@ public class Gateway implements IGateway {
 		"FROM information_schema.table_constraints AS tc "+ 
 		"JOIN information_schema.key_column_usage AS kcu "+
 		"ON tc.constraint_name = kcu.constraint_name "+
+		"AND tc.table_schema = kcu.table_schema "+ // added line
 		"JOIN information_schema.constraint_column_usage AS ccu "+
 		"ON ccu.constraint_name = tc.constraint_name "+
+		"AND tc.table_schema = ccu.table_schema "+ // added line
 		"JOIN information_schema.columns AS c "+
 		"ON (c.column_name = kcu.column_name) AND (c.table_name = tc.table_name) "+
+		"AND tc.table_schema = c.table_schema "+ // added line
 		"WHERE constraint_type = 'FOREIGN KEY' "+
-		"AND tc.table_catalog = ? "+
-		"AND tc.table_schema = 'public' "+
+		//"AND tc.table_catalog = ? "+
+		"AND tc.table_schema = ? "+
 		"ORDER BY TABLE_NAME",
 		// SQL Server
 		"SELECT DISTINCT "+
@@ -477,13 +491,16 @@ public class Gateway implements IGateway {
 		"FROM information_schema.table_constraints AS tc "+ 
 		"JOIN information_schema.key_column_usage AS kcu "+
 		"ON tc.constraint_name = kcu.constraint_name "+
+		"AND tc.table_schema = kcu.table_schema "+ // added line
 		"JOIN information_schema.constraint_column_usage AS ccu "+
 		"ON ccu.constraint_name = tc.constraint_name "+
+		"AND tc.table_schema = ccu.table_schema "+ // added line
 		"JOIN information_schema.columns AS c "+
 		"ON (c.column_name = kcu.column_name) AND (c.table_name = tc.table_name) "+
+		"AND tc.table_schema = c.table_schema "+ // added line
 		"WHERE constraint_type = 'FOREIGN KEY' "+
-		"AND tc.table_catalog = ? "+
-		"AND tc.table_schema = 'public' "+
+		//"AND tc.table_catalog = ? "+
+		"AND tc.table_schema = ? "+
 		"AND tc.table_name = ? ) AS internalquery",
 		// SQL Server
 		"SELECT COUNT(*) AS N "+
@@ -525,13 +542,16 @@ public class Gateway implements IGateway {
 		"FROM information_schema.table_constraints AS tc "+ 
 		"JOIN information_schema.key_column_usage AS kcu "+
 		"ON tc.constraint_name = kcu.constraint_name "+
+		"AND tc.table_schema = kcu.table_schema "+ // added line
 		"JOIN information_schema.constraint_column_usage AS ccu "+
 		"ON ccu.constraint_name = tc.constraint_name "+
+		"AND tc.table_schema = ccu.table_schema "+ // added line
 		"JOIN information_schema.columns AS c "+
 		"ON (c.column_name = kcu.column_name) AND (c.table_name = tc.table_name) "+
+		"AND tc.table_schema = c.table_schema "+ // added line
 		"WHERE constraint_type = 'FOREIGN KEY' "+ 
-		"AND tc.table_catalog = ? "+
-		"AND tc.table_schema = 'public' "+ 
+		//"AND tc.table_catalog = ? "+
+		"AND tc.table_schema = ? "+ 
 		"AND tc.table_name = ?"+
 		"ORDER BY PARENT",
 		// SQL Server
@@ -568,8 +588,9 @@ public class Gateway implements IGateway {
 		"FROM information_schema.columns AS c "+
 		"LEFT OUTER JOIN information_schema.constraint_column_usage AS ccu "+
 		"ON (c.column_name = ccu.column_name) AND (c.table_name = ccu.table_name) "+
-		"WHERE c.table_schema = 'public' "+
-		"AND c.table_catalog = ? "+
+		"AND c.table_schema = ccu.table_schema "+ // added line
+		"WHERE c.table_schema = ? "+
+		//"AND c.table_catalog = ? "+
 		"AND (ccu.constraint_name LIKE '%pkey' OR ccu.constraint_name IS NULL) "+
 		"AND c.table_name = ? ) AS internalquery",
 		// SQL Server
@@ -600,13 +621,16 @@ public class Gateway implements IGateway {
 		"FROM information_schema.table_constraints AS tc "+ 
 		"JOIN information_schema.key_column_usage AS kcu "+
 		"ON tc.constraint_name = kcu.constraint_name "+
+		"AND tc.table_schema = kcu.table_schema "+ // added line
 		"JOIN information_schema.constraint_column_usage AS ccu "+
 		"ON ccu.constraint_name = tc.constraint_name "+
+		"AND tc.table_schema = ccu.table_schema "+ // added line
 		"JOIN information_schema.columns AS c "+
 		"ON (c.column_name = kcu.column_name) AND (c.table_name = tc.table_name) "+
+		"AND tc.table_schema = c.table_schema "+ // added line
 		"WHERE constraint_type = 'FOREIGN KEY' "+
-		"AND tc.table_catalog = ? "+
-		"AND tc.table_schema = 'public' "+ 
+		//"AND tc.table_catalog = ? "+
+		"AND tc.table_schema = ? "+ 
 		"AND tc.table_name = ?",
 		// SQL Server
 		"SELECT "+
@@ -708,8 +732,8 @@ public class Gateway implements IGateway {
 		// PostgreSQL
 		"SELECT table_name, view_definition "+ 
 		"FROM INFORMATION_SCHEMA.VIEWS "+
-		"WHERE table_catalog = ? "+
-		"AND table_schema = 'public'",
+		//"WHERE table_catalog = ? "+
+		"WHERE table_schema = ?",
 		// SQL Server
 		"SELECT table_name, view_definition "+ 
 		"FROM INFORMATION_SCHEMA.VIEWS "+
@@ -776,6 +800,8 @@ public class Gateway implements IGateway {
 
 		try {
 			con = ConnectionManager.getConnection(database, properties);
+			if (database == DBTYPE_POSTGRESQL && properties.getProperty("schema") != null)
+				con.createStatement().execute("SET SEARCH_PATH TO " + properties.getProperty("schema"));
 			//			String cmd = "SELECT COUNT(*) AS N "+
 			//					"FROM `"+dbName+"`.`"+childTable+"` AS C JOIN `"+
 			//					dbName+"`.`"+parentTable+"` AS P ON C.`"+childPK+"`=P.`"+parentPK+"`";
@@ -810,6 +836,7 @@ public class Gateway implements IGateway {
 			//			}
 
 			String cmd = this.generateSQLCountRecordsFromRelationship(dbName, childTable, parentTable, childPK, parentPK);
+			//System.out.println(cmd);
 			stmt = con.prepareStatement(cmd);
 			VerboseMode.verbose(stmt.toString(), VerboseMode.VERBOSE_SQL);
 			rs = stmt.executeQuery();
@@ -846,6 +873,8 @@ public class Gateway implements IGateway {
 		String cmd;
 		try {
 			con = ConnectionManager.getConnection(database, properties);
+			if (database == DBTYPE_POSTGRESQL && properties.getProperty("schema") != null)
+				con.createStatement().execute("SET SEARCH_PATH TO " + properties.getProperty("schema"));
 			String subquery = this.generateSQLCountRecordsFromRelationship(dbName, childTable, parentTable, childPK, parentPK);
 
 			//			String cmd = "SELECT COUNT(*) AS TOTAL "+
