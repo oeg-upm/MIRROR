@@ -50,9 +50,11 @@ public class R2RMLMapper {
 	 * @throws MIRRORException 
 	 */
 	public static void main(String[] args) throws MIRRORException {
-		// TODO Auto-generated method stub
 		Properties properties = new Properties();
 		FileInputStream arquivoDePropriedades = null;
+		if (args.length == 0)
+			throw new RuntimeException("Missing properties file "
+					+ "(must be specified as first command line argument).");
 		try {
 			arquivoDePropriedades = new FileInputStream(args[0]);
 			properties.load(arquivoDePropriedades);

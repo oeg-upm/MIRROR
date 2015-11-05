@@ -220,11 +220,9 @@ public class R2RMLMap {
 	}
 	
 	public String checkSpaceInTemplate(String template) {
-		if(template.contains(" ")) {
-			return "\\\""+template+"\\\"";
-		} else {
-			return template;
-		}
+		// note: quotes are also needed for special characters, but also
+		// if schema is case-sensitive:
+		return "\\\""+template+"\\\"";
 	}
 	
 	public void addOwlClass(String table) {
