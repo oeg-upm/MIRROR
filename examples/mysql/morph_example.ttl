@@ -1,12 +1,12 @@
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix dc: <http://purl.org/dc/elements/1.1#> .
-@prefix dc: <http://purl.org/stuff/rev#> .
 @prefix rev: <http://purl.org/stuff/rev#> .
 @prefix bsbm: <http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1#> .
+@prefix dc: <http://purl.org/stuff/rev#> .
 @prefix bsbm-inst: <http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/vocabulary/> .
 @prefix ex: <http://example.com/> .
 
@@ -16,33 +16,33 @@
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:tableName "sport"; 
+		rr:tableName "\"sport\""; 
 	];
 
 	rr:subjectMap [
-		rr:template "http://example.com/sport/{id}";
+		rr:template "http://example.com/sport/{\"id\"}";
 		rr:termType rr:IRI;
 		rr:class <http://example.com/sport>;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate <http://example.com/sport#id>;
-		rr:objectMap [ rr:column "id"; rr:datatype xsd:integer; ];
+		rr:objectMap [ rr:column "\"id\""; rr:datatype xsd:integer; ];
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate <http://example.com/sport#name>;
-		rr:objectMap [ rr:column "name"; rr:datatype xsd:string; ];
+		rr:objectMap [ rr:column "\"name\""; rr:datatype xsd:string; ];
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate <http://example.com/sport#code>;
-		rr:objectMap [ rr:column "code"; rr:datatype xsd:string; ];
+		rr:objectMap [ rr:column "\"code\""; rr:datatype xsd:string; ];
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate <http://example.com/sport#type>;
-		rr:objectMap [ rr:column "type"; rr:datatype xsd:string; ];
+		rr:objectMap [ rr:column "\"type\""; rr:datatype xsd:string; ];
 	].
 
 <#TriplesMap2>
@@ -159,7 +159,7 @@
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:tableName "student"; 
+		rr:tableName "\"student\""; 
 	];
 
 	rr:subjectMap [
@@ -170,47 +170,47 @@
 
 	rr:predicateObjectMap [
 		rr:predicate <http://example.com/student#id>;
-		rr:objectMap [ rr:column "id"; rr:datatype xsd:string; ];
+		rr:objectMap [ rr:column "\"id\""; rr:datatype xsd:string; ];
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate <http://example.com/student#name>;
-		rr:objectMap [ rr:column "name"; rr:datatype xsd:string; ];
+		rr:objectMap [ rr:column "\"name\""; rr:datatype xsd:string; ];
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate <http://example.com/student#sport>;
-		rr:objectMap [ rr:column "sport"; rr:datatype xsd:integer; ];
+		rr:objectMap [ rr:column "\"sport\""; rr:datatype xsd:integer; ];
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate <http://example.com/student#status>;
-		rr:objectMap [ rr:column "status"; rr:datatype xsd:string; ];
+		rr:objectMap [ rr:column "\"status\""; rr:datatype xsd:string; ];
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate <http://example.com/student#webpage>;
-		rr:objectMap [ rr:column "webpage"; rr:datatype xsd:string; ];
+		rr:objectMap [ rr:column "\"webpage\""; rr:datatype xsd:string; ];
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate <http://example.com/student#phone>;
-		rr:objectMap [ rr:column "phone"; rr:datatype xsd:string; ];
+		rr:objectMap [ rr:column "\"phone\""; rr:datatype xsd:string; ];
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate <http://example.com/student#email>;
-		rr:objectMap [ rr:column "email"; rr:datatype xsd:string; ];
+		rr:objectMap [ rr:column "\"email\""; rr:datatype xsd:string; ];
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate <http://example.com/student#suffix>;
-		rr:objectMap [ rr:column "suffix"; rr:datatype xsd:string; ];
+		rr:objectMap [ rr:column "\"suffix\""; rr:datatype xsd:string; ];
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate <http://example.com/student#birthdate>;
-		rr:objectMap [ rr:column "birthdate"; rr:datatype xsd:time; ];
+		rr:objectMap [ rr:column "\"birthdate\""; rr:datatype xsd:time; ];
 	];
 
 	rr:predicateObjectMap [
@@ -481,17 +481,17 @@
 	a rr:TriplesMap;
 
 	rr:logicalTable [ 
-		rr:sqlQuery "SELECT DISTINCT t_21018.\"id\" FROM (\"sport\" AS t_21018 JOIN \"student\" AS t_78162 ON ((t_21018.\"id\"=t_78162.\"sport\")))" 
+		rr:sqlQuery "SELECT DISTINCT t_22361.\"id\" FROM (\"sport\" AS t_22361 JOIN \"student\" AS t_49806 ON ((t_22361.\"id\"=t_49806.\"sport\")))" 
 	];
 
 	rr:subjectMap [
-		rr:template "http://example.com/sport/{id}";
+		rr:template "http://example.com/sport/{\"id\"}";
 		rr:termType rr:IRI;
 	];
 
 	rr:predicateObjectMap [
 		rr:predicate <http://example.com/sportHasstudent>;
-		rr:objectMap [ rr:template "http://example.com/student/{id}" ];
+		rr:objectMap [ rr:template "http://example.com/student/{\"id\"}" ];
 	].
 
 <#TriplesMap20>

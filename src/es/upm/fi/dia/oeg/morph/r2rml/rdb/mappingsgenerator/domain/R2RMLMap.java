@@ -148,8 +148,9 @@ public class R2RMLMap {
 		
 		for (R2RMLTriplesMap t : this.triplesMap) {
 			String logicalTableTableName =  t.logicalTable.tableName;
+			String logicalTableTableName2 = logicalTableTableName.replaceAll("\\\\\"", ""); 
 			logicalTables.add(logicalTableTableName);
-			if(logicalTableTableName.equals(tablename)) {
+			if(logicalTableTableName.equals(tablename) || logicalTableTableName2.equals(tablename)) {
 				results.add(t);
 			}
 		}

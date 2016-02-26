@@ -132,7 +132,8 @@ public class R2RMLMapper {
 
 		p.comments = Boolean.valueOf(properties.getProperty("comments"));
 
-		p.externalSchema = Boolean.valueOf(properties.getProperty("externalschema"));
+		String propertyExternalSchema = properties.getProperty("externalschema");
+		p.externalSchema = Boolean.valueOf(propertyExternalSchema);
 
 		p.SQLInsert = Boolean.valueOf(properties.getProperty("sqlinsert"));
 

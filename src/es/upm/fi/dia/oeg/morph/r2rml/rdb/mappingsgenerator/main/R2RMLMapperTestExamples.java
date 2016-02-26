@@ -11,8 +11,8 @@ import org.junit.Test;
 
 public class R2RMLMapperTestExamples {
 
-	private static String path = "./examples/postgresql/"; 
-	//private static String path = "./examples/mysql/"; 
+	//private static String path = "./examples/postgresql/"; 
+	private static String path = "./examples/mysql/"; 
 	
 	private void run(String propertiesFile) {
 		Properties properties = new Properties();
@@ -31,6 +31,7 @@ public class R2RMLMapperTestExamples {
 			mensagem.append("\nMotive: " + exc.getMessage());
 			fail(mensagem.toString());
 		}
+		assertTrue(true);
 	}
 
 	@Test // 1 
