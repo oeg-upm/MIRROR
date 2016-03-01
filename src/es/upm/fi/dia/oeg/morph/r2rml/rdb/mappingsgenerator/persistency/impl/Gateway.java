@@ -27,7 +27,7 @@ public class Gateway implements IGateway {
 		//MYSQL
 		"SELECT COUNT(*) AS N "+ "FROM `?dbName`.`?childTable` AS C JOIN `?dbName`.`?parentTable` AS P ON C.`?childPK`=P.`?parentPK`"
 		//POSTGRESQL
-		, "SELECT COUNT(*) AS N "+ "FROM \"?childTable\" AS C JOIN \"?parentTable\" AS P ON C.\"?childPK\"=P.\"?parentPK\""
+		, "SELECT COUNT(*) AS N "+ "FROM \"?dbName\".\"?childTable\" AS C JOIN \"?dbName\".\"?parentTable\" AS P ON C.\"?childPK\"=P.\"?parentPK\""
 				//MSSQLServer (Not tested yet)
 		, "SELECT COUNT(*) AS N "+ "FROM \"?childTable\" AS C JOIN \"?parentTable\" AS P ON C.\"?childPK\"=P.\"?parentPK\""
 	};
