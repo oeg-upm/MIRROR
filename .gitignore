@@ -15,11 +15,11 @@ hs_err_pid*
 target/
 %log/
 build/
-%.settings/
+.settings/
 %.cache
 %.class
 %.classpath
-%.project
+.project
 *.log
 /target/
 .idea
