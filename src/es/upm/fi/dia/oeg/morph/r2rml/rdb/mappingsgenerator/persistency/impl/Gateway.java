@@ -311,7 +311,7 @@ public class Gateway implements IGateway {
 		"AND c.table_schema = ccu.table_schema "+ // added line
 		"WHERE c.table_schema = ? "+
 		//"AND c.table_catalog = ? "+
-		"AND (ccu.constraint_name LIKE '%pkey' OR ccu.constraint_name IS NULL) "+
+		//"AND (ccu.constraint_name LIKE '%pkey' OR ccu.constraint_name IS NULL) "+
 		"AND c.table_name = ?",
 		// SQL Server
 		"SELECT c.column_name, c.data_type, ccu.constraint_name AS COLUMN_KEY "+
